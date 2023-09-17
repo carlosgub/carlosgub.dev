@@ -1,5 +1,5 @@
 ---
-root: .components.layouts.PageLayout("MARKDOWN")
+root: .components.layouts.PageLayout("Example")
 ---
 
 ## Markdown Example

@@ -38,7 +38,7 @@ fun PageLayout(title: String, content: @Composable () -> Unit) {
     ) {
 
         Column(
-            modifier = Modifier.fillMaxSize().textAlign(TextAlign.Center),
+            modifier = Modifier.fillMaxSize(),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Row(

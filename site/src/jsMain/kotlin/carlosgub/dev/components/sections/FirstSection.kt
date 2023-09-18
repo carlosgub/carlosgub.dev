@@ -85,7 +85,7 @@ fun FirstSection(modifier: Modifier = Modifier) {
                 Link("mailto:carlosgabrielugazburga@gmail.com", "carlosgabrielugazburga@gmail.com")
                 P()
                 A(
-                    href = "https://carlosgub.dev/resume.pdf",
+                    href = "/resume.pdf",
                     attrs = Modifier
                         .color(themeColor)
                         .fontSize(1.25.cssRem)

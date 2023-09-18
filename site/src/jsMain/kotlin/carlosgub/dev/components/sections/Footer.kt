@@ -2,9 +2,9 @@ package carlosgub.dev.components.sections
 
 import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.compose.css.AlignSelf
+import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.Row
-import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.silk.components.navigation.Link
@@ -31,15 +31,31 @@ fun Footer(modifier: Modifier = Modifier) {
     Row(FooterStyle.toModifier().then(modifier)) {
         Column(modifier = Modifier.weight(1)) {
             Row {
-                SpanText("Made with ")
-                Link("https://github.com/varabyte/kobweb", "Kobweb")
+                SpanText(
+                    text = "Made with "
+                )
+                Link(
+                    path = "https://github.com/varabyte/kobweb",
+                    text = "Kobweb",
+                    modifier = LinkStyle.toModifier()
+                )
             }
             Row {
-                SpanText("Inspiration in ")
-                Link("https://v3.brittanychiang.com", "Brittany Chiang")
+                SpanText(
+                    text = "Inspired by "
+                )
+                Link(
+                    path = "https://v3.brittanychiang.com",
+                    text = "Brittany Chiang",
+                    modifier = LinkStyle.toModifier()
+                )
             }
             Row {
-                SpanText("Developed by Carlos Ugaz 2023")
+                SpanText(
+                    text = "Developed by Carlos Ugaz 2023",
+                    modifier = Modifier
+                        .fontWeight(FontWeight.SemiBold)
+                )
             }
         }
     }

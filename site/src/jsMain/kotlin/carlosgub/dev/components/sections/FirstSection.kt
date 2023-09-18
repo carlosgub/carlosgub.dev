@@ -37,11 +37,6 @@ fun FirstSection(modifier: Modifier = Modifier) {
     } else {
         Colors.Black
     }
-    val actionColor = if (colorMode.isDark) {
-        Colors.Blue
-    } else {
-        Colors.DarkGray
-    }
     Box(
         modifier = Modifier.width(100.vw).then(modifier),
         contentAlignment = Alignment.TopCenter
@@ -59,7 +54,7 @@ fun FirstSection(modifier: Modifier = Modifier) {
                     .toAttrs()
             ) {
                 SpanText(
-                    "Hi!"
+                    "Hey there!"
                 )
             }
             H2(
@@ -74,7 +69,7 @@ fun FirstSection(modifier: Modifier = Modifier) {
                     modifier = Modifier.fontWeight(FontWeight.SemiBold)
                 )
                 SpanText(
-                    ", a front-end software engineer focused on building beautiful mobile applications"
+                    ", a mobile software engineer focused on building awesome mobile applications"
                 )
             }
             H3(
@@ -82,7 +77,11 @@ fun FirstSection(modifier: Modifier = Modifier) {
                     .toAttrs()
             ) {
                 SpanText("Get in touch ")
-                Link("mailto:carlosgabrielugazburga@gmail.com", "carlosgabrielugazburga@gmail.com")
+                Link(
+                    path = "mailto:carlosgabrielugazburga@gmail.com",
+                    text = "carlosgabrielugazburga@gmail.com",
+                    modifier = LinkStyle.toModifier()
+                )
                 P()
                 A(
                     href = "/resume.pdf",
@@ -98,9 +97,9 @@ fun FirstSection(modifier: Modifier = Modifier) {
                         "View My Resume"
                     )
                     BSIcon(
-                        icon = BSIcons.ARROW_RIGHT_SQUARE,
+                        icon = BSIcons.ARROW_RIGHT,
                         size = 20.px,
-                        color = actionColor,
+                        color = themeColor,
                         modifier = Modifier
                             .padding(left = 16.px)
                     )
@@ -113,27 +112,29 @@ fun FirstSection(modifier: Modifier = Modifier) {
                     top = 20.px,
                     right = 30.px
                 ).fillMaxWidth(),
-            horizontalArrangement = Arrangement.End
+            horizontalArrangement = Arrangement.End,
+            verticalAlignment = Alignment.CenterVertically
         ) {
             BSIcon(
                 icon = BSIcons.SUN,
                 size = 1.cssRem,
                 color = themeColor,
-                modifier = Modifier.padding(right = 8.px)
+                modifier = Modifier
+                    .size(17.px)
             )
             BSSwitch(
                 label = "",
                 defaultChecked = colorMode.isDark,
                 onClick = {
                     colorMode = colorMode.opposite
-                },
-                modifier = Modifier
-                    .height(45.px)
+                }
             )
             BSIcon(
                 icon = BSIcons.MOON,
                 size = 1.cssRem,
-                color = themeColor
+                color = themeColor,
+                modifier = Modifier
+                    .size(17.px)
             )
         }
     }

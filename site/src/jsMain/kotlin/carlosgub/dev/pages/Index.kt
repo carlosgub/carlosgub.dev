@@ -14,7 +14,7 @@ import kotlinx.browser.document
 @Page
 @Composable
 fun HomePage() {
-    val title = "Welcome to my website!"
+    val title = "Carlos Ugaz | Mobile Software Engineer"
     LaunchedEffect(title) {
         document.title = title
     }

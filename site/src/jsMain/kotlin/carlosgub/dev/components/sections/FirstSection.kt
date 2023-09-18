@@ -7,6 +7,7 @@ import com.stevdza.san.kotlinbs.components.BSIcon
 import com.stevdza.san.kotlinbs.forms.BSSwitch
 import com.stevdza.san.kotlinbs.icons.BSIcons
 import com.varabyte.kobweb.compose.css.FontWeight
+import com.varabyte.kobweb.compose.css.TextDecorationLine
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Column
@@ -14,10 +15,7 @@ import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.graphics.Colors
-import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
-import com.varabyte.kobweb.compose.ui.modifiers.fontWeight
-import com.varabyte.kobweb.compose.ui.modifiers.padding
-import com.varabyte.kobweb.compose.ui.modifiers.width
+import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.navigation.Link
 import com.varabyte.kobweb.silk.components.style.breakpoint.Breakpoint
@@ -28,14 +26,22 @@ import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.css.vw
-import org.jetbrains.compose.web.dom.H1
-import org.jetbrains.compose.web.dom.H2
-import org.jetbrains.compose.web.dom.H3
+import org.jetbrains.compose.web.dom.*
 
 @Composable
 fun FirstSection(modifier: Modifier = Modifier) {
     var colorMode by ColorMode.currentState
     val breakpoint = rememberBreakpoint()
+    val themeColor = if (colorMode.isDark) {
+        Colors.White
+    } else {
+        Colors.Black
+    }
+    val actionColor = if (colorMode.isDark) {
+        Colors.Blue
+    } else {
+        Colors.DarkGray
+    }
     Box(
         modifier = Modifier.width(100.vw).then(modifier),
         contentAlignment = Alignment.TopCenter
@@ -43,7 +49,7 @@ fun FirstSection(modifier: Modifier = Modifier) {
         Column(
             modifier = SectionModifier.toModifier()
                 .padding(
-                    topBottom =  if (breakpoint < Breakpoint.LG) 50.px else 100.px,
+                    topBottom = if (breakpoint < Breakpoint.LG) 50.px else 100.px,
                     leftRight = if (breakpoint < Breakpoint.LG) 70.px else 120.px
                 ),
             verticalArrangement = Arrangement.SpaceAround
@@ -76,7 +82,29 @@ fun FirstSection(modifier: Modifier = Modifier) {
                     .toAttrs()
             ) {
                 SpanText("Get in touch ")
-                Link("mailto:carlosgabrielugazburga@gmail.com","carlosgabrielugazburga@gmail.com")
+                Link("mailto:carlosgabrielugazburga@gmail.com", "carlosgabrielugazburga@gmail.com")
+                P()
+                A(
+                    href = "https://carlosgub.dev/resume.pdf",
+                    attrs = Modifier
+                        .color(themeColor)
+                        .fontSize(1.25.cssRem)
+                        .fontWeight(FontWeight.SemiBold)
+                        .textDecorationLine(TextDecorationLine.None)
+                        .toAttrs()
+
+                ) {
+                    Text(
+                        "View My Resume"
+                    )
+                    BSIcon(
+                        icon = BSIcons.ARROW_RIGHT_SQUARE,
+                        size = 20.px,
+                        color = actionColor,
+                        modifier = Modifier
+                            .padding(left = 16.px)
+                    )
+                }
             }
         }
         Row(
@@ -87,15 +115,10 @@ fun FirstSection(modifier: Modifier = Modifier) {
                 ).fillMaxWidth(),
             horizontalArrangement = Arrangement.End
         ) {
-            val color = if (colorMode.isDark) {
-                Colors.White
-            } else {
-                Colors.Black
-            }
             BSIcon(
                 icon = BSIcons.SUN,
                 size = 1.cssRem,
-                color = color,
+                color = themeColor,
                 modifier = Modifier.padding(right = 8.px)
             )
             BSSwitch(
@@ -103,12 +126,14 @@ fun FirstSection(modifier: Modifier = Modifier) {
                 defaultChecked = colorMode.isDark,
                 onClick = {
                     colorMode = colorMode.opposite
-                }
+                },
+                modifier = Modifier
+                    .height(45.px)
             )
             BSIcon(
                 icon = BSIcons.MOON,
                 size = 1.cssRem,
-                color = color
+                color = themeColor
             )
         }
     }

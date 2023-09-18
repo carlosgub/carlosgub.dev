@@ -4,11 +4,9 @@ import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.compose.css.AlignSelf
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.Row
+import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.modifiers.alignSelf
-import com.varabyte.kobweb.compose.ui.modifiers.borderTop
-import com.varabyte.kobweb.compose.ui.modifiers.margin
-import com.varabyte.kobweb.compose.ui.modifiers.padding
+import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.silk.components.navigation.Link
 import com.varabyte.kobweb.silk.components.style.ComponentStyle
 import com.varabyte.kobweb.silk.components.style.base
@@ -25,14 +23,24 @@ val FooterStyle by ComponentStyle.base {
         .borderTop(1.px, LineStyle.Solid, SilkTheme.palettes[colorMode].border)
         .padding(topBottom = 1.cssRem, leftRight = 4.cssRem)
         .alignSelf(AlignSelf.Center)
+        .fillMaxWidth()
 }
 
 @Composable
 fun Footer(modifier: Modifier = Modifier) {
-    Column(FooterStyle.toModifier().then(modifier)) {
-        Row {
-            SpanText("Made with ")
-            Link("https://github.com/varabyte/kobweb", "Kobweb")
+    Row(FooterStyle.toModifier().then(modifier)) {
+        Column(modifier = Modifier.weight(1)) {
+            Row {
+                SpanText("Made with ")
+                Link("https://github.com/varabyte/kobweb", "Kobweb")
+            }
+            Row {
+                SpanText("Inspiration in ")
+                Link("https://v3.brittanychiang.com", "Brittany Chiang")
+            }
+            Row {
+                SpanText("Developed by Carlos Ugaz 2023")
+            }
         }
     }
 }

@@ -37,7 +37,8 @@ fun FirstSection() {
         Colors.Black
     }
     Box(
-        modifier = Modifier
+        modifier = SectionModifier
+            .toModifier()
             .width(100.percent),
         contentAlignment = Alignment.TopCenter
     ) {

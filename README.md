@@ -1,8 +1,6 @@
 ## This is the repo used to create my personal website: https://carlosgub.dev
 
-<img width="284" alt="image" src="https://github.com/carlosgub/carlosgub.dev/assets/30916886/bccf3a5e-36c4-4d0f-9f33-113b087e3e55">
-
-
+![image](https://github.com/carlosgub/carlosgub.dev/assets/30916886/42778c72-e9a4-4723-b123-940dd49e71be)
 
 ## Getting Started
 

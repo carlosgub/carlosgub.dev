@@ -24,6 +24,7 @@ import com.varabyte.kobweb.silk.components.text.SpanText
 import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
 import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import org.jetbrains.compose.web.css.cssRem
+import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.css.vw
 import org.jetbrains.compose.web.dom.*
@@ -38,7 +39,7 @@ fun FirstSection(modifier: Modifier = Modifier) {
         Colors.Black
     }
     Box(
-        modifier = Modifier.width(100.vw).then(modifier),
+        modifier = Modifier.width(100.percent).then(modifier),
         contentAlignment = Alignment.TopCenter
     ) {
         Column(

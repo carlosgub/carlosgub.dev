@@ -24,7 +24,7 @@ fun HomePage() {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         FirstSection()
-//        SecondSection()
+        // SecondSection()
         Footer(breakpoint)
     }
 }

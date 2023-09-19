@@ -18,7 +18,7 @@ import org.jetbrains.compose.web.css.*
 
 val SectionModifier by ComponentStyle.base {
     Modifier
-        .width(100.vw)
+        .width(100.percent)
         .height(100.vh)
         .maxWidth(1440.px)
 }
@@ -57,16 +57,34 @@ val LinkFooterStyle by ComponentStyle {
         Modifier
             .fontWeight(FontWeight.SemiBold)
             .styleModifier {
-                property("text-decoration","underline 0.15em rgba(0,123,255, 0)")
-                property("transition","text-decoration-color 300ms ease-in-out")
-                property("text-underline-offset","0.3em")
+                property("text-decoration", "underline 0.15em rgba(0,123,255, 0)")
+                property("transition", "text-decoration-color 300ms ease-in-out")
+                property("text-underline-offset", "0.3em")
             }
     }
     hover {
         Modifier
             .styleModifier {
-                property("text-decoration-color","rgba(0,123,255, 1)")
+                property("text-decoration-color", "rgba(0,123,255, 1)")
             }
+    }
+}
+
+val FadeContainerKeyFrames by Keyframes {
+    0.percent { Modifier.opacity(0) }
+    100.percent { Modifier.opacity(1) }
+}
+
+val FadeContainerStyle by ComponentStyle {
+    base {
+        Modifier
+            .animation(
+                FadeContainerKeyFrames.toAnimation(
+                    colorMode,
+                    duration = 1.s,
+                    timingFunction = AnimationTimingFunction.EaseInOut
+                    )
+            )
     }
 }
 

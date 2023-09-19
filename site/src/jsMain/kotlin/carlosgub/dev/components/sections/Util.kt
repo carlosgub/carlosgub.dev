@@ -1,17 +1,20 @@
+@file:OptIn(ExperimentalComposeWebApi::class)
+
 package carlosgub.dev.components.sections
 
 import carlosgub.dev.components.theme.WebColors
 import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.css.TextAlign
+import com.varabyte.kobweb.compose.css.TextDecorationLine
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.styleModifier
+import com.varabyte.kobweb.silk.components.animation.Keyframes
+import com.varabyte.kobweb.silk.components.animation.toAnimation
 import com.varabyte.kobweb.silk.components.style.*
 import com.varabyte.kobweb.silk.components.style.breakpoint.Breakpoint
-import org.jetbrains.compose.web.css.cssRem
-import org.jetbrains.compose.web.css.px
-import org.jetbrains.compose.web.css.vh
-import org.jetbrains.compose.web.css.vw
+import org.jetbrains.compose.web.ExperimentalComposeWebApi
+import org.jetbrains.compose.web.css.*
 
 val SectionModifier by ComponentStyle.base {
     Modifier
@@ -44,8 +47,51 @@ val LinkStyle by ComponentStyle {
     active {
         Modifier.color(WebColors.Blue)
     }
-    visited  {
+    visited {
         Modifier.color(WebColors.Blue)
+    }
+}
+
+val LinkFooterStyle by ComponentStyle {
+    base {
+        Modifier
+            .fontWeight(FontWeight.SemiBold)
+            .styleModifier {
+                property("text-decoration","underline 0.15em rgba(0,123,255, 0)")
+                property("transition","text-decoration-color 300ms ease-in-out")
+                property("text-underline-offset","0.3em")
+            }
+    }
+    hover {
+        Modifier
+            .styleModifier {
+                property("text-decoration-color","rgba(0,123,255, 1)")
+            }
+    }
+}
+
+val Shake by Keyframes {
+    0.percent { Modifier.margin(left = 0.px) }
+    50.percent { Modifier.margin(left = 20.px) }
+    100.percent { Modifier.margin(left = 0.px) }
+}
+
+val ReadMyResumeStyle by ComponentStyle {
+    base {
+        Modifier
+            .fontSize(1.25.cssRem)
+            .fontWeight(FontWeight.SemiBold)
+            .textDecorationLine(TextDecorationLine.None)
+    }
+    hover {
+        Modifier
+            .animation(
+                Shake.toAnimation(
+                    colorMode,
+                    duration = 1.s,
+                    timingFunction = AnimationTimingFunction.EaseInOut
+                )
+            )
     }
 }
 

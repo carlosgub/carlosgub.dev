@@ -85,11 +85,9 @@ fun FirstSection(modifier: Modifier = Modifier) {
                 P()
                 A(
                     href = "/resume.pdf",
-                    attrs = Modifier
+                    attrs = ReadMyResumeStyle
+                        .toModifier()
                         .color(themeColor)
-                        .fontSize(1.25.cssRem)
-                        .fontWeight(FontWeight.SemiBold)
-                        .textDecorationLine(TextDecorationLine.None)
                         .toAttrs()
 
                 ) {

@@ -6,8 +6,8 @@ import carlosgub.dev.components.sections.FirstSection
 import carlosgub.dev.components.sections.Footer
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.ui.Alignment
-import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.core.Page
+import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
 import kotlinx.browser.document
 
 
@@ -15,6 +15,7 @@ import kotlinx.browser.document
 @Composable
 fun HomePage() {
     val title = "Carlos Ugaz | Mobile Software Engineer"
+    val breakpoint = rememberBreakpoint()
     LaunchedEffect(title) {
         document.title = title
     }
@@ -24,6 +25,6 @@ fun HomePage() {
     ) {
         FirstSection()
 //        SecondSection()
-        Footer(Modifier)
+        Footer(breakpoint)
     }
 }

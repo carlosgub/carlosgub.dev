@@ -28,7 +28,7 @@ import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.dom.*
 
 @Composable
-fun FirstSection(modifier: Modifier = Modifier) {
+fun FirstSection() {
     var colorMode by ColorMode.currentState
     val breakpoint = rememberBreakpoint()
     val themeColor = if (colorMode.isDark) {
@@ -38,8 +38,7 @@ fun FirstSection(modifier: Modifier = Modifier) {
     }
     Box(
         modifier = Modifier
-            .width(100.percent)
-            .then(modifier),
+            .width(100.percent),
         contentAlignment = Alignment.TopCenter
     ) {
         Column(
@@ -49,7 +48,8 @@ fun FirstSection(modifier: Modifier = Modifier) {
                 .padding(
                     topBottom = if (breakpoint < Breakpoint.LG) 50.px else 100.px,
                     leftRight = if (breakpoint < Breakpoint.LG) 70.px else 120.px
-                ),
+                )
+                .then(FadeContainerStyle.toModifier()),
             verticalArrangement = Arrangement.SpaceAround
         ) {
             H1(

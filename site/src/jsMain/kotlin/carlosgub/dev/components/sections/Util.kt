@@ -72,8 +72,16 @@ val LinkFooterStyle by ComponentStyle {
 }
 
 val FadeContainerKeyFrames by Keyframes {
-    0.percent { Modifier.opacity(0) }
-    100.percent { Modifier.opacity(1) }
+    0.percent {
+        Modifier
+            .margin(top = 50.px)
+            .opacity(0)
+    }
+    100.percent {
+        Modifier
+            .margin(top = 0.px)
+            .opacity(1)
+    }
 }
 
 val FadeContainerStyle by ComponentStyle {

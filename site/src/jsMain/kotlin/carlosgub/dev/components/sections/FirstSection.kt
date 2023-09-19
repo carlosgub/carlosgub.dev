@@ -17,10 +17,9 @@ import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.navigation.Link
-import com.varabyte.kobweb.silk.components.style.breakpoint.Breakpoint
+import com.varabyte.kobweb.silk.components.style.toAttrs
 import com.varabyte.kobweb.silk.components.style.toModifier
 import com.varabyte.kobweb.silk.components.text.SpanText
-import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
 import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.percent
@@ -30,7 +29,6 @@ import org.jetbrains.compose.web.dom.*
 @Composable
 fun FirstSection() {
     var colorMode by ColorMode.currentState
-    val breakpoint = rememberBreakpoint()
     val themeColor = if (colorMode.isDark) {
         Colors.White
     } else {
@@ -43,18 +41,13 @@ fun FirstSection() {
         contentAlignment = Alignment.TopCenter
     ) {
         Column(
-            modifier = SectionModifier
+            modifier = FirstSectionModifier
                 .toModifier()
-                .width(100.percent)
-                .padding(
-                    topBottom = if (breakpoint < Breakpoint.LG) 50.px else 100.px,
-                    leftRight = if (breakpoint < Breakpoint.LG) 70.px else 120.px
-                )
                 .then(FadeContainerStyle.toModifier()),
             verticalArrangement = Arrangement.SpaceAround
         ) {
             H1(
-                attrs = getH1Modifier(breakpoint)
+                attrs = H1Style
                     .toAttrs()
             ) {
                 SpanText(
@@ -62,7 +55,7 @@ fun FirstSection() {
                 )
             }
             H2(
-                attrs = getH2Modifier(breakpoint)
+                attrs = H2Style
                     .toAttrs()
             ) {
                 SpanText(
@@ -77,7 +70,7 @@ fun FirstSection() {
                 )
             }
             H3(
-                attrs = getH3Modifier(breakpoint)
+                attrs = H3Style
                     .toAttrs()
             ) {
                 SpanText("Get in touch ")

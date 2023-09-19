@@ -20,7 +20,26 @@ val SectionModifier by ComponentStyle.base {
     Modifier
         .width(100.percent)
         .height(100.vh)
-        .maxWidth(1440.px)
+}
+
+val FirstSectionModifier by ComponentStyle {
+    base {
+        Modifier
+            .width(100.percent)
+            .height(100.vh)
+            .maxWidth(1440.px)
+            .padding(
+                topBottom = 50.px,
+                leftRight = 70.px
+            )
+    }
+    Breakpoint.LG {
+        Modifier
+            .padding(
+                topBottom = 100.px,
+                leftRight = 120.px
+            )
+    }
 }
 
 val FormCheckInput by ComponentStyle.base {
@@ -122,29 +141,47 @@ val ReadMyResumeStyle by ComponentStyle {
     }
 }
 
-fun getH1Modifier(breakpoint: Breakpoint): Modifier {
-    return Modifier
-        .fontWeight(FontWeight.Light)
-        .textAlign(TextAlign.Start)
-        .fontSize(
-            if (breakpoint < Breakpoint.LG) 1.75.cssRem else 2.5.cssRem
-        )
+val H1Style by ComponentStyle {
+    base {
+        Modifier
+            .fontWeight(FontWeight.Light)
+            .textAlign(TextAlign.Start)
+            .fontSize(1.75.cssRem)
+
+    }
+
+    Breakpoint.LG {
+        Modifier
+            .fontSize(2.5.cssRem)
+    }
 }
 
-fun getH2Modifier(breakpoint: Breakpoint): Modifier {
-    return Modifier
-        .fontWeight(FontWeight.Light)
-        .textAlign(TextAlign.Start)
-        .fontSize(
-            if (breakpoint < Breakpoint.LG) 1.75.cssRem else 2.5.cssRem
-        )
+val H2Style by ComponentStyle {
+    base {
+        Modifier
+            .fontWeight(FontWeight.Light)
+            .textAlign(TextAlign.Start)
+            .fontSize(1.75.cssRem)
+
+    }
+
+    Breakpoint.LG {
+        Modifier
+            .fontSize(2.5.cssRem)
+    }
 }
 
-fun getH3Modifier(breakpoint: Breakpoint): Modifier {
-    return Modifier
-        .fontWeight(FontWeight.Light)
-        .textAlign(TextAlign.Start)
-        .fontSize(
-            if (breakpoint < Breakpoint.LG) 1.cssRem else 1.25.cssRem
-        )
+val H3Style by ComponentStyle {
+    base {
+        Modifier
+            .fontWeight(FontWeight.Light)
+            .textAlign(TextAlign.Start)
+            .fontSize(1.cssRem)
+
+    }
+
+    Breakpoint.LG {
+        Modifier
+            .fontSize(1.25.cssRem)
+    }
 }

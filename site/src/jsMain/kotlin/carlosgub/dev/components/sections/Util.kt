@@ -36,10 +36,19 @@ val FormCheck by ComponentStyle.base {
 
 val LinkStyle by ComponentStyle {
     base {
-        Modifier.color(WebColors.Blue)
+        Modifier
+            .color(WebColors.Blue)
+            .styleModifier {
+                property("text-decoration", "underline 0.1em rgba(0,123,255, 0)")
+                property("transition", "text-decoration-color 300ms ease-in-out")
+                property("text-underline-offset", "0.3em")
+            }
     }
     hover {
         Modifier.color(WebColors.Blue)
+            .styleModifier {
+                property("text-decoration-color", "rgba(0,123,255, 1)")
+            }
     }
     link {
         Modifier.color(WebColors.Blue)
@@ -58,14 +67,6 @@ val LinkFooterStyle by ComponentStyle {
             .fontWeight(FontWeight.SemiBold)
             .styleModifier {
                 property("text-decoration", "underline 0.15em rgba(0,123,255, 0)")
-                property("transition", "text-decoration-color 300ms ease-in-out")
-                property("text-underline-offset", "0.3em")
-            }
-    }
-    hover {
-        Modifier
-            .styleModifier {
-                property("text-decoration-color", "rgba(0,123,255, 1)")
             }
     }
 }
@@ -83,7 +84,7 @@ val FadeContainerStyle by ComponentStyle {
                     colorMode,
                     duration = 1.s,
                     timingFunction = AnimationTimingFunction.EaseInOut
-                    )
+                )
             )
     }
 }

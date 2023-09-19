@@ -7,7 +7,6 @@ import com.stevdza.san.kotlinbs.components.BSIcon
 import com.stevdza.san.kotlinbs.forms.BSSwitch
 import com.stevdza.san.kotlinbs.icons.BSIcons
 import com.varabyte.kobweb.compose.css.FontWeight
-import com.varabyte.kobweb.compose.css.TextDecorationLine
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Column
@@ -26,7 +25,6 @@ import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
-import org.jetbrains.compose.web.css.vw
 import org.jetbrains.compose.web.dom.*
 
 @Composable
@@ -39,11 +37,15 @@ fun FirstSection(modifier: Modifier = Modifier) {
         Colors.Black
     }
     Box(
-        modifier = Modifier.width(100.percent).then(modifier),
+        modifier = Modifier
+            .width(100.percent)
+            .then(modifier),
         contentAlignment = Alignment.TopCenter
     ) {
         Column(
-            modifier = SectionModifier.toModifier()
+            modifier = SectionModifier
+                .toModifier()
+                .width(100.percent)
                 .padding(
                     topBottom = if (breakpoint < Breakpoint.LG) 50.px else 100.px,
                     leftRight = if (breakpoint < Breakpoint.LG) 70.px else 120.px

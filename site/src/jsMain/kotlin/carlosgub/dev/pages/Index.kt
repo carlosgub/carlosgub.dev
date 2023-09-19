@@ -6,9 +6,12 @@ import carlosgub.dev.components.sections.FirstSection
 import carlosgub.dev.components.sections.Footer
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.ui.Alignment
+import com.varabyte.kobweb.compose.ui.Modifier
+import com.varabyte.kobweb.compose.ui.modifiers.width
 import com.varabyte.kobweb.core.Page
 import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
 import kotlinx.browser.document
+import org.jetbrains.compose.web.css.percent
 
 
 @Page
@@ -21,7 +24,8 @@ fun HomePage() {
     }
 
     Column(
-        horizontalAlignment = Alignment.CenterHorizontally
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier.width(100.percent)
     ) {
         FirstSection()
         // SecondSection()

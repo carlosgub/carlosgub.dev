@@ -30,7 +30,6 @@ import org.jetbrains.compose.web.dom.*
 
 @Composable
 fun FirstSection() {
-    if (rememberPageContext().isExporting) return
     var colorMode by ColorMode.currentState
     val themeColor = if (colorMode.isDark) {
         Colors.White
@@ -43,65 +42,68 @@ fun FirstSection() {
             .width(100.percent),
         contentAlignment = Alignment.TopCenter
     ) {
-        Column(
-            modifier = listOf(
-                FirstSectionModifier,
-                FadeContainerStyle
-            ).toModifier(),
-            verticalArrangement = Arrangement.SpaceAround
-        ) {
-            H1(
-                attrs = H1Style
-                    .toAttrs()
-            ) {
-                SpanText(
-                    "Hey there!"
-                )
-            }
-            H2(
-                attrs = H2Style
-                    .toAttrs()
-            ) {
-                SpanText(
-                    "I'm "
-                )
-                SpanText(
-                    "Carlos Ugaz",
-                    modifier = Modifier.fontWeight(FontWeight.SemiBold)
-                )
-                SpanText(
-                    ", a mobile software engineer focused on building awesome mobile applications"
-                )
-            }
-            H3(
-                attrs = H3Style
-                    .toAttrs()
-            ) {
-                SpanText("Get in touch ")
-                Link(
-                    path = "mailto:carlosgabrielugazburga@gmail.com",
-                    text = "carlosgabrielugazburga@gmail.com",
-                    modifier = LinkStyle.toModifier()
-                )
-                P()
-                A(
-                    href = "/resume.pdf",
-                    attrs = ReadMyResumeStyle
-                        .toModifier()
-                        .color(themeColor)
-                        .toAttrs()
 
+        if (!rememberPageContext().isExporting) {
+            Column(
+                modifier = listOf(
+                    FirstSectionModifier,
+                    FadeContainerStyle
+                ).toModifier(),
+                verticalArrangement = Arrangement.SpaceAround
+            ) {
+                H1(
+                    attrs = H1Style
+                        .toAttrs()
                 ) {
-                    Text(
-                        "View My Resume"
+                    SpanText(
+                        "Hey there!"
                     )
-                    BSIcon(
-                        icon = BSIcons.ARROW_RIGHT,
-                        size = 20.px,
-                        color = themeColor,
-                        modifier = Modifier
-                            .padding(left = 16.px)
+                }
+                H2(
+                    attrs = H2Style
+                        .toAttrs()
+                ) {
+                    SpanText(
+                        "I'm "
                     )
+                    SpanText(
+                        "Carlos Ugaz",
+                        modifier = Modifier.fontWeight(FontWeight.SemiBold)
+                    )
+                    SpanText(
+                        ", a mobile software engineer focused on building awesome mobile applications"
+                    )
+                }
+                H3(
+                    attrs = H3Style
+                        .toAttrs()
+                ) {
+                    SpanText("Get in touch ")
+                    Link(
+                        path = "mailto:carlosgabrielugazburga@gmail.com",
+                        text = "carlosgabrielugazburga@gmail.com",
+                        modifier = LinkStyle.toModifier()
+                    )
+                    P()
+                    A(
+                        href = "/resume.pdf",
+                        attrs = ReadMyResumeStyle
+                            .toModifier()
+                            .color(themeColor)
+                            .toAttrs()
+
+                    ) {
+                        Text(
+                            "View My Resume"
+                        )
+                        BSIcon(
+                            icon = BSIcons.ARROW_RIGHT,
+                            size = 20.px,
+                            color = themeColor,
+                            modifier = Modifier
+                                .padding(left = 16.px)
+                        )
+                    }
                 }
             }
         }

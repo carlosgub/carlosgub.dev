@@ -16,6 +16,8 @@ import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.toAttrs
+import com.varabyte.kobweb.core.isExporting
+import com.varabyte.kobweb.core.rememberPageContext
 import com.varabyte.kobweb.silk.components.navigation.Link
 import com.varabyte.kobweb.silk.components.style.toAttrs
 import com.varabyte.kobweb.silk.components.style.toModifier
@@ -28,6 +30,7 @@ import org.jetbrains.compose.web.dom.*
 
 @Composable
 fun FirstSection() {
+    if (rememberPageContext().isExporting) return
     var colorMode by ColorMode.currentState
     val themeColor = if (colorMode.isDark) {
         Colors.White
@@ -41,9 +44,10 @@ fun FirstSection() {
         contentAlignment = Alignment.TopCenter
     ) {
         Column(
-            modifier = FirstSectionModifier
-                .toModifier()
-                .then(FadeContainerStyle.toModifier()),
+            modifier = listOf(
+                FirstSectionModifier,
+                FadeContainerStyle
+            ).toModifier(),
             verticalArrangement = Arrangement.SpaceAround
         ) {
             H1(

@@ -33,7 +33,7 @@ fun initSilk(ctx: InitSilkContext) {
 @Composable
 fun MyApp(content: @Composable () -> Unit) {
     SilkApp {
-        val colorMode = ColorMode.DARK
+        val colorMode = ColorMode.LIGHT
         LaunchedEffect(colorMode) {
             localStorage.setItem(COLOR_MODE_KEY, colorMode.name)
         }

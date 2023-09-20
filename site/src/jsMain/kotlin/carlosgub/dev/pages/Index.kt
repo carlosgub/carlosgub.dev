@@ -2,7 +2,8 @@ package carlosgub.dev.pages
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import carlosgub.dev.components.sections.FirstSection
+import carlosgub.dev.components.sections.BackgroundSection
+import carlosgub.dev.components.sections.IntroSection
 import carlosgub.dev.components.sections.Footer
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.ui.Alignment
@@ -27,8 +28,8 @@ fun HomePage() {
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier.width(100.percent)
     ) {
-        FirstSection()
-        // SecondSection()
+        IntroSection()
+        // BackgroundSection()
         Footer(breakpoint)
     }
 }

@@ -22,7 +22,7 @@ val SectionModifier by ComponentStyle.base {
         .height(100.vh)
 }
 
-val FirstSectionModifier by ComponentStyle {
+val IntroSectionModifier by ComponentStyle {
     base {
         Modifier
             .width(100.percent)
@@ -39,6 +39,29 @@ val FirstSectionModifier by ComponentStyle {
                 topBottom = 100.px,
                 leftRight = 120.px
             )
+    }
+}
+
+val BackgroundSectionModifier by ComponentStyle {
+    base {
+        Modifier
+            .width(100.percent)
+            .maxWidth(1440.px)
+            .padding(
+                topBottom = 50.px,
+                leftRight = 70.px
+            )
+    }
+    Breakpoint.XL {
+        Modifier
+            .padding(
+                topBottom = 100.px,
+                leftRight = 170.px
+            )
+    }
+    Breakpoint.LG {
+        Modifier
+            .padding(120.px)
     }
 }
 
@@ -59,8 +82,8 @@ val LinkStyle by ComponentStyle {
             .color(WebColors.Blue)
             .styleModifier {
                 property("text-decoration", "underline 0.1em rgba(0,123,255, 0)")
-                property("transition", "text-decoration-color 300ms ease-in-out")
-                property("text-underline-offset", "0.3em")
+                property("transition", "text-decoration-color .2s ease-in-out")
+                property("text-underline-offset", "0.1em")
             }
     }
     hover {
@@ -81,6 +104,14 @@ val LinkStyle by ComponentStyle {
 }
 
 val LinkFooterStyle by ComponentStyle {
+    base {
+        Modifier
+            .color(WebColors.Blue)
+            .styleModifier {
+                property("text-decoration", "underline 0.15em rgba(0,123,255, 0)")
+                property("text-underline-offset", "0.3em")
+            }
+    }
     base {
         Modifier
             .fontWeight(FontWeight.SemiBold)
@@ -172,6 +203,21 @@ val H2Style by ComponentStyle {
 }
 
 val H3Style by ComponentStyle {
+    base {
+        Modifier
+            .fontWeight(FontWeight.Light)
+            .textAlign(TextAlign.Start)
+            .fontSize(1.25.cssRem)
+
+    }
+
+    Breakpoint.LG {
+        Modifier
+            .fontSize(1.75.cssRem)
+    }
+}
+
+val H6Style by ComponentStyle {
     base {
         Modifier
             .fontWeight(FontWeight.Light)

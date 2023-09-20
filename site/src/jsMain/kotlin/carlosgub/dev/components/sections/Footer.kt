@@ -61,22 +61,34 @@ private fun FooterHorizontal(breakpoint: Breakpoint) {
                 Link(
                     path = "mailto:carlosgabrielugazburga@gmail.com",
                     text = "EMAIL",
-                    modifier = LinkStyle.toModifier().then(LinkFooterStyle.toModifier())
+                    modifier = listOf(
+                        LinkStyle,
+                        LinkFooterStyle
+                    ).toModifier()
                 )
                 Link(
                     path = "https://github.com/carlosgub",
                     text = "GITHUB",
-                    modifier = LinkStyle.toModifier().then(LinkFooterStyle.toModifier())
+                    modifier = listOf(
+                        LinkStyle,
+                        LinkFooterStyle
+                    ).toModifier()
                 )
                 Link(
                     path = "https://twitter.com/carlosgub",
                     text = "TWITTER",
-                    modifier = LinkStyle.toModifier().then(LinkFooterStyle.toModifier())
+                    modifier = listOf(
+                        LinkStyle,
+                        LinkFooterStyle
+                    ).toModifier()
                 )
                 Link(
                     path = "https://linkedin.com/in/carlosgub",
                     text = "LINKEDIN",
-                    modifier = LinkStyle.toModifier().then(LinkFooterStyle.toModifier())
+                    modifier = listOf(
+                        LinkStyle,
+                        LinkFooterStyle
+                    ).toModifier()
                 )
             } else {
                 EmailIcon()

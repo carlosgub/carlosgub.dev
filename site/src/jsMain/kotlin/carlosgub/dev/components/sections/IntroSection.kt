@@ -29,7 +29,7 @@ import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.dom.*
 
 @Composable
-fun FirstSection() {
+fun IntroSection() {
     var colorMode by ColorMode.currentState
     val themeColor = if (colorMode.isDark) {
         Colors.White
@@ -48,7 +48,7 @@ fun FirstSection() {
         if (!rememberPageContext().isExporting) {
             Column(
                 modifier = listOf(
-                    FirstSectionModifier,
+                    IntroSectionModifier,
                     FadeContainerStyle
                 ).toModifier(),
                 verticalArrangement = Arrangement.SpaceAround
@@ -77,7 +77,7 @@ fun FirstSection() {
                     )
                 }
                 H3(
-                    attrs = H3Style
+                    attrs = H6Style
                         .toAttrs()
                 ) {
                     SpanText("Get in touch ")

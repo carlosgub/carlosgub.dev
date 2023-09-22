@@ -14,6 +14,11 @@ import org.jetbrains.compose.web.css.*
 val BackToTopButtonStyle by ComponentStyle {
     base {
         Modifier
+            .size(50.px)
+            .margin(
+                right = 40.px,
+                bottom = 40.px
+            )
             .borderRadius(20.percent)
             .backgroundColor(WebColors.Blue)
             .cursor(Cursor.Pointer)
@@ -28,41 +33,6 @@ val BackToTopButtonStyle by ComponentStyle {
             )
     }
     hover {
-        Modifier.translateY(-10.px)
-    }
-    Breakpoint.SM {
-        Modifier
-            .size(40.px)
-            .margin(
-                right = 40.px,
-                bottom = 40.px
-            )
-    }
-
-    Breakpoint.MD {
-        Modifier
-            .size(40.px)
-            .margin(
-                right = 40.px,
-                bottom = 40.px
-            )
-    }
-
-    Breakpoint.LG {
-        Modifier
-            .size(50.px)
-            .margin(
-                right = 40.px,
-                bottom = 40.px
-            )
-    }
-
-    Breakpoint.XL {
-        Modifier
-            .size(50.px)
-            .margin(
-                right = 40.px,
-                bottom = 40.px
-            )
+        Modifier.translateY((-10).px)
     }
 }

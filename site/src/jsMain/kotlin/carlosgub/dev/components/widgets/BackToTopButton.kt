@@ -3,6 +3,7 @@ package carlosgub.dev.components.widgets
 import androidx.compose.runtime.*
 import carlosgub.dev.components.sections.FadeInKeyFrames
 import carlosgub.dev.components.styles.BackToTopButtonStyle
+import com.varabyte.kobweb.compose.css.PointerEvents
 import com.varabyte.kobweb.compose.css.Visibility
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Box
@@ -37,9 +38,7 @@ fun BackToTopButton() {
             .fillMaxSize()
             .position(Position.Fixed)
             .zIndex(1)
-            .styleModifier {
-                property("pointer-events", "none")
-            },
+            .pointerEvents(PointerEvents.None),
         verticalArrangement = Arrangement.Bottom,
         horizontalAlignment = Alignment.End
     ) {
@@ -47,13 +46,7 @@ fun BackToTopButton() {
         Box(
             modifier = BackToTopButtonStyle
                 .toModifier()
-                .visibility(
-                    if (show) {
-                        Visibility.Visible
-                    } else {
-                        Visibility.Hidden
-                    }
-                )
+                .visibility(if (show) Visibility.Visible else Visibility.Hidden)
                 .onClick {
                     document.documentElement?.scroll(x = 0.0, y = 0.0)
                 }

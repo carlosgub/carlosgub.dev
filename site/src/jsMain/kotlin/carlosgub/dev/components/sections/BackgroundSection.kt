@@ -2,6 +2,7 @@ package carlosgub.dev.components.sections
 
 import androidx.compose.runtime.*
 import carlosgub.dev.components.models.Section
+import carlosgub.dev.components.theme.WebColors
 import carlosgub.dev.util.ObserveViewportEntered
 import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.css.TextAlign
@@ -37,13 +38,17 @@ fun BackgroundSection() {
             .id(Section.Experience.id)
             .visibility(if (visible) Visibility.Visible else Visibility.Hidden)
             .then(
-                if (visible) Modifier.animation(
-                    FadeInKeyFrames.toAnimation(
-                        null,
-                        duration = 1.8.s,
-                        timingFunction = AnimationTimingFunction.EaseInOut
+                if (visible) {
+                    Modifier.animation(
+                        FadeInKeyFrames.toAnimation(
+                            null,
+                            duration = 1.8.s,
+                            timingFunction = AnimationTimingFunction.EaseInOut
+                        )
                     )
-                ) else Modifier
+                } else {
+                    Modifier
+                }
             )
     ) {
         Column(
@@ -66,6 +71,7 @@ fun BackgroundContent() {
             .fillMaxWidth()
             .textAlign(TextAlign.Center)
             .fontWeight(FontWeight.SemiBold)
+            .color(WebColors.Blue)
             .toAttrs()
     ) {
         SpanText(

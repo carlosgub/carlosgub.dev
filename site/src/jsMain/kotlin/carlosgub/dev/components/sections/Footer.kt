@@ -90,11 +90,20 @@ private fun FooterHorizontal(breakpoint: Breakpoint) {
                         LinkFooterStyle
                     ).toModifier()
                 )
+                Link(
+                    path = "https://medium.com/@carlosgub",
+                    text = "MEDIUM",
+                    modifier = listOf(
+                        LinkStyle,
+                        LinkFooterStyle
+                    ).toModifier()
+                )
             } else {
                 EmailIcon()
                 GithubIcon()
                 TwitterIcon()
                 LinkedinIcon()
+                MediumIcon()
             }
         }
     }
@@ -124,6 +133,7 @@ private fun FooterVertical() {
             GithubIcon()
             TwitterIcon()
             LinkedinIcon()
+            MediumIcon()
         }
     }
 }
@@ -213,6 +223,19 @@ private fun LinkedinIcon() {
     ) {
         BSIcon(
             icon = BSIcons.LINKEDIN,
+            size = 20.px,
+            color = WebColors.Blue
+        )
+    }
+}
+
+@Composable
+private fun MediumIcon() {
+    A(
+        href = "https://medium.com/@carlosgub"
+    ) {
+        BSIcon(
+            icon = BSIcons.MEDIUM,
             size = 20.px,
             color = WebColors.Blue
         )

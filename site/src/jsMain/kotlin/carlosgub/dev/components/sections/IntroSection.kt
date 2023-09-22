@@ -48,8 +48,7 @@ fun IntroSection() {
         if (!rememberPageContext().isExporting) {
             Column(
                 modifier = listOf(
-                    IntroSectionModifier,
-                    FadeContainerStyle
+                    IntroSectionModifier
                 ).toModifier(),
                 verticalArrangement = Arrangement.SpaceAround
             ) {
@@ -82,8 +81,8 @@ fun IntroSection() {
                 ) {
                     SpanText("Get in touch ")
                     Link(
-                        path = "mailto:carlosgabrielugazburga@gmail.com",
-                        text = "carlosgabrielugazburga@gmail.com",
+                        path = "mailto:carlosgub.dev@gmail.com",
+                        text = "carlosgub.dev@gmail.com",
                         modifier = LinkStyle.toModifier()
                     )
                     P()

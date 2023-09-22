@@ -59,7 +59,7 @@ private fun FooterHorizontal(breakpoint: Breakpoint) {
         ) {
             if (breakpoint >= Breakpoint.LG) {
                 Link(
-                    path = "mailto:carlosgabrielugazburga@gmail.com",
+                    path = "mailto:carlosgub.dev@gmail.com",
                     text = "EMAIL",
                     modifier = listOf(
                         LinkStyle,
@@ -170,7 +170,7 @@ private fun DevelopedByFooter() {
 @Composable
 private fun EmailIcon() {
     A(
-        href = "mailto:carlosgabrielugazburga@gmail.com"
+        href = "mailto:carlosgub.dev@gmail.com"
     ) {
         BSIcon(
             icon = BSIcons.ENVELOPE,

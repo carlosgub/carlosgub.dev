@@ -29,7 +29,7 @@ fun HomePage() {
         modifier = Modifier.width(100.percent)
     ) {
         IntroSection()
-        // BackgroundSection()
+        BackgroundSection()
         Footer(breakpoint)
     }
 }

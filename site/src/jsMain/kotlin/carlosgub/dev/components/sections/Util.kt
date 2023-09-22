@@ -32,6 +32,13 @@ val IntroSectionModifier by ComponentStyle {
                 topBottom = 50.px,
                 leftRight = 70.px
             )
+            .animation(
+                IntroContainerKeyFrames.toAnimation(
+                    colorMode,
+                    duration = 1.s,
+                    timingFunction = AnimationTimingFunction.EaseInOut
+                )
+            )
     }
     Breakpoint.LG {
         Modifier
@@ -46,22 +53,25 @@ val BackgroundSectionModifier by ComponentStyle {
     base {
         Modifier
             .width(100.percent)
-            .maxWidth(1440.px)
+            .maxWidth(1000.px)
             .padding(
-                topBottom = 50.px,
+                topBottom = 30.px,
                 leftRight = 70.px
+            )
+    }
+    Breakpoint.LG {
+        Modifier
+            .padding(
+                topBottom = 70.px,
+                leftRight = 120.px
             )
     }
     Breakpoint.XL {
         Modifier
             .padding(
                 topBottom = 100.px,
-                leftRight = 170.px
+                leftRight = 150.px
             )
-    }
-    Breakpoint.LG {
-        Modifier
-            .padding(120.px)
     }
 }
 
@@ -121,7 +131,7 @@ val LinkFooterStyle by ComponentStyle {
     }
 }
 
-val FadeContainerKeyFrames by Keyframes {
+val IntroContainerKeyFrames by Keyframes {
     0.percent {
         Modifier
             .margin(top = 50.px)
@@ -134,16 +144,15 @@ val FadeContainerKeyFrames by Keyframes {
     }
 }
 
-val FadeContainerStyle by ComponentStyle {
-    base {
+val FadeContainerKeyFrames by Keyframes {
+    0.percent {
         Modifier
-            .animation(
-                FadeContainerKeyFrames.toAnimation(
-                    colorMode,
-                    duration = 1.s,
-                    timingFunction = AnimationTimingFunction.EaseInOut
-                )
-            )
+            .opacity(0)
+    }
+    100.percent {
+        Modifier
+            .margin(top = 0.px)
+            .opacity(1)
     }
 }
 
@@ -229,5 +238,45 @@ val H6Style by ComponentStyle {
     Breakpoint.LG {
         Modifier
             .fontSize(1.25.cssRem)
+    }
+}
+
+val PStyle by ComponentStyle {
+    base {
+        Modifier
+            .fontWeight(FontWeight.Normal)
+            .fontSize(0.8.cssRem)
+    }
+    Breakpoint.MD {
+        Modifier
+            .fontSize(0.85.cssRem)
+    }
+    Breakpoint.LG {
+        Modifier
+            .fontSize(0.9.cssRem)
+    }
+    Breakpoint.XL {
+        Modifier
+            .fontSize(1.cssRem)
+    }
+}
+
+val UlStyle by ComponentStyle {
+    base {
+        Modifier
+            .fontWeight(FontWeight.Normal)
+            .fontSize(0.7.cssRem)
+    }
+    Breakpoint.MD {
+        Modifier
+            .fontSize(0.75.cssRem)
+    }
+    Breakpoint.LG {
+        Modifier
+            .fontSize(0.8.cssRem)
+    }
+    Breakpoint.XL {
+        Modifier
+            .fontSize(0.85.cssRem)
     }
 }

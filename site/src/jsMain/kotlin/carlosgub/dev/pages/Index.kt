@@ -3,11 +3,15 @@ package carlosgub.dev.pages
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import carlosgub.dev.components.sections.BackgroundSection
+import carlosgub.dev.components.sections.ExperienceSection
 import carlosgub.dev.components.sections.IntroSection
 import carlosgub.dev.components.sections.Footer
+import carlosgub.dev.components.widgets.BackToTopButton
+import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
+import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
 import com.varabyte.kobweb.compose.ui.modifiers.width
 import com.varabyte.kobweb.core.Page
 import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
@@ -24,12 +28,17 @@ fun HomePage() {
         document.title = title
     }
 
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier.width(100.percent)
-    ) {
-        IntroSection()
-        BackgroundSection()
-        Footer(breakpoint)
+    Box(modifier = Modifier.fillMaxSize()) {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier.width(100.percent)
+        ) {
+            IntroSection()
+            BackgroundSection()
+            // ExperienceSection()
+            Footer(breakpoint)
+        }
+        BackToTopButton()
     }
+
 }

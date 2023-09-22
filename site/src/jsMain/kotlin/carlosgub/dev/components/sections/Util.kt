@@ -1,5 +1,3 @@
-@file:OptIn(ExperimentalComposeWebApi::class)
-
 package carlosgub.dev.components.sections
 
 import carlosgub.dev.components.theme.WebColors
@@ -13,7 +11,6 @@ import com.varabyte.kobweb.silk.components.animation.Keyframes
 import com.varabyte.kobweb.silk.components.animation.toAnimation
 import com.varabyte.kobweb.silk.components.style.*
 import com.varabyte.kobweb.silk.components.style.breakpoint.Breakpoint
-import org.jetbrains.compose.web.ExperimentalComposeWebApi
 import org.jetbrains.compose.web.css.*
 
 val SectionModifier by ComponentStyle.base {
@@ -53,7 +50,33 @@ val BackgroundSectionModifier by ComponentStyle {
     base {
         Modifier
             .width(100.percent)
-            .maxWidth(1000.px)
+            .maxWidth(1280.px)
+            .padding(
+                topBottom = 30.px,
+                leftRight = 70.px
+            )
+    }
+    Breakpoint.LG {
+        Modifier
+            .padding(
+                topBottom = 70.px,
+                leftRight = 120.px
+            )
+    }
+    Breakpoint.XL {
+        Modifier
+            .padding(
+                topBottom = 100.px,
+                leftRight = 150.px
+            )
+    }
+}
+
+val ExperienceSectionModifier by ComponentStyle {
+    base {
+        Modifier
+            .width(100.percent)
+            .maxWidth(1280.px)
             .padding(
                 topBottom = 30.px,
                 leftRight = 70.px
@@ -144,14 +167,13 @@ val IntroContainerKeyFrames by Keyframes {
     }
 }
 
-val FadeContainerKeyFrames by Keyframes {
+val FadeInKeyFrames by Keyframes {
     0.percent {
         Modifier
             .opacity(0)
     }
     100.percent {
         Modifier
-            .margin(top = 0.px)
             .opacity(1)
     }
 }
@@ -245,15 +267,15 @@ val PStyle by ComponentStyle {
     base {
         Modifier
             .fontWeight(FontWeight.Normal)
-            .fontSize(0.8.cssRem)
+            .fontSize(0.9.cssRem)
     }
     Breakpoint.MD {
         Modifier
-            .fontSize(0.85.cssRem)
+            .fontSize(0.95.cssRem)
     }
     Breakpoint.LG {
         Modifier
-            .fontSize(0.9.cssRem)
+            .fontSize(1.cssRem)
     }
     Breakpoint.XL {
         Modifier
@@ -265,18 +287,18 @@ val UlStyle by ComponentStyle {
     base {
         Modifier
             .fontWeight(FontWeight.Normal)
-            .fontSize(0.7.cssRem)
+            .fontSize(0.85.cssRem)
     }
     Breakpoint.MD {
         Modifier
-            .fontSize(0.75.cssRem)
+            .fontSize(0.85.cssRem)
     }
     Breakpoint.LG {
         Modifier
-            .fontSize(0.8.cssRem)
+            .fontSize(0.95.cssRem)
     }
     Breakpoint.XL {
         Modifier
-            .fontSize(0.85.cssRem)
+            .fontSize(1.cssRem)
     }
 }

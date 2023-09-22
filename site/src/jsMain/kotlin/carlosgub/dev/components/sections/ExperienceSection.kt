@@ -6,7 +6,6 @@ import carlosgub.dev.util.ObserveViewportEntered
 import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.css.TextAlign
 import com.varabyte.kobweb.compose.css.Visibility
-import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Modifier
@@ -22,19 +21,21 @@ import org.jetbrains.compose.web.css.s
 import org.jetbrains.compose.web.dom.*
 
 @Composable
-fun BackgroundSection() {
+fun ExperienceSection() {
     var visible by remember { mutableStateOf(false) }
     ObserveViewportEntered(
-        sectionId = Section.Experience.id,
+        sectionId = Section.About.id,
         distanceFromTop = 800.0,
         onViewportEntered = {
             visible = true
         }
     )
 
-    Box(
-        modifier = Modifier
-            .id(Section.Experience.id)
+    Column(
+        modifier = listOf(
+            ExperienceSectionModifier
+        ).toModifier()
+            .id(Section.About.id)
             .visibility(if (visible) Visibility.Visible else Visibility.Hidden)
             .then(
                 if (visible) Modifier.animation(
@@ -46,20 +47,12 @@ fun BackgroundSection() {
                 ) else Modifier
             )
     ) {
-        Column(
-            modifier = listOf(
-                BackgroundSectionModifier
-            ).toModifier()
-        ) {
-            BackgroundContent()
-        }
+        ExperienceContent()
     }
-
-
 }
 
 @Composable
-fun BackgroundContent() {
+fun ExperienceContent() {
     H3(
         attrs = H3Style
             .toModifier()
@@ -69,7 +62,7 @@ fun BackgroundContent() {
             .toAttrs()
     ) {
         SpanText(
-            "About Me"
+            "My Experience"
         )
     }
     P(
@@ -143,5 +136,9 @@ fun BackgroundContent() {
                 }
             }
         }
+        /*System Engineering from the Universidad de Lima, with six years of experience in\n" +
+               "Android application development using Kotlin and Java programming languages. He is an Android Leader\n" +
+               "in his current workplace who has led up to three developers and is interested in researching emerging\n" +
+               "technologies. He has experience in banking, education, e-commerce, and media industries.")*/
     }
 }

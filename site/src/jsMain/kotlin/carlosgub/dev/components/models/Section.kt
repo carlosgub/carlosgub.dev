@@ -1,57 +1,30 @@
 package carlosgub.dev.components.models
 
 enum class Section(
-    val id: String,
-    val title: String,
-    val subtitle: String,
-    val path: String
+    val id: String
 ) {
     Home(
         id = "home",
-        title = "Home",
-        subtitle = "",
-        path = "#home"
     ),
     About(
-        id = "about",
-        title = "About me",
-        subtitle = "Why Hire Me?",
-        path = "#about"
+        id = "about"
     ),
     Service(
-        id = "service",
-        title = "Service",
-        subtitle = "I'm Good at",
-        path = "#service"
+        id = "service"
     ),
     Portfolio(
-        id = "portfolio",
-        title = "Portfolio",
-        subtitle = "My Work",
-        path = "#portfolio"
+        id = "portfolio"
     ),
     Experience(
-        id = "experience",
-        title = "Experience",
-        subtitle = "Work Experience",
-        path = "#experience"
+        id = "experience"
     ),
     Contact(
-        id = "contact",
-        title = "Contact me",
-        subtitle = "Get in Touch",
-        path = "#contact"
+        id = "contact"
     ),
     Testimonial(
-        id = "testimonial",
-        title = "Testimonial",
-        subtitle = "Happy Customers",
-        path = "#testimonial"
+        id = "testimonial"
     ),
     Achievements(
-        id = "achievements",
-        title = "Achievements",
-        subtitle = "Personal Achievements",
-        path = "#achievements"
+        id = "achievements"
     )
 }

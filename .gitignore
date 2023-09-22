@@ -8,6 +8,8 @@ kotlin-js-store
 *.iml
 /*.ipr
 
+.idea/*
+/.idea/*
 /.idea/caches
 /.idea/libraries
 /.idea/modules.xml

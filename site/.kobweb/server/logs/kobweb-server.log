@@ -1,0 +1,7 @@
+2023-09-22 10:19:13.524 [main] INFO  ktor.application - Autoreload is disabled because the development mode is off.
+2023-09-22 10:19:13.533 [main] INFO  ktor.application - API jar found and will be loaded: "build/libs/dev.jar"
+2023-09-22 10:19:13.547 [main] INFO  ktor.application - Initializing Kobweb streams.
+2023-09-22 10:19:13.574 [main] INFO  ktor.application - Application started in 0.069 seconds.
+2023-09-22 10:19:13.656 [DefaultDispatcher-worker-1] INFO  ktor.application - Responding at http://0.0.0.0:8081
+2023-09-22 10:19:46.424 [relocated/kotlinx.coroutines.DefaultExecutor] INFO  ktor.application - Kobweb server shutting down...
+2023-09-22 10:19:48.501 [relocated/kotlinx.coroutines.DefaultExecutor] INFO  ktor.application - Server finished shutting down.

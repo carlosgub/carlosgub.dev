@@ -75,7 +75,7 @@ fun BackgroundContent() {
         attrs = H3Style
             .toModifier()
             .fillMaxWidth()
-            .textAlign(TextAlign.Center)
+            .textAlign(TextAlign.Start)
             .bold()
             .color(WebColors.Blue)
             .toAttrs()

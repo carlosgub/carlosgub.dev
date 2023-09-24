@@ -1,10 +1,16 @@
 package carlosgub.dev.components.sections
 
 import androidx.compose.runtime.*
+import carlosgub.dev.components.keyframe.FadeInKeyFrames
 import carlosgub.dev.components.models.Section
+import carlosgub.dev.components.styles.BackgroundSectionStyle
+import carlosgub.dev.components.styles.components.H3Style
+import carlosgub.dev.components.styles.components.LinkStyle
+import carlosgub.dev.components.styles.components.PStyle
+import carlosgub.dev.components.styles.components.UlStyle
+import carlosgub.dev.components.styles.font.bold
 import carlosgub.dev.components.theme.WebColors
 import carlosgub.dev.util.ObserveViewportEntered
-import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.css.TextAlign
 import com.varabyte.kobweb.compose.css.Visibility
 import com.varabyte.kobweb.compose.foundation.layout.Box
@@ -53,7 +59,7 @@ fun BackgroundSection() {
     ) {
         Column(
             modifier = listOf(
-                BackgroundSectionModifier
+                BackgroundSectionStyle
             ).toModifier()
         ) {
             BackgroundContent()
@@ -70,7 +76,7 @@ fun BackgroundContent() {
             .toModifier()
             .fillMaxWidth()
             .textAlign(TextAlign.Center)
-            .fontWeight(FontWeight.SemiBold)
+            .bold()
             .color(WebColors.Blue)
             .toAttrs()
     ) {

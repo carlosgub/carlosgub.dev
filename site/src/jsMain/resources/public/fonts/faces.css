@@ -1,0 +1,14 @@
+@font-face {
+  font-family: 'PPMoriRegular';
+  src: url('/fonts/ppmori/PPMori-Regular.otf') format("opentype");
+}
+
+@font-face {
+  font-family: 'PPMoriLight';
+  src: url('/fonts/ppmori/PPMori-Extralight.otf') format("opentype");
+}
+
+@font-face {
+  font-family: 'PPMoriSemiBold';
+  src: url('/fonts/ppmori/PPMori-SemiBold.otf') format("opentype");
+}

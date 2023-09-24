@@ -17,6 +17,7 @@ kobweb {
         index {
             description.set("Powered by Kobweb")
             head.add {
+                link(rel = "stylesheet", href = "/fonts/faces.css")
                 script {
                     src = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
                 }

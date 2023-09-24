@@ -1,33 +1,28 @@
 package carlosgub.dev.components.sections
 
 import androidx.compose.runtime.Composable
+import carlosgub.dev.components.styles.FooterStyle
+import carlosgub.dev.components.styles.LinkFooterStyle
+import carlosgub.dev.components.styles.components.LinkStyle
+import carlosgub.dev.components.styles.font.bold
+import carlosgub.dev.components.styles.font.regular
 import carlosgub.dev.components.theme.WebColors
 import com.stevdza.san.kotlinbs.components.BSIcon
 import com.stevdza.san.kotlinbs.icons.BSIcons
-import com.varabyte.kobweb.compose.css.AlignSelf
-import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.modifiers.*
+import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
+import com.varabyte.kobweb.compose.ui.modifiers.margin
+import com.varabyte.kobweb.compose.ui.modifiers.padding
 import com.varabyte.kobweb.silk.components.navigation.Link
-import com.varabyte.kobweb.silk.components.style.ComponentStyle
-import com.varabyte.kobweb.silk.components.style.base
 import com.varabyte.kobweb.silk.components.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.components.style.toModifier
 import com.varabyte.kobweb.silk.components.text.SpanText
-import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.dom.A
-
-val FooterStyle by ComponentStyle.base {
-    Modifier
-        .margin(top = 2.cssRem)
-        .alignSelf(AlignSelf.Center)
-        .fillMaxWidth()
-}
 
 @Composable
 fun Footer(breakpoint: Breakpoint) {
@@ -140,7 +135,9 @@ private fun FooterVertical() {
 
 @Composable
 private fun MadeWithKobwebFooter() {
-    Row {
+    Row(
+        Modifier.regular()
+    ) {
         SpanText(
             text = "Made with "
         )
@@ -154,7 +151,9 @@ private fun MadeWithKobwebFooter() {
 
 @Composable
 private fun InspiredByFooter() {
-    Row {
+    Row(
+        Modifier.regular()
+    ) {
         SpanText(
             text = "Inspired by "
         )
@@ -172,7 +171,7 @@ private fun DevelopedByFooter() {
         SpanText(
             text = "Developed by Carlos Ugaz 2023",
             modifier = Modifier
-                .fontWeight(FontWeight.SemiBold)
+                .bold()
         )
     }
 }

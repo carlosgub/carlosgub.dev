@@ -1,7 +1,8 @@
 package carlosgub.dev.components.widgets
 
 import androidx.compose.runtime.*
-import carlosgub.dev.components.sections.FadeInKeyFrames
+import carlosgub.dev.components.keyframe.FadeInKeyFrames
+import carlosgub.dev.components.styles.ArrowUpStyle
 import carlosgub.dev.components.styles.BackToTopButtonStyle
 import com.varabyte.kobweb.compose.css.PointerEvents
 import com.varabyte.kobweb.compose.css.Visibility
@@ -10,13 +11,10 @@ import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.compose.ui.modifiers.*
-import com.varabyte.kobweb.compose.ui.styleModifier
 import com.varabyte.kobweb.silk.components.animation.toAnimation
-import com.varabyte.kobweb.silk.components.icons.fa.FaArrowUp
-import com.varabyte.kobweb.silk.components.icons.fa.IconSize
 import com.varabyte.kobweb.silk.components.style.toModifier
+import com.varabyte.kobweb.silk.components.text.SpanText
 import kotlinx.browser.document
 import kotlinx.browser.window
 import org.jetbrains.compose.web.css.AnimationTimingFunction
@@ -65,10 +63,9 @@ fun BackToTopButton() {
                 ),
             contentAlignment = Alignment.Center
         ) {
-            FaArrowUp(
-                modifier = Modifier
-                    .color(Colors.White),
-                size = IconSize.LG
+            SpanText(
+                text = "↑",
+                modifier = ArrowUpStyle.toModifier()
             )
         }
     }

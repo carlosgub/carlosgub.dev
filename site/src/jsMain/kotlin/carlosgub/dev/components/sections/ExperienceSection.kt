@@ -1,9 +1,15 @@
 package carlosgub.dev.components.sections
 
 import androidx.compose.runtime.*
+import carlosgub.dev.components.keyframe.FadeInKeyFrames
 import carlosgub.dev.components.models.Section
+import carlosgub.dev.components.styles.ExperienceSectionStyle
+import carlosgub.dev.components.styles.components.H3Style
+import carlosgub.dev.components.styles.components.LinkStyle
+import carlosgub.dev.components.styles.components.PStyle
+import carlosgub.dev.components.styles.components.UlStyle
+import carlosgub.dev.components.styles.font.bold
 import carlosgub.dev.util.ObserveViewportEntered
-import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.css.TextAlign
 import com.varabyte.kobweb.compose.css.Visibility
 import com.varabyte.kobweb.compose.foundation.layout.Column
@@ -33,7 +39,7 @@ fun ExperienceSection() {
 
     Column(
         modifier = listOf(
-            ExperienceSectionModifier
+            ExperienceSectionStyle
         ).toModifier()
             .id(Section.About.id)
             .visibility(if (visible) Visibility.Visible else Visibility.Hidden)
@@ -58,7 +64,7 @@ fun ExperienceContent() {
             .toModifier()
             .fillMaxWidth()
             .textAlign(TextAlign.Center)
-            .fontWeight(FontWeight.SemiBold)
+            .bold()
             .toAttrs()
     ) {
         SpanText(

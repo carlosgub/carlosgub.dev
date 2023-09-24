@@ -3,10 +3,17 @@ package carlosgub.dev.components.sections
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
+import carlosgub.dev.components.styles.IntroSectionStyle
+import carlosgub.dev.components.styles.ReadMyResumeStyle
+import carlosgub.dev.components.styles.SectionModifier
+import carlosgub.dev.components.styles.components.H1Style
+import carlosgub.dev.components.styles.components.H2Style
+import carlosgub.dev.components.styles.components.H6Style
+import carlosgub.dev.components.styles.components.LinkStyle
+import carlosgub.dev.components.styles.font.bold
 import com.stevdza.san.kotlinbs.components.BSIcon
 import com.stevdza.san.kotlinbs.forms.BSSwitch
 import com.stevdza.san.kotlinbs.icons.BSIcons
-import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Column
@@ -48,7 +55,7 @@ fun IntroSection() {
         if (!rememberPageContext().isExporting) {
             Column(
                 modifier = listOf(
-                    IntroSectionModifier
+                    IntroSectionStyle
                 ).toModifier(),
                 verticalArrangement = Arrangement.SpaceAround
             ) {
@@ -69,7 +76,7 @@ fun IntroSection() {
                     )
                     SpanText(
                         "Carlos Ugaz",
-                        modifier = Modifier.fontWeight(FontWeight.SemiBold)
+                        modifier = Modifier.bold()
                     )
                     SpanText(
                         ", a mobile software engineer focused on building awesome mobile applications"
@@ -94,15 +101,8 @@ fun IntroSection() {
                             .toAttrs()
 
                     ) {
-                        Text(
-                            "View My Resume"
-                        )
-                        BSIcon(
-                            icon = BSIcons.ARROW_RIGHT,
-                            size = 20.px,
-                            color = themeColor,
-                            modifier = Modifier
-                                .padding(left = 16.px)
+                        SpanText(
+                            "View My Resume →"
                         )
                     }
                 }

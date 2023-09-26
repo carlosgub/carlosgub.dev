@@ -20,5 +20,6 @@ using the [Toolbox App](https://www.jetbrains.com/toolbox-app/).
 
 Press `Q` in the terminal to gracefully stop the server.
 
-# Thanks
+# Credits
 * This project use [Kobweb](https://github.com/varabyte/kobweb) 
+* Inspired by  [Brittany Chiang](https://v3.brittanychiang.com) 

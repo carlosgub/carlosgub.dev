@@ -87,7 +87,7 @@ fun SlidingContainers(visible: MutableState<Boolean>) {
                         Modifier.animation(
                             WidthKeyFrames.toAnimation(
                                 null,
-                                duration = 800.ms,
+                                duration = 600.ms,
                                 timingFunction = AnimationTimingFunction.Linear
                             )
                         )
@@ -106,7 +106,7 @@ fun SlidingContainers(visible: MutableState<Boolean>) {
                         Modifier.animation(
                             WidthKeyFrames.toAnimation(
                                 null,
-                                duration = 800.ms,
+                                duration = 600.ms,
                                 timingFunction = AnimationTimingFunction.Linear,
                                 delay = 100.ms
                             )
@@ -126,9 +126,49 @@ fun SlidingContainers(visible: MutableState<Boolean>) {
                         Modifier.animation(
                             WidthKeyFrames.toAnimation(
                                 null,
-                                duration = 800.ms,
+                                duration = 600.ms,
                                 timingFunction = AnimationTimingFunction.Linear,
                                 delay = 200.ms
+                            )
+                        )
+                    } else {
+                        Modifier
+                    }
+                )
+        )
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .setVariable(colorOpposite, WebColors.colorOppositeValue)
+                .weight(1f)
+                .then(
+                    if (visible.value) {
+                        Modifier.animation(
+                            WidthKeyFrames.toAnimation(
+                                null,
+                                duration = 600.ms,
+                                timingFunction = AnimationTimingFunction.Linear,
+                                delay = 300.ms
+                            )
+                        )
+                    } else {
+                        Modifier
+                    }
+                )
+        )
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .setVariable(colorOpposite, WebColors.colorOppositeValue)
+                .weight(1f)
+                .then(
+                    if (visible.value) {
+                        Modifier.animation(
+                            WidthKeyFrames.toAnimation(
+                                null,
+                                duration = 600.ms,
+                                timingFunction = AnimationTimingFunction.Linear,
+                                delay = 400.ms
                             )
                         ).onAnimationEnd {
                             containerVisibility.value = DisplayStyle.None

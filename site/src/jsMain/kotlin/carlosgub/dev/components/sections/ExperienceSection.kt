@@ -9,6 +9,7 @@ import carlosgub.dev.components.models.Section
 import carlosgub.dev.components.models.Stack
 import carlosgub.dev.components.styles.CompanyLink
 import carlosgub.dev.components.styles.ExperienceSectionStyle
+import carlosgub.dev.components.styles.PExperienceStyle
 import carlosgub.dev.components.styles.ReadMyResumeStyle
 import carlosgub.dev.components.styles.components.H3Style
 import carlosgub.dev.components.styles.components.H6Style
@@ -215,14 +216,16 @@ private fun WorkContainer(
         P(
             attrs = PStyle
                 .toModifier()
+                .margin(bottom = 6.px)
                 .light()
                 .toAttrs()
         ) {
             Text(time)
         }
         P(
-            attrs = PStyle
+            attrs = PExperienceStyle
                 .toModifier()
+                .margin(bottom = 8.px)
                 .fillMaxWidth()
                 .textAlign(TextAlign.Justify)
                 .toAttrs()
@@ -243,8 +246,9 @@ private fun WorkContainer(
                             bottom = 6.px,
                             right = 12.px
                         ),
-                    text = stack.name,
-                    variant = BadgeVariant.Rounded
+                    text = stack.id,
+                    variant = BadgeVariant.Rounded,
+                    fontFamily = "PPMoriLight"
                 )
             }
         }

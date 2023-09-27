@@ -134,10 +134,10 @@ fun BackgroundContent() {
                     Text("Kotlin")
                 }
                 Li {
-                    Text("Jetpack compose")
+                    Text("Jetpack Compose")
                 }
                 Li {
-                    Text("Compose multiplatform")
+                    Text("Compose Multiplatform")
                 }
             }
             Ul(

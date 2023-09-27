@@ -2,6 +2,8 @@ package carlosgub.dev.components.styles
 
 import carlosgub.dev.components.keyframe.Shake
 import carlosgub.dev.components.styles.font.bold
+import carlosgub.dev.components.styles.font.light
+import carlosgub.dev.components.styles.font.regular
 import carlosgub.dev.components.theme.WebColors
 import com.varabyte.kobweb.compose.css.TextDecorationLine
 import com.varabyte.kobweb.compose.ui.Modifier
@@ -86,5 +88,25 @@ val CompanyLink by ComponentStyle {
         Modifier
             .color(WebColors.Blue)
             .textDecorationLine(TextDecorationLine.None)
+    }
+}
+
+val PExperienceStyle by ComponentStyle {
+    base {
+        Modifier
+            .light()
+            .fontSize(0.9.cssRem)
+    }
+    Breakpoint.MD {
+        Modifier
+            .fontSize(0.9.cssRem)
+    }
+    Breakpoint.LG {
+        Modifier
+            .fontSize(0.95.cssRem)
+    }
+    Breakpoint.XL {
+        Modifier
+            .fontSize(0.95.cssRem)
     }
 }

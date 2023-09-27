@@ -4,13 +4,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import carlosgub.dev.components.styles.IntroSectionStyle
-import carlosgub.dev.components.styles.ReadMyResumeStyle
 import carlosgub.dev.components.styles.SectionModifier
 import carlosgub.dev.components.styles.components.H1Style
 import carlosgub.dev.components.styles.components.H2Style
 import carlosgub.dev.components.styles.components.H6Style
 import carlosgub.dev.components.styles.components.LinkStyle
 import carlosgub.dev.components.styles.font.bold
+import carlosgub.dev.components.theme.WebColors.colorOppositeValue
 import com.stevdza.san.kotlinbs.components.BSIcon
 import com.stevdza.san.kotlinbs.forms.BSSwitch
 import com.stevdza.san.kotlinbs.icons.BSIcons
@@ -21,8 +21,10 @@ import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.graphics.Colors
-import com.varabyte.kobweb.compose.ui.modifiers.*
-import com.varabyte.kobweb.compose.ui.toAttrs
+import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
+import com.varabyte.kobweb.compose.ui.modifiers.padding
+import com.varabyte.kobweb.compose.ui.modifiers.size
+import com.varabyte.kobweb.compose.ui.modifiers.width
 import com.varabyte.kobweb.core.isExporting
 import com.varabyte.kobweb.core.rememberPageContext
 import com.varabyte.kobweb.silk.components.navigation.Link
@@ -33,16 +35,13 @@ import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
-import org.jetbrains.compose.web.dom.*
+import org.jetbrains.compose.web.dom.H1
+import org.jetbrains.compose.web.dom.H2
+import org.jetbrains.compose.web.dom.H6
 
 @Composable
 fun IntroSection() {
     var colorMode by ColorMode.currentState
-    val themeColor = if (colorMode.isDark) {
-        Colors.White
-    } else {
-        Colors.Black
-    }
     Box(
         modifier = SectionModifier
             .toModifier()
@@ -82,7 +81,7 @@ fun IntroSection() {
                         ", a mobile software engineer focused on building awesome mobile applications"
                     )
                 }
-                H3(
+                H6(
                     attrs = H6Style
                         .toAttrs()
                 ) {
@@ -92,19 +91,6 @@ fun IntroSection() {
                         text = "carlosgub.dev@gmail.com",
                         modifier = LinkStyle.toModifier()
                     )
-                    P()
-                    A(
-                        href = "/resume.pdf",
-                        attrs = ReadMyResumeStyle
-                            .toModifier()
-                            .color(themeColor)
-                            .toAttrs()
-
-                    ) {
-                        SpanText(
-                            "View My Resume →"
-                        )
-                    }
                 }
             }
         }
@@ -120,21 +106,26 @@ fun IntroSection() {
             BSIcon(
                 icon = BSIcons.SUN,
                 size = 1.cssRem,
-                color = themeColor,
+                color = colorOppositeValue,
                 modifier = Modifier
                     .size(17.px)
             )
             BSSwitch(
                 label = "",
                 defaultChecked = colorMode.isDark,
-                onClick = {
+                onClick = { isDark ->
                     colorMode = colorMode.opposite
+                    colorOppositeValue = if (isDark){
+                        Colors.White
+                    } else{
+                        Colors.Black
+                    }
                 }
             )
             BSIcon(
                 icon = BSIcons.MOON,
                 size = 1.cssRem,
-                color = themeColor,
+                color = colorOppositeValue,
                 modifier = Modifier
                     .size(17.px)
             )

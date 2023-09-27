@@ -97,7 +97,9 @@ fun BackgroundContent() {
         Link(
             path = "https://www.globant.com/",
             text = "Globant",
-            modifier = LinkStyle.toModifier()
+            modifier = LinkStyle
+                .toModifier()
+                .bold()
         )
         Text(
             ", specializing in " +

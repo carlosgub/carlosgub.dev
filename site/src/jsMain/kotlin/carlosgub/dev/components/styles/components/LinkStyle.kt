@@ -4,12 +4,15 @@ import carlosgub.dev.components.styles.font.regular
 import carlosgub.dev.components.theme.WebColors
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.color
+import com.varabyte.kobweb.compose.ui.modifiers.fontSize
 import com.varabyte.kobweb.compose.ui.styleModifier
 import com.varabyte.kobweb.silk.components.style.*
+import org.jetbrains.compose.web.css.cssRem
 
 val LinkStyle by ComponentStyle {
     base {
         Modifier
+            .fontSize(1.25.cssRem)
             .regular()
             .color(WebColors.Blue)
             .styleModifier {

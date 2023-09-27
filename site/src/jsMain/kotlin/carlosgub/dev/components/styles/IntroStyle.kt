@@ -52,26 +52,6 @@ val IntroSectionStyle by ComponentStyle {
             )
     }
 }
-
-val ReadMyResumeStyle by ComponentStyle {
-    base {
-        Modifier
-            .fontSize(1.25.cssRem)
-            .bold()
-            .textDecorationLine(TextDecorationLine.None)
-    }
-    hover {
-        Modifier
-            .animation(
-                Shake.toAnimation(
-                    colorMode,
-                    duration = 1.s,
-                    timingFunction = AnimationTimingFunction.EaseInOut
-                )
-            )
-    }
-}
-
 /*region Switch Theme*/
 val FormCheckInput by ComponentStyle.base {
     Modifier

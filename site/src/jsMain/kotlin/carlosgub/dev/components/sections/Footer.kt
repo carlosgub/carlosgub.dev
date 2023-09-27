@@ -1,12 +1,12 @@
 package carlosgub.dev.components.sections
 
 import androidx.compose.runtime.Composable
+import carlosgub.dev.components.styles.DevelopedByLink
 import carlosgub.dev.components.styles.FooterStyle
 import carlosgub.dev.components.styles.LinkFooterStyle
 import carlosgub.dev.components.styles.components.LinkStyle
-import carlosgub.dev.components.styles.font.bold
-import carlosgub.dev.components.styles.font.regular
 import carlosgub.dev.components.theme.WebColors
+import carlosgub.dev.components.theme.WebColors.colorOpposite
 import com.stevdza.san.kotlinbs.components.BSIcon
 import com.stevdza.san.kotlinbs.icons.BSIcons
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
@@ -17,10 +17,10 @@ import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.margin
 import com.varabyte.kobweb.compose.ui.modifiers.padding
+import com.varabyte.kobweb.compose.ui.modifiers.setVariable
 import com.varabyte.kobweb.silk.components.navigation.Link
 import com.varabyte.kobweb.silk.components.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.components.style.toModifier
-import com.varabyte.kobweb.silk.components.text.SpanText
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.dom.A
 
@@ -44,8 +44,6 @@ private fun FooterHorizontal(breakpoint: Breakpoint) {
         verticalAlignment = Alignment.CenterVertically
     ) {
         Column(modifier = Modifier.weight(1)) {
-            MadeWithKobwebFooter()
-            InspiredByFooter()
             DevelopedByFooter()
         }
         Row(
@@ -116,8 +114,6 @@ private fun FooterVertical() {
             ),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        MadeWithKobwebFooter()
-        InspiredByFooter()
         DevelopedByFooter()
         Row(
             modifier = Modifier.fillMaxWidth()
@@ -134,46 +130,13 @@ private fun FooterVertical() {
 }
 
 @Composable
-private fun MadeWithKobwebFooter() {
-    Row(
-        Modifier.regular()
-    ) {
-        SpanText(
-            text = "Made with "
-        )
-        Link(
-            path = "https://github.com/varabyte/kobweb",
-            text = "Kobweb",
-            modifier = LinkStyle.toModifier()
-        )
-    }
-}
-
-@Composable
-private fun InspiredByFooter() {
-    Row(
-        Modifier.regular()
-    ) {
-        SpanText(
-            text = "Inspired by "
-        )
-        Link(
-            path = "https://v3.brittanychiang.com",
-            text = "Brittany Chiang",
-            modifier = LinkStyle.toModifier()
-        )
-    }
-}
-
-@Composable
 private fun DevelopedByFooter() {
-    Row {
-        SpanText(
-            text = "Developed by Carlos Ugaz 2023",
-            modifier = Modifier
-                .bold()
-        )
-    }
+    Link(
+        path = "https://github.com/carlosgub/carlosgub.dev",
+        text = "Developed by Carlos Ugaz 2023",
+        modifier = DevelopedByLink.toModifier()
+            .setVariable(colorOpposite, WebColors.colorOppositeValue)
+    )
 }
 
 @Composable

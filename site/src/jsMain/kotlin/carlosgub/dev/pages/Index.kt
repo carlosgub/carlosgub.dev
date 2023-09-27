@@ -4,8 +4,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import carlosgub.dev.components.sections.BackgroundSection
 import carlosgub.dev.components.sections.ExperienceSection
-import carlosgub.dev.components.sections.IntroSection
 import carlosgub.dev.components.sections.Footer
+import carlosgub.dev.components.sections.IntroSection
 import carlosgub.dev.components.widgets.BackToTopButton
 import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Column
@@ -35,7 +35,7 @@ fun HomePage() {
         ) {
             IntroSection()
             BackgroundSection()
-            // ExperienceSection()
+            ExperienceSection()
             Footer(breakpoint)
         }
         BackToTopButton()

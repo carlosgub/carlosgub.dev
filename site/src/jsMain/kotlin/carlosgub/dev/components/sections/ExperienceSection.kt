@@ -1,59 +1,142 @@
 package carlosgub.dev.components.sections
 
-import androidx.compose.runtime.*
-import carlosgub.dev.components.keyframe.FadeInKeyFrames
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import carlosgub.dev.components.keyframe.WidthKeyFrames
 import carlosgub.dev.components.models.Section
+import carlosgub.dev.components.models.Stack
+import carlosgub.dev.components.styles.CompanyLink
 import carlosgub.dev.components.styles.ExperienceSectionStyle
+import carlosgub.dev.components.styles.ReadMyResumeStyle
 import carlosgub.dev.components.styles.components.H3Style
-import carlosgub.dev.components.styles.components.LinkStyle
+import carlosgub.dev.components.styles.components.H6Style
 import carlosgub.dev.components.styles.components.PStyle
-import carlosgub.dev.components.styles.components.UlStyle
 import carlosgub.dev.components.styles.font.bold
+import carlosgub.dev.components.styles.font.light
+import carlosgub.dev.components.theme.WebColors
+import carlosgub.dev.components.theme.WebColors.colorOpposite
 import carlosgub.dev.util.ObserveViewportEntered
+import carlosgub.dev.util.text.*
+import com.stevdza.san.kotlinbs.components.BSBadge
+import com.stevdza.san.kotlinbs.models.BadgeVariant
 import com.varabyte.kobweb.compose.css.TextAlign
-import com.varabyte.kobweb.compose.css.Visibility
+import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.Row
+import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.animation.toAnimation
+import com.varabyte.kobweb.silk.components.layout.Divider
 import com.varabyte.kobweb.silk.components.navigation.Link
 import com.varabyte.kobweb.silk.components.style.toModifier
 import com.varabyte.kobweb.silk.components.text.SpanText
 import org.jetbrains.compose.web.css.AnimationTimingFunction
+import org.jetbrains.compose.web.css.DisplayStyle
+import org.jetbrains.compose.web.css.ms
 import org.jetbrains.compose.web.css.px
-import org.jetbrains.compose.web.css.s
 import org.jetbrains.compose.web.dom.*
 
 @Composable
 fun ExperienceSection() {
-    var visible by remember { mutableStateOf(false) }
+    val visible = remember { mutableStateOf(false) }
     ObserveViewportEntered(
         sectionId = Section.About.id,
         distanceFromTop = 800.0,
         onViewportEntered = {
-            visible = true
+            visible.value = true
         }
     )
 
-    Column(
-        modifier = listOf(
-            ExperienceSectionStyle
-        ).toModifier()
-            .id(Section.About.id)
-            .visibility(if (visible) Visibility.Visible else Visibility.Hidden)
-            .then(
-                if (visible) Modifier.animation(
-                    FadeInKeyFrames.toAnimation(
-                        null,
-                        duration = 1.8.s,
-                        timingFunction = AnimationTimingFunction.EaseInOut
-                    )
-                ) else Modifier
-            )
+    Box(
+        modifier = Modifier
+            .fillMaxWidth(),
+        contentAlignment = Alignment.Center
     ) {
-        ExperienceContent()
+        Column(
+            modifier =
+            ExperienceSectionStyle
+                .toModifier()
+                .id(Section.About.id)
+        ) {
+            ExperienceContent()
+        }
+        SlidingContainers(visible)
+    }
+}
+
+@Composable
+fun SlidingContainers(visible: MutableState<Boolean>) {
+    val containerVisibility = remember { mutableStateOf(DisplayStyle.Flex) }
+    Column(
+        Modifier
+            .fillMaxSize()
+            .display(containerVisibility.value)
+    ) {
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .setVariable(colorOpposite, WebColors.colorOppositeValue)
+                .weight(1f)
+                .then(
+                    if (visible.value) {
+                        Modifier.animation(
+                            WidthKeyFrames.toAnimation(
+                                null,
+                                duration = 800.ms,
+                                timingFunction = AnimationTimingFunction.Linear
+                            )
+                        )
+                    } else {
+                        Modifier
+                    }
+                )
+        )
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .setVariable(colorOpposite, WebColors.colorOppositeValue)
+                .weight(1f)
+                .then(
+                    if (visible.value) {
+                        Modifier.animation(
+                            WidthKeyFrames.toAnimation(
+                                null,
+                                duration = 800.ms,
+                                timingFunction = AnimationTimingFunction.Linear,
+                                delay = 100.ms
+                            )
+                        )
+                    } else {
+                        Modifier
+                    }
+                )
+        )
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .setVariable(colorOpposite, WebColors.colorOppositeValue)
+                .weight(1f)
+                .then(
+                    if (visible.value) {
+                        Modifier.animation(
+                            WidthKeyFrames.toAnimation(
+                                null,
+                                duration = 800.ms,
+                                timingFunction = AnimationTimingFunction.Linear,
+                                delay = 200.ms
+                            )
+                        ).onAnimationEnd {
+                            containerVisibility.value = DisplayStyle.None
+                        }
+                    } else {
+                        Modifier
+                    }
+                )
+        )
     }
 }
 
@@ -63,88 +146,107 @@ fun ExperienceContent() {
         attrs = H3Style
             .toModifier()
             .fillMaxWidth()
-            .textAlign(TextAlign.Center)
             .bold()
+            .color(WebColors.Blue)
             .toAttrs()
     ) {
         SpanText(
             "My Experience"
         )
     }
-    P(
-        attrs = PStyle
+    WorkContainer(
+        workName = globant,
+        workUrl = globantUrl,
+        time = globantTime,
+        description = globantDescription,
+        stackList = globantStack
+    )
+    Divider(Modifier.fillMaxWidth())
+    WorkContainer(
+        workName = rappi,
+        workUrl = rappiUrl,
+        time = rappiTime,
+        description = rappiDescription,
+        stackList = rappiStack
+    )
+    A(
+        href = "/resume.pdf",
+        attrs = ReadMyResumeStyle
             .toModifier()
-            .padding(top = 16.px)
-            .textAlign(TextAlign.Justify)
+            .color(WebColors.Blue)
             .toAttrs()
+
     ) {
-        Text(
-            "Hello! I'm Carlos, a Senior Software Engineer at "
+        SpanText(
+            "View Full Resume →"
         )
-        Link(
-            path = "https://www.globant.com/",
-            text = "Globant",
-            modifier = LinkStyle.toModifier()
-        )
-        Text(
-            ", specializing in " +
-                    "Android app development with Kotlin and Java. With six years of experience, I've led " +
-                    "teams in various industries including banking, education, e-commerce, and media."
-        )
-        P()
-        Text(
-            "I'm an Android enthusiast who thrives on exploring emerging technologies and staying " +
-                    "at the cutting edge of the field. Let's collaborate to bring innovative " +
-                    "Android solutions to life!"
-        )
-        P()
-        Text(
-            "If you're seeking a Senior Software Engineer with a deep passion for Android development, " +
-                    "a track record of leadership, and a commitment to staying ahead of the curve, I'd love " +
-                    "to connect and discuss how I can bring my skills and enthusiasm to your next project."
-        )
-        P()
-        Text("Here are a few technologies I’ve been working recently:")
-        Row(
-            modifier = Modifier
-                .padding(top = 8.px)
+    }
+}
+
+@Composable
+private fun WorkContainer(
+    workName: String,
+    workUrl:String,
+    time: String,
+    description: String,
+    stackList: List<Stack>
+) {
+    Column(
+        Modifier
+            .fillMaxWidth()
+            .margin(topBottom = 12.px)
+    ) {
+        H6(
+            attrs = H6Style
+                .toModifier()
+                .fillMaxWidth()
+                .bold()
+                .color(WebColors.Blue)
+                .margin(0.px)
+                .toAttrs()
         ) {
-            Ul(
-                attrs = UlStyle
+            Link(
+                path = workUrl,
+                text = workName,
+                modifier = CompanyLink
                     .toModifier()
-                    .padding(left = 16.px)
-                    .toAttrs()
-            ) {
-                Li {
-                    Text("Kotlin")
-                }
-                Li {
-                    Text("Jetpack compose")
-                }
-                Li {
-                    Text("Compose multiplatform")
-                }
-            }
-            Ul(
-                attrs = UlStyle
-                    .toModifier()
-                    .margin(left = 24.px)
-                    .toAttrs()
-            ) {
-                Li {
-                    Text("Android")
-                }
-                Li {
-                    Text("Kotlin multiplatform")
-                }
-                Li {
-                    Text("GraphQL")
-                }
+            )
+        }
+        P(
+            attrs = PStyle
+                .toModifier()
+                .light()
+                .toAttrs()
+        ) {
+            Text(time)
+        }
+        P(
+            attrs = PStyle
+                .toModifier()
+                .fillMaxWidth()
+                .textAlign(TextAlign.Justify)
+                .toAttrs()
+        ) {
+            Text(
+                description
+            )
+        }
+        Row(
+            Modifier
+                .display(DisplayStyle.Block)
+        ) {
+            stackList.forEach { stack ->
+                BSBadge(
+                    modifier = Modifier
+                        .margin(
+                            top = 6.px,
+                            bottom = 6.px,
+                            right = 12.px
+                        ),
+                    text = stack.name,
+                    variant = BadgeVariant.Rounded
+                )
             }
         }
-        /*System Engineering from the Universidad de Lima, with six years of experience in\n" +
-               "Android application development using Kotlin and Java programming languages. He is an Android Leader\n" +
-               "in his current workplace who has led up to three developers and is interested in researching emerging\n" +
-               "technologies. He has experience in banking, education, e-commerce, and media industries.")*/
     }
 }

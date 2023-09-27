@@ -2,14 +2,14 @@ package carlosgub.dev.components.styles
 
 import carlosgub.dev.components.styles.font.bold
 import carlosgub.dev.components.theme.WebColors
+import carlosgub.dev.components.theme.WebColors.colorOpposite
 import com.varabyte.kobweb.compose.css.AlignSelf
+import com.varabyte.kobweb.compose.css.TextDecorationLine
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.styleModifier
-import com.varabyte.kobweb.silk.components.style.ComponentStyle
-import com.varabyte.kobweb.silk.components.style.base
-import com.varabyte.kobweb.silk.components.style.hover
+import com.varabyte.kobweb.silk.components.style.*
 import org.jetbrains.compose.web.css.cssRem
 
 val FooterStyle by ComponentStyle.base {
@@ -22,6 +22,7 @@ val FooterStyle by ComponentStyle.base {
 val LinkFooterStyle by ComponentStyle {
     base {
         Modifier
+            .fontSize(1.cssRem)
             .bold()
             .color(WebColors.Blue)
             .styleModifier {
@@ -38,7 +39,34 @@ val LinkFooterStyle by ComponentStyle {
 }
 
 val ArrowUpStyle by ComponentStyle.base {
-    Modifier.bold()
+    Modifier
+        .bold()
         .color(Colors.White)
         .fontSize(1.4.cssRem)
+}
+
+val DevelopedByLink by ComponentStyle {
+    base {
+        Modifier
+            .color(colorOpposite.value())
+            .bold()
+            .textDecorationLine(TextDecorationLine.None)
+            .fontSize(1.cssRem)
+    }
+
+    link {
+        Modifier
+            .color(colorOpposite.value())
+            .textDecorationLine(TextDecorationLine.None)
+    }
+    active {
+        Modifier
+            .color(colorOpposite.value())
+            .textDecorationLine(TextDecorationLine.None)
+    }
+    visited {
+        Modifier
+            .color(colorOpposite.value())
+            .textDecorationLine(TextDecorationLine.None)
+    }
 }

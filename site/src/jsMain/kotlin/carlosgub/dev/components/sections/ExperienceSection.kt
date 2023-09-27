@@ -22,6 +22,7 @@ import carlosgub.dev.util.ObserveViewportEntered
 import carlosgub.dev.util.text.*
 import com.stevdza.san.kotlinbs.components.BSBadge
 import com.stevdza.san.kotlinbs.models.BadgeVariant
+import com.varabyte.kobweb.compose.css.AnimationIterationCount
 import com.varabyte.kobweb.compose.css.TextAlign
 import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Column
@@ -33,12 +34,10 @@ import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.animation.toAnimation
 import com.varabyte.kobweb.silk.components.layout.Divider
 import com.varabyte.kobweb.silk.components.navigation.Link
+import com.varabyte.kobweb.silk.components.style.toAttrs
 import com.varabyte.kobweb.silk.components.style.toModifier
 import com.varabyte.kobweb.silk.components.text.SpanText
-import org.jetbrains.compose.web.css.AnimationTimingFunction
-import org.jetbrains.compose.web.css.DisplayStyle
-import org.jetbrains.compose.web.css.ms
-import org.jetbrains.compose.web.css.px
+import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.*
 
 @Composable
@@ -65,120 +64,66 @@ fun ExperienceSection() {
         ) {
             ExperienceContent()
         }
-        SlidingContainers(visible)
+        SlidingContainers(5, visible)
     }
 }
 
 @Composable
-fun SlidingContainers(visible: MutableState<Boolean>) {
-    val containerVisibility = remember { mutableStateOf(DisplayStyle.Flex) }
+fun SlidingContainers(count: Int, visible: MutableState<Boolean>) {
+    val display = remember { mutableStateOf(DisplayStyle.Flex) }
     Column(
-        Modifier
+        modifier = Modifier
             .fillMaxSize()
-            .display(containerVisibility.value)
+            .display(display.value)
     ) {
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .setVariable(colorOpposite, WebColors.colorOppositeValue)
-                .weight(1f)
-                .then(
-                    if (visible.value) {
-                        Modifier.animation(
-                            WidthKeyFrames.toAnimation(
-                                null,
-                                duration = 600.ms,
-                                timingFunction = AnimationTimingFunction.Linear
-                            )
-                        )
-                    } else {
-                        Modifier
-                    }
-                )
-        )
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .setVariable(colorOpposite, WebColors.colorOppositeValue)
-                .weight(1f)
-                .then(
-                    if (visible.value) {
-                        Modifier.animation(
-                            WidthKeyFrames.toAnimation(
-                                null,
-                                duration = 600.ms,
-                                timingFunction = AnimationTimingFunction.Linear,
-                                delay = 100.ms
-                            )
-                        )
-                    } else {
-                        Modifier
-                    }
-                )
-        )
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .setVariable(colorOpposite, WebColors.colorOppositeValue)
-                .weight(1f)
-                .then(
-                    if (visible.value) {
-                        Modifier.animation(
-                            WidthKeyFrames.toAnimation(
-                                null,
-                                duration = 600.ms,
-                                timingFunction = AnimationTimingFunction.Linear,
-                                delay = 200.ms
-                            )
-                        )
-                    } else {
-                        Modifier
-                    }
-                )
-        )
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .setVariable(colorOpposite, WebColors.colorOppositeValue)
-                .weight(1f)
-                .then(
-                    if (visible.value) {
-                        Modifier.animation(
-                            WidthKeyFrames.toAnimation(
-                                null,
-                                duration = 600.ms,
-                                timingFunction = AnimationTimingFunction.Linear,
-                                delay = 300.ms
-                            )
-                        )
-                    } else {
-                        Modifier
-                    }
-                )
-        )
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .setVariable(colorOpposite, WebColors.colorOppositeValue)
-                .weight(1f)
-                .then(
-                    if (visible.value) {
-                        Modifier.animation(
-                            WidthKeyFrames.toAnimation(
-                                null,
-                                duration = 600.ms,
-                                timingFunction = AnimationTimingFunction.Linear,
-                                delay = 400.ms
-                            )
-                        ).onAnimationEnd {
-                            containerVisibility.value = DisplayStyle.None
-                        }
-                    } else {
-                        Modifier
-                    }
-                )
-        )
+        for (position in 0 until count) {
+            SlidingContainersItem(
+                modifier = Modifier
+                    .weight(1f),
+                visible = visible,
+                position = position,
+                isLast = position + 1 == count,
+                onFinish = {
+                    display.value = DisplayStyle.None
+                }
+            )
+        }
     }
+}
+
+@Composable
+fun SlidingContainersItem(
+    modifier: Modifier,
+    visible: MutableState<Boolean>,
+    position: Int,
+    isLast: Boolean,
+    onFinish: () -> Unit
+) {
+    Box(
+        modifier = modifier
+            .id("SlidingContainersItem$position")
+            .fillMaxWidth()
+            .background(WebColors.colorOppositeValue)
+            .setVariable(colorOpposite, WebColors.colorOppositeValue)
+            .then(
+                if (visible.value) {
+                    Modifier.animation(
+                        WidthKeyFrames.toAnimation(
+                            null,
+                            duration = 600.ms,
+                            timingFunction = AnimationTimingFunction.Linear,
+                            delay = (position * 100).ms,
+                            fillMode = AnimationFillMode.Forwards
+                        )
+                    ).onAnimationEnd {
+
+                        if (isLast) onFinish()
+                    }
+                } else {
+                    Modifier
+                }
+            )
+    )
 }
 
 @Composable
@@ -213,8 +158,6 @@ fun ExperienceContent() {
     A(
         href = "/resume.pdf",
         attrs = ReadMyResumeStyle
-            .toModifier()
-            .color(WebColors.Blue)
             .toAttrs()
 
     ) {
@@ -227,7 +170,7 @@ fun ExperienceContent() {
 @Composable
 private fun WorkContainer(
     workName: String,
-    workUrl:String,
+    workUrl: String,
     time: String,
     description: String,
     stackList: List<Stack>

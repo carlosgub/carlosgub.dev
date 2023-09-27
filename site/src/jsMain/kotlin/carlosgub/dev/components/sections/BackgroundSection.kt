@@ -24,8 +24,8 @@ import com.varabyte.kobweb.silk.components.navigation.Link
 import com.varabyte.kobweb.silk.components.style.toModifier
 import com.varabyte.kobweb.silk.components.text.SpanText
 import org.jetbrains.compose.web.css.AnimationTimingFunction
+import org.jetbrains.compose.web.css.ms
 import org.jetbrains.compose.web.css.px
-import org.jetbrains.compose.web.css.s
 import org.jetbrains.compose.web.dom.*
 
 @Composable
@@ -48,7 +48,7 @@ fun BackgroundSection() {
                     Modifier.animation(
                         FadeInKeyFrames.toAnimation(
                             null,
-                            duration = 1.8.s,
+                            duration = 800.ms,
                             timingFunction = AnimationTimingFunction.EaseInOut
                         )
                     )
@@ -65,8 +65,6 @@ fun BackgroundSection() {
             BackgroundContent()
         }
     }
-
-
 }
 
 @Composable

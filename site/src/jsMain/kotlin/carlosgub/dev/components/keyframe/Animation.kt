@@ -19,9 +19,24 @@ val FadeInKeyFrames by Keyframes {
 }
 
 val Shake by Keyframes {
-    0.percent { Modifier.margin(left = 0.px) }
-    50.percent { Modifier.margin(left = 20.px) }
-    100.percent { Modifier.margin(left = 0.px) }
+    0.percent {
+        Modifier.margin(
+            left = 0.px,
+            top = 16.px
+        )
+    }
+    50.percent {
+        Modifier.margin(
+            left = 20.px,
+            top = 16.px
+        )
+    }
+    100.percent {
+        Modifier.margin(
+            left = 0.px,
+            top = 16.px
+        )
+    }
 }
 
 val WidthKeyFrames by Keyframes {

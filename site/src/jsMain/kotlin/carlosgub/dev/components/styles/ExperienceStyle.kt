@@ -42,6 +42,8 @@ val ExperienceSectionStyle by ComponentStyle {
 val ReadMyResumeStyle by ComponentStyle {
     base {
         Modifier
+            .margin(top = 16.px)
+            .color(WebColors.Blue)
             .fontSize(1.cssRem)
             .bold()
             .textDecorationLine(TextDecorationLine.None)

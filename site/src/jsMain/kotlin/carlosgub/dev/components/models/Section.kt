@@ -18,8 +18,8 @@ enum class Section(
     Experience(
         id = "experience"
     ),
-    Contact(
-        id = "contact"
+    Article(
+        id = "article"
     ),
     Testimonial(
         id = "testimonial"

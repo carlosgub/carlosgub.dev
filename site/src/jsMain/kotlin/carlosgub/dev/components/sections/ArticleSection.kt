@@ -29,10 +29,10 @@ import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.dom.*
 
 @Composable
-fun BackgroundSection() {
+fun ArticlesSection() {
     var visible by remember { mutableStateOf(false) }
     ObserveViewportEntered(
-        sectionId = Section.Experience.id,
+        sectionId = Section.Article.id,
         distanceFromTop = 800.0,
         onViewportEntered = {
             visible = true
@@ -41,7 +41,7 @@ fun BackgroundSection() {
 
     Box(
         modifier = Modifier
-            .id(Section.Experience.id)
+            .id(Section.Article.id)
             .visibility(if (visible) Visibility.Visible else Visibility.Hidden)
             .then(
                 if (visible) {
@@ -62,13 +62,13 @@ fun BackgroundSection() {
                 BackgroundSectionStyle
             ).toModifier()
         ) {
-            BackgroundContent()
+            ArticlesContent()
         }
     }
 }
 
 @Composable
-private fun BackgroundContent() {
+fun ArticlesContent() {
     H3(
         attrs = H3Style
             .toModifier()

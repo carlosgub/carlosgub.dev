@@ -22,7 +22,6 @@ import carlosgub.dev.util.ObserveViewportEntered
 import carlosgub.dev.util.text.*
 import com.stevdza.san.kotlinbs.components.BSBadge
 import com.stevdza.san.kotlinbs.models.BadgeVariant
-import com.varabyte.kobweb.compose.css.AnimationIterationCount
 import com.varabyte.kobweb.compose.css.TextAlign
 import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Column
@@ -116,7 +115,6 @@ fun SlidingContainersItem(
                             fillMode = AnimationFillMode.Forwards
                         )
                     ).onAnimationEnd {
-
                         if (isLast) onFinish()
                     }
                 } else {

@@ -7,6 +7,8 @@ plugins {
     alias(libs.plugins.jetbrains.compose)
     alias(libs.plugins.kobweb.application)
     alias(libs.plugins.kobwebx.markdown)
+    alias(libs.plugins.ktor.plugin)
+    alias(libs.plugins.serialization.plugin)
 }
 
 group = "carlosgub.dev"
@@ -20,15 +22,11 @@ kobweb {
                 link(rel = "stylesheet", href = "/fonts/faces.css")
                 script {
                     src = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+                    async = true
                 }
                 link {
                     rel = "stylesheet"
                     href = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
-                }
-                // Optional, if you want to use Bootstrap Icons [BSIcons].
-                link {
-                    rel = "stylesheet"
-                    href = "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css"
                 }
             }
         }
@@ -42,6 +40,9 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation(compose.runtime)
+                implementation(libs.ktor.core)
+                implementation(libs.coroutines.core)
+                implementation(libs.kotlinx.serialization)
             }
         }
 
@@ -53,12 +54,14 @@ kotlin {
                 implementation(libs.kobweb.silk.icons.fa)
                 implementation(libs.kobwebx.markdown)
                 implementation(libs.kotlin.bootstrap)
+                implementation(libs.kotlinx.serialization)
             }
         }
 
         val jvmMain by getting {
             dependencies {
                 implementation(libs.kobweb.api)
+                implementation(libs.kotlinx.serialization)
             }
         }
     }

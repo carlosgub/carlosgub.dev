@@ -68,7 +68,7 @@ fun BackgroundSection() {
 }
 
 @Composable
-fun BackgroundContent() {
+private fun BackgroundContent() {
     H3(
         attrs = H3Style
             .toModifier()

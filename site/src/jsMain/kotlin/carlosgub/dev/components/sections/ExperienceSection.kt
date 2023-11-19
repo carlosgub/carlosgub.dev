@@ -22,7 +22,6 @@ import carlosgub.dev.util.ObserveViewportEntered
 import carlosgub.dev.util.text.*
 import com.stevdza.san.kotlinbs.components.BSBadge
 import com.stevdza.san.kotlinbs.models.BadgeVariant
-import com.varabyte.kobweb.compose.css.AnimationIterationCount
 import com.varabyte.kobweb.compose.css.TextAlign
 import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Column
@@ -32,7 +31,7 @@ import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.animation.toAnimation
-import com.varabyte.kobweb.silk.components.layout.Divider
+import com.varabyte.kobweb.silk.components.layout.HorizontalDivider
 import com.varabyte.kobweb.silk.components.navigation.Link
 import com.varabyte.kobweb.silk.components.style.toAttrs
 import com.varabyte.kobweb.silk.components.style.toModifier
@@ -81,6 +80,7 @@ fun SlidingContainers(count: Int, visible: MutableState<Boolean>) {
                 modifier = Modifier
                     .weight(1f),
                 visible = visible,
+
                 position = position,
                 isLast = position + 1 == count,
                 onFinish = {
@@ -116,7 +116,6 @@ fun SlidingContainersItem(
                             fillMode = AnimationFillMode.Forwards
                         )
                     ).onAnimationEnd {
-
                         if (isLast) onFinish()
                     }
                 } else {
@@ -147,7 +146,7 @@ fun ExperienceContent() {
         description = globantDescription,
         stackList = globantStack
     )
-    Divider(Modifier.fillMaxWidth())
+    HorizontalDivider(Modifier.fillMaxWidth())
     WorkContainer(
         workName = rappi,
         workUrl = rappiUrl,

@@ -20,15 +20,11 @@ kobweb {
                 link(rel = "stylesheet", href = "/fonts/faces.css")
                 script {
                     src = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+                    async = true
                 }
                 link {
                     rel = "stylesheet"
                     href = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
-                }
-                // Optional, if you want to use Bootstrap Icons [BSIcons].
-                link {
-                    rel = "stylesheet"
-                    href = "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css"
                 }
             }
         }

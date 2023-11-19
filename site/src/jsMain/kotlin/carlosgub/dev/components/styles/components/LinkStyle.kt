@@ -1,5 +1,6 @@
 package carlosgub.dev.components.styles.components
 
+import carlosgub.dev.components.styles.font.bold
 import carlosgub.dev.components.styles.font.regular
 import carlosgub.dev.components.theme.WebColors
 import com.varabyte.kobweb.compose.ui.Modifier
@@ -7,6 +8,7 @@ import com.varabyte.kobweb.compose.ui.modifiers.color
 import com.varabyte.kobweb.compose.ui.modifiers.fontSize
 import com.varabyte.kobweb.compose.ui.styleModifier
 import com.varabyte.kobweb.silk.components.style.*
+import com.varabyte.kobweb.silk.components.style.breakpoint.Breakpoint
 import org.jetbrains.compose.web.css.cssRem
 
 val LinkStyle by ComponentStyle {
@@ -35,5 +37,25 @@ val LinkStyle by ComponentStyle {
     }
     visited {
         Modifier.color(WebColors.Blue)
+    }
+}
+
+val LinkTalkStyle by ComponentStyle {
+    base {
+        Modifier
+            .fontSize(0.85.cssRem)
+            .bold()
+    }
+    Breakpoint.MD {
+        Modifier
+            .fontSize(0.85.cssRem)
+    }
+    Breakpoint.LG {
+        Modifier
+            .fontSize(0.95.cssRem)
+    }
+    Breakpoint.XL {
+        Modifier
+            .fontSize(1.cssRem)
     }
 }

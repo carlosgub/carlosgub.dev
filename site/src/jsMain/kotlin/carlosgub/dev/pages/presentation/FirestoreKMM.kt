@@ -13,7 +13,7 @@ import org.jetbrains.compose.web.dom.Iframe
 
 @Page
 @Composable
-fun KMMPage() {
+fun FirestoreKMMPage() {
     Iframe(
         attrs = Modifier.width(100.percent)
             .height(100.percent)

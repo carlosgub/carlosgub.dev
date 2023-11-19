@@ -96,7 +96,7 @@ private fun TalkContent() {
                 "\uD83C\uDDF5\uD83C\uDDEA GDG DevFest 2023 - How Implement Firestore in Kotlin Multiplatform Mobile - "
             )
             Link(
-                path = "/presentation/firestorekmm",
+                path = "https://carlosgub.com/presentation/firestorekmm",
                 text = "slides",
                 modifier = listOf(
                     LinkStyle,

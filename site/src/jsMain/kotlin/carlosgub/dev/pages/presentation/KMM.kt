@@ -1,21 +1,10 @@
-package carlosgub.dev.pages
+package carlosgub.dev.pages.presentation
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import carlosgub.dev.components.sections.BackgroundSection
-import carlosgub.dev.components.sections.ExperienceSection
-import carlosgub.dev.components.sections.Footer
-import carlosgub.dev.components.sections.IntroSection
-import carlosgub.dev.components.widgets.BackToTopButton
-import com.varabyte.kobweb.compose.foundation.layout.Box
-import com.varabyte.kobweb.compose.foundation.layout.Column
-import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.core.Page
-import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
-import kotlinx.browser.document
 import org.jetbrains.compose.web.css.Position
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
@@ -33,7 +22,7 @@ fun KMMPage() {
             .right(0.px)
             .bottom(0.px)
             .position(Position.Absolute)
-            .toAttrs{
+            .toAttrs {
                 attr(
                     "src",
                     "https://docs.google.com/presentation/d/e/2PACX-1vTxHxDNJ37YDJWUEc7FGnV3maWJR6EIQyKOszBpdD5G5qxW9wue7PvNiy0zVt37goY276FYBzWcFlSj/embed?start=false&loop=false&delayms=3000"

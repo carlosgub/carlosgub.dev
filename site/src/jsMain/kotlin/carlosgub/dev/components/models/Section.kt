@@ -21,8 +21,8 @@ enum class Section(
     Contact(
         id = "contact"
     ),
-    Testimonial(
-        id = "testimonial"
+    Speaker(
+        id = "speaker"
     ),
     Achievements(
         id = "achievements"

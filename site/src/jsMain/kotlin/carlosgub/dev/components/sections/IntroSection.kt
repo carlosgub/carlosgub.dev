@@ -48,9 +48,6 @@ fun IntroSection() {
             .width(100.percent),
         contentAlignment = Alignment.TopCenter
     ) {
-        /** The following section animates in, and if we include it in the export,
-        the page will animate twice when it loads (once when you first visit
-        the page, and again when it rebuilds itself) **/
         if (!rememberPageContext().isExporting) {
             Column(
                 modifier = listOf(

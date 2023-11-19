@@ -68,7 +68,7 @@ fun ExperienceSection() {
 }
 
 @Composable
-fun SlidingContainers(count: Int, visible: MutableState<Boolean>) {
+private fun SlidingContainers(count: Int, visible: MutableState<Boolean>) {
     val display = remember { mutableStateOf(DisplayStyle.Flex) }
     Column(
         modifier = Modifier
@@ -92,7 +92,7 @@ fun SlidingContainers(count: Int, visible: MutableState<Boolean>) {
 }
 
 @Composable
-fun SlidingContainersItem(
+private fun SlidingContainersItem(
     modifier: Modifier,
     visible: MutableState<Boolean>,
     position: Int,
@@ -126,7 +126,7 @@ fun SlidingContainersItem(
 }
 
 @Composable
-fun ExperienceContent() {
+private fun ExperienceContent() {
     H3(
         attrs = H3Style
             .toModifier()

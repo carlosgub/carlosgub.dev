@@ -106,6 +106,19 @@ private fun TalkContent() {
             )
         }
         Li {
+            Text("\uD83C\uDDEE\uD83C\uDDF3 2021 5th ICOEI - Blockchain and smart contract for donation traceability - ")
+            Link(
+                path = "https://ieeexplore.ieee.org/document/9453016/",
+                text = "paper",
+                modifier = listOf(
+                    LinkStyle,
+                    LinkTalkStyle
+                ).toModifier()
+
+            )
+        }
+
+        Li {
             Text("\uD83C\uDDF5\uD83C\uDDEA Firebase Peru #6 2020 - Firebase ML Kit Barcode w/ Camera X")
         }
         Li {

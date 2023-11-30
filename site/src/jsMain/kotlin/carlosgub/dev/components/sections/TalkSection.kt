@@ -104,6 +104,16 @@ private fun TalkContent() {
                 ).toModifier()
 
             )
+            Text(" - ")
+            Link(
+                path = "https://www.youtube.com/watch?v=tb5h2XXAq6A",
+                text = "video",
+                modifier = listOf(
+                    LinkStyle,
+                    LinkTalkStyle
+                ).toModifier()
+
+            )
         }
         Li {
             Text("\uD83C\uDDEE\uD83C\uDDF3 2021 5th ICOEI - Blockchain and smart contract for donation traceability - ")

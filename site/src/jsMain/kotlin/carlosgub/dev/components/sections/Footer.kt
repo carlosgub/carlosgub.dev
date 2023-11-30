@@ -68,6 +68,14 @@ private fun FooterHorizontal(breakpoint: Breakpoint) {
                     ).toModifier()
                 )
                 Link(
+                    path = "https://www.youtube.com/@carlosgub",
+                    text = "YOUTUBE",
+                    modifier = listOf(
+                        LinkStyle,
+                        LinkFooterStyle
+                    ).toModifier()
+                )
+                Link(
                     path = "https://twitter.com/carlosgub",
                     text = "TWITTER",
                     modifier = listOf(
@@ -94,6 +102,7 @@ private fun FooterHorizontal(breakpoint: Breakpoint) {
             } else {
                 EmailIcon()
                 GithubIcon()
+                YoutubeIcon()
                 TwitterIcon()
                 LinkedinIcon()
                 MediumIcon()
@@ -122,6 +131,7 @@ private fun FooterVertical() {
         ) {
             EmailIcon()
             GithubIcon()
+            YoutubeIcon()
             TwitterIcon()
             LinkedinIcon()
             MediumIcon()
@@ -159,6 +169,19 @@ private fun GithubIcon() {
     ) {
         BSIcon(
             icon = BSIcons.GITHUB,
+            size = 20.px,
+            color = WebColors.Blue
+        )
+    }
+}
+
+@Composable
+private fun YoutubeIcon() {
+    A(
+        href = "https://www.youtube.com/@carlosgub"
+    ) {
+        BSIcon(
+            icon = BSIcons.YOUTUBE,
             size = 20.px,
             color = WebColors.Blue
         )

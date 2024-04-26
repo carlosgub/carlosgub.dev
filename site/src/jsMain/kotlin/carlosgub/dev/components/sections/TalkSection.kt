@@ -93,10 +93,34 @@ private fun TalkContent() {
     ) {
         Li {
             Text(
+                "\uD83C\uDDF5\uD83C\uDDEA Android Dev Peru #61 - How create your first website w/ kobweb - "
+            )
+            Link(
+                path = "/presentation/create-kobweb",
+                text = "slides",
+                modifier = listOf(
+                    LinkStyle,
+                    LinkTalkStyle
+                ).toModifier()
+
+            )
+            Text(" - ")
+            Link(
+                path = "https://youtu.be/avs8Zros4HI?t=65",
+                text = "video",
+                modifier = listOf(
+                    LinkStyle,
+                    LinkTalkStyle
+                ).toModifier()
+
+            )
+        }
+        Li {
+            Text(
                 "\uD83C\uDDF5\uD83C\uDDEA GDG DevFest 2023 - How Implement Firestore in Kotlin Multiplatform Mobile - "
             )
             Link(
-                path = "/presentation/firestorekmm",
+                path = "/presentation/firestore-kmm",
                 text = "slides",
                 modifier = listOf(
                     LinkStyle,

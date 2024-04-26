@@ -1,3 +1,4 @@
+import com.varabyte.kobweb.gradle.application.extensions.AppBlock
 import com.varabyte.kobweb.gradle.application.util.configAsKobwebApplication
 import kotlinx.html.link
 import kotlinx.html.script
@@ -10,10 +11,11 @@ plugins {
 }
 
 group = "carlosgub.dev"
-version = "1.0-SNAPSHOT"
+version = "1.0"
 
 kobweb {
     app {
+        legacyRouteRedirectStrategy.set(AppBlock.LegacyRouteRedirectStrategy.DISALLOW)
         index {
             description.set("Powered by Kobweb")
             head.add {
@@ -50,8 +52,6 @@ kotlin {
                 implementation(compose.html.core)
                 implementation(libs.kobweb.core)
                 implementation(libs.kobweb.silk.core)
-                implementation(libs.kobweb.silk.icons.fa)
-                implementation(libs.kobwebx.markdown)
                 implementation(libs.kotlin.bootstrap)
             }
         }

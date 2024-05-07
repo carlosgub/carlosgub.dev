@@ -90,18 +90,8 @@ private fun BackgroundContent() {
             .toAttrs()
     ) {
         Text(
-            "Hello! I'm Carlos, a Senior Software Engineer at "
-        )
-        Link(
-            path = "https://www.globant.com/",
-            text = "Globant",
-            modifier = LinkStyle
-                .toModifier()
-                .bold()
-        )
-        Text(
-            ", specializing in " +
-                    "Android app development with Kotlin and Java. With six years of experience, I've led " +
+            "Hello! I'm Carlos, a Senior Software Engineer, specializing in " +
+                    "Android app development with Kotlin and Java. With seven years of experience, I've led " +
                     "teams in various industries including banking, education, e-commerce, and media."
         )
         P()
@@ -137,6 +127,9 @@ private fun BackgroundContent() {
                 Li {
                     Text("Compose Multiplatform")
                 }
+                Li {
+                    Text("REST")
+                }
             }
             Ul(
                 attrs = UlStyle
@@ -152,6 +145,9 @@ private fun BackgroundContent() {
                 }
                 Li {
                     Text("GraphQL")
+                }
+                Li {
+                    Text("Offline data")
                 }
             }
         }

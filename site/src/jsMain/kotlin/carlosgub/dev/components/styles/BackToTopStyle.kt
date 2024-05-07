@@ -16,12 +16,10 @@ import org.jetbrains.compose.web.css.px
 val BackToTopButtonStyle by ComponentStyle {
     base {
         Modifier
-            .size(50.px)
             .margin(
                 right = 40.px,
                 bottom = 40.px
             )
-            .borderRadius(20.percent)
             .backgroundColor(WebColors.Blue)
             .cursor(Cursor.Pointer)
             .styleModifier {

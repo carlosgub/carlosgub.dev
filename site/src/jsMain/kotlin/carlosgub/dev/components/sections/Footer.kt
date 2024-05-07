@@ -143,7 +143,7 @@ private fun FooterVertical() {
 private fun DevelopedByFooter() {
     Link(
         path = "https://github.com/carlosgub/carlosgub.dev",
-        text = "Developed by Carlos Ugaz 2023",
+        text = "Developed by Carlos Ugaz 2024",
         modifier = DevelopedByLink.toModifier()
             .setVariable(colorOpposite, WebColors.colorOppositeValue)
     )

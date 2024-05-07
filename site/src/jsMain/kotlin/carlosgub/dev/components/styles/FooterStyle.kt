@@ -38,13 +38,6 @@ val LinkFooterStyle by ComponentStyle {
     }
 }
 
-val ArrowUpStyle by ComponentStyle.base {
-    Modifier
-        .bold()
-        .color(Colors.White)
-        .fontSize(1.4.cssRem)
-}
-
 val DevelopedByLink by ComponentStyle {
     base {
         Modifier

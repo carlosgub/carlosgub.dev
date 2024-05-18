@@ -52,14 +52,6 @@ private fun FooterHorizontal(breakpoint: Breakpoint) {
         ) {
             if (breakpoint >= Breakpoint.LG) {
                 Link(
-                    path = "mailto:carlosgub.dev@gmail.com",
-                    text = "EMAIL",
-                    modifier = listOf(
-                        LinkStyle,
-                        LinkFooterStyle
-                    ).toModifier()
-                )
-                Link(
                     path = "https://github.com/carlosgub",
                     text = "GITHUB",
                     modifier = listOf(
@@ -100,7 +92,6 @@ private fun FooterHorizontal(breakpoint: Breakpoint) {
                     ).toModifier()
                 )
             } else {
-                EmailIcon()
                 GithubIcon()
                 YoutubeIcon()
                 TwitterIcon()
@@ -129,7 +120,6 @@ private fun FooterVertical() {
                 .margin(top = 25.px, bottom = 30.px),
             horizontalArrangement = Arrangement.SpaceEvenly
         ) {
-            EmailIcon()
             GithubIcon()
             YoutubeIcon()
             TwitterIcon()
@@ -147,19 +137,6 @@ private fun DevelopedByFooter() {
         modifier = DevelopedByLink.toModifier()
             .setVariable(colorOpposite, WebColors.colorOppositeValue)
     )
-}
-
-@Composable
-private fun EmailIcon() {
-    A(
-        href = "mailto:carlosgub.dev@gmail.com"
-    ) {
-        BSIcon(
-            icon = BSIcons.ENVELOPE,
-            size = 20.px,
-            color = WebColors.Blue
-        )
-    }
 }
 
 @Composable

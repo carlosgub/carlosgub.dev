@@ -10,7 +10,7 @@ import org.jetbrains.compose.web.css.px
 val FadeInKeyFrames by Keyframes {
     0.percent {
         Modifier
-            .opacity(0)
+            .opacity(0.1)
     }
     100.percent {
         Modifier

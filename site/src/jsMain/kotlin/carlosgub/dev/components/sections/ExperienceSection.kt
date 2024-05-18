@@ -23,6 +23,7 @@ import carlosgub.dev.util.text.*
 import com.stevdza.san.kotlinbs.components.BSBadge
 import com.stevdza.san.kotlinbs.models.BadgeVariant
 import com.varabyte.kobweb.compose.css.TextAlign
+import com.varabyte.kobweb.compose.css.TextDecorationLine
 import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.Row
@@ -179,17 +180,18 @@ private fun WorkContainer(
             .fillMaxWidth()
             .margin(topBottom = 12.px)
     ) {
-        H6(
+        A(
             attrs = H6Style
                 .toModifier()
                 .fillMaxWidth()
+                .textDecorationLine(TextDecorationLine.None)
                 .bold()
                 .color(WebColors.Blue)
                 .margin(0.px)
-                .toAttrs()
+                .toAttrs(),
+            href = workUrl
         ) {
-            Link(
-                path = workUrl,
+            SpanText(
                 text = workName,
                 modifier = CompanyLink
                     .toModifier()

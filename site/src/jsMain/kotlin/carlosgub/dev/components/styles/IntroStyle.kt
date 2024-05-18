@@ -1,23 +1,18 @@
 package carlosgub.dev.components.styles
 
-import carlosgub.dev.components.keyframe.Shake
-import carlosgub.dev.components.styles.font.bold
-import com.varabyte.kobweb.compose.css.TextDecorationLine
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.silk.components.animation.Keyframes
 import com.varabyte.kobweb.silk.components.animation.toAnimation
 import com.varabyte.kobweb.silk.components.style.ComponentStyle
-import com.varabyte.kobweb.silk.components.style.base
 import com.varabyte.kobweb.silk.components.style.breakpoint.Breakpoint
-import com.varabyte.kobweb.silk.components.style.hover
 import org.jetbrains.compose.web.css.*
 
 val IntroContainerKeyFrames by Keyframes {
     0.percent {
         Modifier
             .margin(top = 50.px)
-            .opacity(0)
+            .opacity(0.1)
     }
     100.percent {
         Modifier
@@ -52,15 +47,3 @@ val IntroSectionStyle by ComponentStyle {
             )
     }
 }
-/*region Switch Theme*/
-val FormCheckInput by ComponentStyle.base {
-    Modifier
-        .minWidth(45.px)
-        .height(25.px)
-}
-
-val FormCheck by ComponentStyle.base {
-    Modifier
-        .margin(leftRight = 12.px)
-}
-/*endregion Switch Theme*/

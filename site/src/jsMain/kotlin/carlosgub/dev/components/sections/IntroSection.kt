@@ -11,8 +11,8 @@ import carlosgub.dev.components.styles.components.H6Style
 import carlosgub.dev.components.styles.components.LinkStyle
 import carlosgub.dev.components.styles.font.bold
 import carlosgub.dev.components.theme.WebColors.colorOppositeValue
+import carlosgub.dev.components.widgets.Switch
 import com.stevdza.san.kotlinbs.components.BSIcon
-import com.stevdza.san.kotlinbs.forms.BSSwitch
 import com.stevdza.san.kotlinbs.icons.BSIcons
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Box
@@ -21,10 +21,7 @@ import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.graphics.Colors
-import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
-import com.varabyte.kobweb.compose.ui.modifiers.padding
-import com.varabyte.kobweb.compose.ui.modifiers.size
-import com.varabyte.kobweb.compose.ui.modifiers.width
+import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.core.isExporting
 import com.varabyte.kobweb.core.rememberPageContext
 import com.varabyte.kobweb.silk.components.navigation.Link
@@ -37,7 +34,6 @@ import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.dom.H1
 import org.jetbrains.compose.web.dom.H2
-import org.jetbrains.compose.web.dom.H6
 
 @Composable
 fun IntroSection() {
@@ -78,9 +74,9 @@ fun IntroSection() {
                         ", a mobile software engineer focused on building awesome mobile applications"
                     )
                 }
-                H6(
-                    attrs = H6Style
-                        .toAttrs()
+                Row(
+                    modifier = H6Style
+                        .toModifier()
                 ) {
                     SpanText("Get in touch ")
                     Link(
@@ -104,27 +100,24 @@ fun IntroSection() {
                 icon = BSIcons.SUN,
                 size = 1.cssRem,
                 color = colorOppositeValue,
-                modifier = Modifier
-                    .size(17.px)
             )
-            BSSwitch(
-                label = "",
-                defaultChecked = colorMode.isDark,
-                onClick = { isDark ->
+            Switch(
+                modifier = Modifier
+                    .margin(leftRight = 12.px),
+                checked = colorMode.isDark,
+                onCheckedChange = { isDark ->
                     colorMode = colorMode.opposite
-                    colorOppositeValue = if (isDark){
+                    colorOppositeValue = if (isDark) {
                         Colors.White
-                    } else{
+                    } else {
                         Colors.Black
                     }
-                }
+                },
             )
             BSIcon(
                 icon = BSIcons.MOON,
                 size = 1.cssRem,
                 color = colorOppositeValue,
-                modifier = Modifier
-                    .size(17.px)
             )
         }
     }

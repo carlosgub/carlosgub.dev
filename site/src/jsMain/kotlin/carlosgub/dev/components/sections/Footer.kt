@@ -14,10 +14,8 @@ import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
-import com.varabyte.kobweb.compose.ui.modifiers.margin
-import com.varabyte.kobweb.compose.ui.modifiers.padding
-import com.varabyte.kobweb.compose.ui.modifiers.setVariable
+import com.varabyte.kobweb.compose.ui.modifiers.*
+import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.navigation.Link
 import com.varabyte.kobweb.silk.components.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.components.style.toModifier
@@ -142,7 +140,10 @@ private fun DevelopedByFooter() {
 @Composable
 private fun GithubIcon() {
     A(
-        href = "https://github.com/carlosgub"
+        href = "https://github.com/carlosgub",
+        attrs = Modifier
+            .ariaLabel("Go to my github")
+            .toAttrs(),
     ) {
         BSIcon(
             icon = BSIcons.GITHUB,
@@ -155,7 +156,10 @@ private fun GithubIcon() {
 @Composable
 private fun YoutubeIcon() {
     A(
-        href = "https://www.youtube.com/@carlosgub"
+        href = "https://www.youtube.com/@carlosgub",
+        attrs = Modifier
+            .ariaLabel("Go to my youtube channel")
+            .toAttrs(),
     ) {
         BSIcon(
             icon = BSIcons.YOUTUBE,
@@ -168,7 +172,10 @@ private fun YoutubeIcon() {
 @Composable
 private fun TwitterIcon() {
     A(
-        href = "https://twitter.com/carlosgub"
+        href = "https://twitter.com/carlosgub",
+        attrs = Modifier
+            .ariaLabel("Go to my twitter profile")
+            .toAttrs(),
     ) {
         BSIcon(
             icon = BSIcons.TWITTER,
@@ -181,7 +188,10 @@ private fun TwitterIcon() {
 @Composable
 private fun LinkedinIcon() {
     A(
-        href = "https://linkedin.com/in/carlosgub"
+        href = "https://linkedin.com/in/carlosgub",
+        attrs = Modifier
+            .ariaLabel("Go to my linkedin profile")
+            .toAttrs(),
     ) {
         BSIcon(
             icon = BSIcons.LINKEDIN,
@@ -194,7 +204,10 @@ private fun LinkedinIcon() {
 @Composable
 private fun MediumIcon() {
     A(
-        href = "https://medium.com/@carlosgub"
+        href = "https://medium.com/@carlosgub",
+        attrs = Modifier
+            .ariaLabel("Go to my medium profile")
+            .toAttrs(),
     ) {
         BSIcon(
             icon = BSIcons.MEDIUM,

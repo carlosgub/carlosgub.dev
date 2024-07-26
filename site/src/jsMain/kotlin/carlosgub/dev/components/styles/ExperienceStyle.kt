@@ -3,17 +3,20 @@ package carlosgub.dev.components.styles
 import carlosgub.dev.components.keyframe.Shake
 import carlosgub.dev.components.styles.font.bold
 import carlosgub.dev.components.styles.font.light
-import carlosgub.dev.components.styles.font.regular
 import carlosgub.dev.components.theme.WebColors
 import com.varabyte.kobweb.compose.css.TextDecorationLine
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.silk.components.animation.toAnimation
-import com.varabyte.kobweb.silk.components.style.*
-import com.varabyte.kobweb.silk.components.style.breakpoint.Breakpoint
+import com.varabyte.kobweb.silk.style.CssStyle
+import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
+import com.varabyte.kobweb.silk.style.selectors.active
+import com.varabyte.kobweb.silk.style.selectors.hover
+import com.varabyte.kobweb.silk.style.selectors.link
+import com.varabyte.kobweb.silk.style.selectors.visited
 import org.jetbrains.compose.web.css.*
 
-val ExperienceSectionStyle by ComponentStyle {
+val ExperienceSectionStyle = CssStyle {
     base {
         Modifier
             .width(100.percent)
@@ -39,7 +42,7 @@ val ExperienceSectionStyle by ComponentStyle {
     }
 }
 
-val ReadMyResumeStyle by ComponentStyle {
+val ReadMyResumeStyle = CssStyle {
     base {
         Modifier
             .margin(top = 16.px)
@@ -60,7 +63,7 @@ val ReadMyResumeStyle by ComponentStyle {
     }
 }
 
-val CompanyLink by ComponentStyle {
+val CompanyLink = CssStyle {
     base {
         Modifier
             .color(WebColors.Blue)
@@ -93,7 +96,7 @@ val CompanyLink by ComponentStyle {
     }
 }
 
-val PExperienceStyle by ComponentStyle {
+val PExperienceStyle = CssStyle{
     base {
         Modifier
             .light()

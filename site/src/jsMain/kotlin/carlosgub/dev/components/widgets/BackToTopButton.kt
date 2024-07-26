@@ -10,13 +10,12 @@ import com.stevdza.san.kotlinbs.models.button.ButtonSize
 import com.varabyte.kobweb.compose.css.PointerEvents
 import com.varabyte.kobweb.compose.css.Visibility
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
-import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.silk.components.animation.toAnimation
-import com.varabyte.kobweb.silk.components.style.toModifier
+import com.varabyte.kobweb.silk.style.toModifier
 import kotlinx.browser.document
 import kotlinx.browser.window
 import org.jetbrains.compose.web.css.AnimationTimingFunction

@@ -7,11 +7,11 @@ import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.color
 import com.varabyte.kobweb.compose.ui.modifiers.fontSize
 import com.varabyte.kobweb.compose.ui.styleModifier
-import com.varabyte.kobweb.silk.components.style.*
-import com.varabyte.kobweb.silk.components.style.breakpoint.Breakpoint
+import com.varabyte.kobweb.silk.style.CssStyle
+import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import org.jetbrains.compose.web.css.cssRem
 
-val LinkStyle by ComponentStyle {
+val LinkStyle = CssStyle {
     base {
         Modifier
             .fontSize(1.25.cssRem)
@@ -23,24 +23,24 @@ val LinkStyle by ComponentStyle {
                 property("text-underline-offset", "0.1em")
             }
     }
-    hover {
+    cssRule(":hover") {
         Modifier.color(WebColors.Blue)
             .styleModifier {
                 property("text-decoration-color", "rgba(0,123,255, 1)")
             }
     }
-    link {
+    cssRule(":link") {
         Modifier.color(WebColors.Blue)
     }
-    active {
+    cssRule(":active") {
         Modifier.color(WebColors.Blue)
     }
-    visited {
+    cssRule(":visited") {
         Modifier.color(WebColors.Blue)
     }
 }
 
-val LinkTalkStyle by ComponentStyle {
+val LinkTalkStyle = CssStyle {
     base {
         Modifier
             .fontSize(0.85.cssRem)

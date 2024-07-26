@@ -5,14 +5,14 @@ import com.varabyte.kobweb.compose.dom.ElementRefScope
 import com.varabyte.kobweb.compose.dom.registerRefScope
 import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.modifiers.fontSize
+import com.varabyte.kobweb.compose.ui.modifiers.ariaLabel
 import com.varabyte.kobweb.compose.ui.modifiers.setVariable
 import com.varabyte.kobweb.compose.ui.thenIf
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.forms.*
-import com.varabyte.kobweb.silk.components.style.ComponentVariant
-import com.varabyte.kobweb.silk.components.style.common.DisabledStyle
-import com.varabyte.kobweb.silk.components.style.toModifier
+import com.varabyte.kobweb.silk.style.CssStyleVariant
+import com.varabyte.kobweb.silk.style.common.DisabledStyle
+import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import com.varabyte.kobweb.silk.theme.colors.ColorScheme
 import com.varabyte.kobweb.silk.theme.colors.palette.Palette
@@ -24,7 +24,6 @@ import org.jetbrains.compose.web.css.minus
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.dom.Label
-import org.jetbrains.compose.web.dom.Text
 import org.w3c.dom.HTMLElement
 
 internal fun SwitchShape.toModifier() = Modifier
@@ -63,7 +62,7 @@ fun Switch(
     checked: Boolean,
     onCheckedChange: (Boolean) -> Unit,
     modifier: Modifier = Modifier,
-    variant: ComponentVariant? = null,
+    variant: CssStyleVariant<SwitchKind>? = null,
     enabled: Boolean = true,
     size: SwitchSize = SwitchSize.MD,
     shape: SwitchShape = SwitchShape.PILL,
@@ -77,13 +76,11 @@ fun Switch(
     // Use a label so it intercepts clicks and passes them to the inner Input
     Label(
         attrs = SwitchStyle.toModifier(variant)
-            .fontSize(0.px)
             .then(size.toModifier())
             .then(shape.toModifier())
             .then(modifier)
             .toAttrs()
     ) {
-        Text("Switch")
         registerRefScope(ref)
         // We base Switch on a checkbox input for a11y + built-in input/keyboard support, but hide the checkbox itself
         // and render the switch separately. We do however allow it to be focused, which combined with the outer label
@@ -94,6 +91,8 @@ fun Switch(
             onValueChanged = { onCheckedChange(!checked) },
             variant = SwitchInputVariant,
             enabled = enabled,
+            modifier = Modifier
+                .ariaLabel("switch")
         )
         Box(
             SwitchTrackStyle.toModifier()
@@ -110,7 +109,7 @@ fun Switch(
                 SwitchThumbStyle.toModifier()
                     .setVariable(
                         SwitchVars.ThumbOffset,
-                        if (checked) size.width - size.height else 0.percent
+                        if (checked) SwitchVars.TrackWidth.value() - SwitchVars.TrackHeight.value() else 0.percent
                     )
             )
         }

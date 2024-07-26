@@ -2,13 +2,13 @@ package carlosgub.dev.components.styles
 
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
-import com.varabyte.kobweb.silk.components.animation.Keyframes
-import com.varabyte.kobweb.silk.components.animation.toAnimation
-import com.varabyte.kobweb.silk.components.style.ComponentStyle
-import com.varabyte.kobweb.silk.components.style.breakpoint.Breakpoint
+import com.varabyte.kobweb.silk.style.CssStyle
+import com.varabyte.kobweb.silk.style.animation.Keyframes
+import com.varabyte.kobweb.silk.style.animation.toAnimation
+import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import org.jetbrains.compose.web.css.*
 
-val IntroContainerKeyFrames by Keyframes {
+val IntroContainerKeyFrames = Keyframes {
     0.percent {
         Modifier
             .margin(top = 50.px)
@@ -21,7 +21,7 @@ val IntroContainerKeyFrames by Keyframes {
     }
 }
 
-val IntroSectionStyle by ComponentStyle {
+val IntroSectionStyle = CssStyle {
     base {
         Modifier
             .width(100.percent)

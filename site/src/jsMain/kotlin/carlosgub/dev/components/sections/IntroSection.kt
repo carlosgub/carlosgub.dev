@@ -11,7 +11,6 @@ import carlosgub.dev.components.styles.components.H6Style
 import carlosgub.dev.components.styles.components.LinkStyle
 import carlosgub.dev.components.styles.font.bold
 import carlosgub.dev.components.theme.WebColors.colorOppositeValue
-import carlosgub.dev.components.widgets.Switch
 import com.stevdza.san.kotlinbs.components.BSIcon
 import com.stevdza.san.kotlinbs.icons.BSIcons
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
@@ -27,6 +26,7 @@ import com.varabyte.kobweb.compose.ui.modifiers.padding
 import com.varabyte.kobweb.compose.ui.modifiers.width
 import com.varabyte.kobweb.core.isExporting
 import com.varabyte.kobweb.core.rememberPageContext
+import com.varabyte.kobweb.silk.components.forms.Switch
 import com.varabyte.kobweb.silk.components.navigation.Link
 import com.varabyte.kobweb.silk.components.text.SpanText
 import com.varabyte.kobweb.silk.style.toAttrs
@@ -79,7 +79,7 @@ fun IntroSection() {
                 }
                 Row(
                     modifier = H6Style
-                        .toModifier()
+                        .toModifier(),
                 ) {
                     SpanText("Get in touch ")
                     Link(

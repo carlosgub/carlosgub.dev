@@ -14,7 +14,7 @@ import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
-import com.varabyte.kobweb.silk.components.animation.toAnimation
+import com.varabyte.kobweb.silk.style.animation.toAnimation
 import com.varabyte.kobweb.silk.style.toModifier
 import kotlinx.browser.document
 import kotlinx.browser.window
@@ -57,7 +57,7 @@ fun BackToTopButton() {
                     if (show) {
                         Modifier.animation(
                             FadeInKeyFrames.toAnimation(
-                                null,
+                                colorMode = null,
                                 duration = 1.5.s,
                                 timingFunction = AnimationTimingFunction.EaseInOut
                             )

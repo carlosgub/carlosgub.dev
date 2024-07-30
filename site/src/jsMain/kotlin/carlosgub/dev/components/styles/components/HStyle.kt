@@ -59,12 +59,7 @@ val H6Style = CssStyle {
         Modifier
             .light()
             .textAlign(TextAlign.Start)
-            .fontSize(1.cssRem)
-
-    }
-
-    Breakpoint.LG {
-        Modifier
             .fontSize(1.25.cssRem)
+
     }
 }

@@ -10,7 +10,10 @@ import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.styleModifier
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.base
+import com.varabyte.kobweb.silk.style.selectors.active
 import com.varabyte.kobweb.silk.style.selectors.hover
+import com.varabyte.kobweb.silk.style.selectors.link
+import com.varabyte.kobweb.silk.style.selectors.visited
 import org.jetbrains.compose.web.css.cssRem
 
 val FooterStyle = CssStyle.base {
@@ -48,17 +51,17 @@ val DevelopedByLink = CssStyle {
             .fontSize(1.cssRem)
     }
 
-    cssRule(":link") {
+    link {
         Modifier
             .color(colorOpposite.value())
             .textDecorationLine(TextDecorationLine.None)
     }
-    cssRule(":active") {
+    active {
         Modifier
             .color(colorOpposite.value())
             .textDecorationLine(TextDecorationLine.None)
     }
-    cssRule(":visited") {
+    visited {
         Modifier
             .color(colorOpposite.value())
             .textDecorationLine(TextDecorationLine.None)

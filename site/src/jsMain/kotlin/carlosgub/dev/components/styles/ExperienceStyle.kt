@@ -7,8 +7,8 @@ import carlosgub.dev.components.theme.WebColors
 import com.varabyte.kobweb.compose.css.TextDecorationLine
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
-import com.varabyte.kobweb.silk.components.animation.toAnimation
 import com.varabyte.kobweb.silk.style.CssStyle
+import com.varabyte.kobweb.silk.style.animation.toAnimation
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.selectors.active
 import com.varabyte.kobweb.silk.style.selectors.hover
@@ -55,7 +55,7 @@ val ReadMyResumeStyle = CssStyle {
         Modifier
             .animation(
                 Shake.toAnimation(
-                    colorMode,
+                    colorMode = colorMode,
                     duration = 800.ms,
                     timingFunction = AnimationTimingFunction.EaseInOut
                 )
@@ -96,7 +96,7 @@ val CompanyLink = CssStyle {
     }
 }
 
-val PExperienceStyle = CssStyle{
+val PExperienceStyle = CssStyle {
     base {
         Modifier
             .light()

@@ -3,11 +3,11 @@ package carlosgub.dev.components.keyframe
 import carlosgub.dev.components.theme.WebColors.colorOpposite
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
-import com.varabyte.kobweb.silk.components.animation.Keyframes
+import com.varabyte.kobweb.silk.style.animation.Keyframes
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
 
-val FadeInKeyFrames by Keyframes {
+val FadeInKeyFrames = Keyframes {
     0.percent {
         Modifier
             .opacity(0.1)
@@ -18,7 +18,7 @@ val FadeInKeyFrames by Keyframes {
     }
 }
 
-val Shake by Keyframes {
+val Shake = Keyframes {
     0.percent {
         Modifier.margin(
             left = 0.px,
@@ -39,15 +39,15 @@ val Shake by Keyframes {
     }
 }
 
-val WidthKeyFrames by Keyframes {
+val WidthKeyFrames = Keyframes {
     0.percent {
         Modifier
-            .background(colorOpposite.value())
+            .backgroundColor(colorOpposite.value())
             .fillMaxWidth()
     }
     100.percent {
         Modifier
-            .background(colorOpposite.value())
+            .backgroundColor(colorOpposite.value())
             .width(0.px)
     }
 }

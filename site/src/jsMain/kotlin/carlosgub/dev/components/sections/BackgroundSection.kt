@@ -5,7 +5,6 @@ import carlosgub.dev.components.keyframe.FadeInKeyFrames
 import carlosgub.dev.components.models.Section
 import carlosgub.dev.components.styles.BackgroundSectionStyle
 import carlosgub.dev.components.styles.components.H3Style
-import carlosgub.dev.components.styles.components.LinkStyle
 import carlosgub.dev.components.styles.components.PStyle
 import carlosgub.dev.components.styles.components.UlStyle
 import carlosgub.dev.components.styles.font.bold
@@ -19,10 +18,9 @@ import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.toAttrs
-import com.varabyte.kobweb.silk.components.animation.toAnimation
-import com.varabyte.kobweb.silk.components.navigation.Link
-import com.varabyte.kobweb.silk.components.style.toModifier
+import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.components.text.SpanText
+import com.varabyte.kobweb.silk.style.animation.toAnimation
 import org.jetbrains.compose.web.css.AnimationTimingFunction
 import org.jetbrains.compose.web.css.ms
 import org.jetbrains.compose.web.css.px
@@ -47,7 +45,7 @@ fun BackgroundSection() {
                 if (visible) {
                     Modifier.animation(
                         FadeInKeyFrames.toAnimation(
-                            null,
+                            colorMode = null,
                             duration = 800.ms,
                             timingFunction = AnimationTimingFunction.EaseInOut
                         )

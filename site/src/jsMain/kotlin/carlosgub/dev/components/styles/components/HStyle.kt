@@ -1,17 +1,15 @@
 package carlosgub.dev.components.styles.components
 
 import carlosgub.dev.components.styles.font.light
-import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.css.TextAlign
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.fontSize
-import com.varabyte.kobweb.compose.ui.modifiers.fontWeight
 import com.varabyte.kobweb.compose.ui.modifiers.textAlign
-import com.varabyte.kobweb.silk.components.style.ComponentStyle
-import com.varabyte.kobweb.silk.components.style.breakpoint.Breakpoint
+import com.varabyte.kobweb.silk.style.CssStyle
+import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import org.jetbrains.compose.web.css.cssRem
 
-val H1Style by ComponentStyle {
+val H1Style = CssStyle {
     base {
         Modifier
             .light()
@@ -26,22 +24,22 @@ val H1Style by ComponentStyle {
     }
 }
 
-val H2Style by ComponentStyle {
+val H2Style = CssStyle {
     base {
         Modifier
             .light()
             .textAlign(TextAlign.Start)
-            .fontSize(1.75.cssRem)
+            .fontSize(2.5.cssRem)
 
     }
 
-    Breakpoint.LG {
+    Breakpoint.MD {
         Modifier
             .fontSize(2.5.cssRem)
     }
 }
 
-val H3Style by ComponentStyle {
+val H3Style = CssStyle {
     base {
         Modifier
             .light()
@@ -56,17 +54,12 @@ val H3Style by ComponentStyle {
     }
 }
 
-val H6Style by ComponentStyle {
+val H6Style = CssStyle {
     base {
         Modifier
             .light()
             .textAlign(TextAlign.Start)
-            .fontSize(1.cssRem)
-
-    }
-
-    Breakpoint.LG {
-        Modifier
             .fontSize(1.25.cssRem)
+
     }
 }

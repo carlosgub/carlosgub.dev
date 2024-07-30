@@ -1,15 +1,13 @@
 package carlosgub.dev.components.styles.components
 
 import carlosgub.dev.components.styles.font.regular
-import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.fontSize
-import com.varabyte.kobweb.compose.ui.modifiers.fontWeight
-import com.varabyte.kobweb.silk.components.style.ComponentStyle
-import com.varabyte.kobweb.silk.components.style.breakpoint.Breakpoint
+import com.varabyte.kobweb.silk.style.CssStyle
+import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import org.jetbrains.compose.web.css.cssRem
 
-val UlStyle by ComponentStyle {
+val UlStyle = CssStyle {
     base {
         Modifier
             .regular()

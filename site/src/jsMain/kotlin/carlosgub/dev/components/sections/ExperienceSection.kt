@@ -31,14 +31,16 @@ import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.toAttrs
-import com.varabyte.kobweb.silk.components.animation.toAnimation
 import com.varabyte.kobweb.silk.components.layout.HorizontalDivider
-import com.varabyte.kobweb.silk.components.navigation.Link
-import com.varabyte.kobweb.silk.components.style.toAttrs
-import com.varabyte.kobweb.silk.components.style.toModifier
 import com.varabyte.kobweb.silk.components.text.SpanText
+import com.varabyte.kobweb.silk.style.animation.toAnimation
+import com.varabyte.kobweb.silk.style.toAttrs
+import com.varabyte.kobweb.silk.style.toModifier
 import org.jetbrains.compose.web.css.*
-import org.jetbrains.compose.web.dom.*
+import org.jetbrains.compose.web.dom.A
+import org.jetbrains.compose.web.dom.H3
+import org.jetbrains.compose.web.dom.P
+import org.jetbrains.compose.web.dom.Text
 
 @Composable
 fun ExperienceSection() {
@@ -110,7 +112,7 @@ private fun SlidingContainersItem(
                 if (visible.value) {
                     Modifier.animation(
                         WidthKeyFrames.toAnimation(
-                            null,
+                            colorMode = null,
                             duration = 600.ms,
                             timingFunction = AnimationTimingFunction.Linear,
                             delay = (position * 100).ms,

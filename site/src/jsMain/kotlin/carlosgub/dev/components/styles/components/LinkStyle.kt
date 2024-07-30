@@ -7,11 +7,17 @@ import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.color
 import com.varabyte.kobweb.compose.ui.modifiers.fontSize
 import com.varabyte.kobweb.compose.ui.styleModifier
-import com.varabyte.kobweb.silk.components.style.*
-import com.varabyte.kobweb.silk.components.style.breakpoint.Breakpoint
+import com.varabyte.kobweb.silk.style.CssLayer
+import com.varabyte.kobweb.silk.style.CssStyle
+import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
+import com.varabyte.kobweb.silk.style.selectors.active
+import com.varabyte.kobweb.silk.style.selectors.hover
+import com.varabyte.kobweb.silk.style.selectors.link
+import com.varabyte.kobweb.silk.style.selectors.visited
 import org.jetbrains.compose.web.css.cssRem
 
-val LinkStyle by ComponentStyle {
+@CssLayer("")
+val LinkStyle = CssStyle {
     base {
         Modifier
             .fontSize(1.25.cssRem)
@@ -40,7 +46,8 @@ val LinkStyle by ComponentStyle {
     }
 }
 
-val LinkTalkStyle by ComponentStyle {
+@CssLayer("")
+val LinkTalkStyle = CssStyle {
     base {
         Modifier
             .fontSize(0.85.cssRem)

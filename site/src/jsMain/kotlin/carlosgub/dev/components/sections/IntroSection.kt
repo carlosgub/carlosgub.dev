@@ -13,6 +13,7 @@ import carlosgub.dev.components.styles.font.bold
 import carlosgub.dev.components.theme.WebColors.colorOppositeValue
 import com.stevdza.san.kotlinbs.components.BSIcon
 import com.stevdza.san.kotlinbs.icons.BSIcons
+import com.varabyte.kobweb.compose.css.WordBreak
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Column
@@ -20,10 +21,7 @@ import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.graphics.Colors
-import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
-import com.varabyte.kobweb.compose.ui.modifiers.margin
-import com.varabyte.kobweb.compose.ui.modifiers.padding
-import com.varabyte.kobweb.compose.ui.modifiers.width
+import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.core.isExporting
 import com.varabyte.kobweb.core.rememberPageContext
 import com.varabyte.kobweb.silk.components.forms.Switch
@@ -86,6 +84,7 @@ fun IntroSection() {
                         path = "mailto:carlosgub.dev@gmail.com",
                         text = "carlosgub.dev@gmail.com",
                         modifier = LinkStyle.toModifier()
+                            .wordBreak(WordBreak.BreakAll)
                     )
                 }
             }

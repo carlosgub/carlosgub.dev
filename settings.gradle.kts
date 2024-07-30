@@ -6,6 +6,6 @@ pluginManagement {
     }
 }
 
-rootProject.name = "dev"
+rootProject.name="carlosgub.dev"
 
 include(":site")

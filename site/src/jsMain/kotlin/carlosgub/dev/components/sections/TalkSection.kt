@@ -25,10 +25,7 @@ import com.varabyte.kobweb.silk.style.toModifier
 import org.jetbrains.compose.web.css.AnimationTimingFunction
 import org.jetbrains.compose.web.css.ms
 import org.jetbrains.compose.web.css.px
-import org.jetbrains.compose.web.dom.H3
-import org.jetbrains.compose.web.dom.Li
-import org.jetbrains.compose.web.dom.Text
-import org.jetbrains.compose.web.dom.Ul
+import org.jetbrains.compose.web.dom.*
 
 @Composable
 fun TalkSection() {
@@ -92,8 +89,13 @@ private fun TalkContent() {
             .toAttrs()
     ) {
         Li {
+            I(
+                attrs = Modifier
+                    .classNames("em", "em-flag-pe")
+                    .ariaLabel("Peru Flag").toAttrs()
+            )
             Text(
-                "\uD83C\uDDF5\uD83C\uDDEA Android Dev Peru #61 - How create your first website w/ kobweb - "
+                " Android Dev Peru #61 - How create your first website w/ kobweb - "
             )
             Link(
                 path = "/presentation/create-kobweb",
@@ -116,8 +118,13 @@ private fun TalkContent() {
             )
         }
         Li {
+            I(
+                attrs = Modifier
+                    .classNames("em", "em-flag-pe")
+                    .ariaLabel("Peru Flag").toAttrs()
+            )
             Text(
-                "\uD83C\uDDF5\uD83C\uDDEA GDG DevFest 2023 - How Implement Firestore in Kotlin Multiplatform Mobile - "
+                " GDG DevFest 2023 - How Implement Firestore in Kotlin Multiplatform Mobile - "
             )
             Link(
                 path = "/presentation/firestore-kmm",
@@ -140,7 +147,12 @@ private fun TalkContent() {
             )
         }
         Li {
-            Text("\uD83C\uDDEE\uD83C\uDDF3 2021 5th ICOEI - Blockchain and smart contract for donation traceability - ")
+            I(
+                attrs = Modifier
+                    .classNames("em", "em-flag-in")
+                    .ariaLabel("India Flag").toAttrs()
+            )
+            Text(" 2021 5th ICOEI - Blockchain and smart contract for donation traceability - ")
             Link(
                 path = "https://ieeexplore.ieee.org/document/9453016/",
                 text = "paper",
@@ -153,46 +165,116 @@ private fun TalkContent() {
         }
 
         Li {
-            Text("\uD83C\uDDF5\uD83C\uDDEA Firebase Peru #6 2020 - Firebase ML Kit Barcode w/ Camera X")
+            I(
+                attrs = Modifier
+                    .classNames("em", "em-flag-pe")
+                    .ariaLabel("Peru Flag").toAttrs()
+            )
+            Text(" Firebase Peru #6 2020 - Firebase ML Kit Barcode w/ Camera X")
         }
         Li {
-            Text("\uD83C\uDDF5\uD83C\uDDEA GDG DevFest 2019 - AutoML Vision Edge")
+            I(
+                attrs = Modifier
+                    .classNames("em", "em-flag-pe")
+                    .ariaLabel("Peru Flag").toAttrs()
+            )
+            Text(" GDG DevFest 2019 - AutoML Vision Edge")
         }
         Li {
-            Text("\uD83C\uDDF5\uD83C\uDDEA Firebase Peru #5 2019 - Realtime chat w/ Firestore")
+            I(
+                attrs = Modifier
+                    .classNames("em", "em-flag-pe")
+                    .ariaLabel("Peru Flag").toAttrs()
+            )
+            Text(" Firebase Peru #5 2019 - Realtime chat w/ Firestore")
         }
         Li {
-            Text("\uD83C\uDDF5\uD83C\uDDEA Kotlin Everywhere Lima 2019 - Kotlin DSL")
+            I(
+                attrs = Modifier
+                    .classNames("em", "em-flag-pe")
+                    .ariaLabel("Peru Flag").toAttrs()
+            )
+            Text(" Kotlin Everywhere Lima 2019 - Kotlin DSL")
         }
         Li {
-            Text("\uD83C\uDDF5\uD83C\uDDEA Firebase Day 2019 - Realtime chat w/ Firestore.")
+            I(
+                attrs = Modifier
+                    .classNames("em", "em-flag-pe")
+                    .ariaLabel("Peru Flag").toAttrs()
+            )
+            Text(" Firebase Day 2019 - Realtime chat w/ Firestore.")
         }
         Li {
-            Text("\uD83C\uDDF5\uD83C\uDDEA GDG Open MeetupMobile #2 2019 - AutoML Vision Edge")
+            I(
+                attrs = Modifier
+                    .classNames("em", "em-flag-pe")
+                    .ariaLabel("Peru Flag").toAttrs()
+            )
+            Text(" GDG Open MeetupMobile #2 2019 - AutoML Vision Edge")
         }
         Li {
-            Text("\uD83C\uDDF5\uD83C\uDDEA IO Extended Lima 2019 - Reconocimiento de Objetos en tiempo real con MLKit")
+            I(
+                attrs = Modifier
+                    .classNames("em", "em-flag-pe")
+                    .ariaLabel("Peru Flag").toAttrs()
+            )
+            Text(" IO Extended Lima 2019 - Reconocimiento de Objetos en tiempo real con MLKit")
         }
         Li {
-            Text("\uD83C\uDDF5\uD83C\uDDEA Firebase Perú #4 2019 - Firebase AutoML Vision Edge")
+            I(
+                attrs = Modifier
+                    .classNames("em", "em-flag-pe")
+                    .ariaLabel("Peru Flag").toAttrs()
+            )
+            Text(" Firebase Perú #4 2019 - Firebase AutoML Vision Edge")
         }
         Li {
-            Text("\uD83C\uDDF5\uD83C\uDDEA Firebase Perú #2 2019 - Firebase Analytics, migrando de GA a FA.")
+            I(
+                attrs = Modifier
+                    .classNames("em", "em-flag-pe")
+                    .ariaLabel("Peru Flag").toAttrs()
+            )
+            Text(" Firebase Perú #2 2019 - Firebase Analytics, migrando de GA a FA.")
         }
         Li {
-            Text("\uD83C\uDDF5\uD83C\uDDEA Firebase Perú #1 2019 - Reconocimiento Facial con ML KIT")
+            I(
+                attrs = Modifier
+                    .classNames("em", "em-flag-pe")
+                    .ariaLabel("Peru Flag").toAttrs()
+            )
+            Text(" Firebase Perú #1 2019 - Reconocimiento Facial con ML KIT")
         }
         Li {
-            Text("\uD83C\uDDF5\uD83C\uDDEA GDG Lima 2018 - Android App Bundle Dynamic Delivery")
+            I(
+                attrs = Modifier
+                    .classNames("em", "em-flag-pe")
+                    .ariaLabel("Peru Flag").toAttrs()
+            )
+            Text(" GDG Lima 2018 - Android App Bundle Dynamic Delivery")
         }
         Li {
-            Text("\uD83C\uDDF5\uD83C\uDDEA Android Dev Perú MeetUp #19 2018 - Reconocimiento Facial con ML KIT")
+            I(
+                attrs = Modifier
+                    .classNames("em", "em-flag-pe")
+                    .ariaLabel("Peru Flag").toAttrs()
+            )
+            Text(" Android Dev Perú MeetUp #19 2018 - Reconocimiento Facial con ML KIT")
         }
         Li {
-            Text("\uD83C\uDDF5\uD83C\uDDEA Google I/O Extended 18 - Creando un cuarto inteligente con Android Things")
+            I(
+                attrs = Modifier
+                    .classNames("em", "em-flag-pe")
+                    .ariaLabel("Peru Flag").toAttrs()
+            )
+            Text(" Google I/O Extended 18 - Creando un cuarto inteligente con Android Things")
         }
         Li {
-            Text("\uD83C\uDDF5\uD83C\uDDEA Android Dev Perú MeetUp #18 2018 - Android Things Example")
+            I(
+                attrs = Modifier
+                    .classNames("em", "em-flag-pe")
+                    .ariaLabel("Peru Flag").toAttrs()
+            )
+            Text(" Android Dev Perú MeetUp #18 2018 - Android Things Example")
         }
     }
 }

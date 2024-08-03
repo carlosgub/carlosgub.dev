@@ -3,6 +3,15 @@ package carlosgub.dev.components.models
 enum class Stack(
     val id: String
 ) {
+    Android(
+        id = "Android",
+    ),
+    IOS(
+        id = "IOS",
+    ),
+    KMP(
+        id = "Kotlin Multiplatform",
+    ),
     Kotlin(
         id = "Kotlin",
     ),

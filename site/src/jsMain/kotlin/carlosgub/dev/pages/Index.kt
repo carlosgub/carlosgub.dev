@@ -33,6 +33,7 @@ fun HomePage() {
             IntroSection()
             BackgroundSection()
             ExperienceSection()
+            ProjectsSection(breakpoint)
             TalkSection()
             Footer(breakpoint)
         }

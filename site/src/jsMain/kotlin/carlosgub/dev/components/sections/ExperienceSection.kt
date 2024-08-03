@@ -10,9 +10,9 @@ import carlosgub.dev.components.models.Stack
 import carlosgub.dev.components.styles.CompanyLink
 import carlosgub.dev.components.styles.ExperienceSectionStyle
 import carlosgub.dev.components.styles.PExperienceStyle
-import carlosgub.dev.components.styles.ReadMyResumeStyle
 import carlosgub.dev.components.styles.components.H3Style
 import carlosgub.dev.components.styles.components.H6Style
+import carlosgub.dev.components.styles.components.MovingText
 import carlosgub.dev.components.styles.components.PStyle
 import carlosgub.dev.components.styles.font.bold
 import carlosgub.dev.components.styles.font.light
@@ -159,7 +159,7 @@ private fun ExperienceContent() {
     )
     A(
         href = "/resume.pdf",
-        attrs = ReadMyResumeStyle
+        attrs = MovingText
             .toAttrs()
 
     ) {

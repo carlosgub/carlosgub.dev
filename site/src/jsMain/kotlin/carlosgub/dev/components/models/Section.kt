@@ -12,8 +12,8 @@ enum class Section(
     Service(
         id = "service"
     ),
-    Portfolio(
-        id = "portfolio"
+    Projects(
+        id = "projects"
     ),
     Experience(
         id = "experience"

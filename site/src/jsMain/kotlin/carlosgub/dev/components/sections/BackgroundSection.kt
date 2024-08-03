@@ -92,19 +92,22 @@ private fun BackgroundContent() {
                     "Android app development with Kotlin and Java. With seven years of experience, I've led " +
                     "teams in various industries including banking, education, e-commerce, and media."
         )
-        P()
+        Br()
+        Br()
         Text(
             "I'm an Android enthusiast who thrives on exploring emerging technologies and staying " +
                     "at the cutting edge of the field. Let's collaborate to bring innovative " +
                     "Android solutions to life!"
         )
-        P()
+        Br()
+        Br()
         Text(
             "If you're seeking a Senior Software Engineer with a deep passion for Android development, " +
                     "a track record of leadership, and a commitment to staying ahead of the curve, I'd love " +
                     "to connect and discuss how I can bring my skills and enthusiasm to your next project."
         )
-        P()
+        Br()
+        Br()
         Text("Here are a few technologies I’ve been working recently:")
         Row(
             modifier = Modifier

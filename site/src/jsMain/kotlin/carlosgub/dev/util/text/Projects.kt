@@ -11,3 +11,12 @@ val piggyBankStack = listOf(
     Stack.Android,
     Stack.IOS,
 )
+val personalWebDescription = "Creating carlosgub.dev was a journey of blending creativity with technical precision, " +
+        "entirely powered by Kotlin. The frontend was built using Kobweb and Kotlin Multiplatform, " +
+        "a powerful framework that integrates Kotlin into the web development process, enabling the creation " +
+        "of dynamic and interactive user interfaces. This combination allowed for a unified development experience, " +
+        "with all components written in Kotlin."
+val personalWebsiteStack = listOf(
+    Stack.KMP,
+    Stack.Kobweb,
+)

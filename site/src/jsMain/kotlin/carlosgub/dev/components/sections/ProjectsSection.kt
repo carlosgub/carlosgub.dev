@@ -11,6 +11,8 @@ import carlosgub.dev.components.styles.components.H3Style
 import carlosgub.dev.components.styles.font.bold
 import carlosgub.dev.components.theme.WebColors
 import carlosgub.dev.util.ObserveViewportEntered
+import carlosgub.dev.util.text.personalWebDescription
+import carlosgub.dev.util.text.personalWebsiteStack
 import carlosgub.dev.util.text.piggyBankDescription
 import carlosgub.dev.util.text.piggyBankStack
 import com.stevdza.san.kotlinbs.components.BSBadge
@@ -98,11 +100,13 @@ private fun ProjectsContent(breakpoint: Breakpoint) {
 @Composable
 private fun ProjectsHorizontal() {
     PiggyBankHorizontal()
+    PersonalWebsiteHorizontal()
 }
 
 @Composable
 private fun ProjectsVertical() {
     PiggyBankVertical()
+    PersonalWebsiteVertical()
 }
 
 @Composable
@@ -111,15 +115,32 @@ private fun PiggyBankHorizontal() {
         modifier = ProjectContentStyle.toModifier(),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Image(
-            src = "/piggybank_project.png",
-            alt = "Piggy Bank Banner Project",
-            modifier = Modifier
-                .fillMaxWidth(50.percent)
+        ImageHorizontal(
+            src = "/piggybank_project.jpg",
+            alt = "Piggy Bank Banner Project"
         )
         PiggyBankText(
             modifier = Modifier
                 .fillMaxWidth(50.percent)
+        )
+    }
+}
+
+
+@Composable
+private fun PersonalWebsiteHorizontal() {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth(),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        PersonalWebsiteText(
+            modifier = Modifier
+                .fillMaxWidth(50.percent)
+        )
+        ImageHorizontal(
+            src = "/carlosgub_project.jpg",
+            alt = "Personal Website Banner Project"
         )
     }
 }
@@ -130,12 +151,29 @@ private fun PiggyBankVertical() {
         modifier = ProjectContentStyle.toModifier(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Image(
-            src = "/piggybank_project.png",
+        ImageVertical(
+            src = "/piggybank_project.jpg",
+            alt = "Piggy Bank Banner Image"
+        )
+        PiggyBankText(
             modifier = Modifier
                 .fillMaxWidth()
         )
-        PiggyBankText(
+    }
+}
+
+@Composable
+private fun PersonalWebsiteVertical() {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth(),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        ImageVertical(
+            "/carlosgub_project.jpg",
+            "Personal Website Banner Project"
+        )
+        PersonalWebsiteText(
             modifier = Modifier
                 .fillMaxWidth()
         )
@@ -210,6 +248,63 @@ private fun PiggyBankText(
 }
 
 @Composable
+private fun PersonalWebsiteText(
+    modifier: Modifier
+) {
+    Column(
+        modifier = modifier
+            .then(ProjectContentTextStyle.toModifier()),
+        verticalArrangement = Arrangement.Center
+    ) {
+        Row(
+            modifier = Modifier
+                .display(DisplayStyle.InlineBlock)
+                .fillMaxWidth(),
+            horizontalArrangement = Arrangement.Center
+        ) {
+            personalWebsiteStack.forEach { stack ->
+                ProjectChip(stack.id)
+            }
+        }
+        H3(
+            attrs = H3Style
+                .toModifier()
+                .fillMaxWidth()
+                .textAlign(TextAlign.Start)
+                .bold()
+                .color(WebColors.Blue)
+                .padding(top = 16.px)
+                .toAttrs()
+        ) {
+            SpanText(
+                "Personal website"
+            )
+        }
+        P(
+            attrs = PStyle
+                .toModifier()
+                .padding(top = 16.px)
+                .textAlign(TextAlign.Justify)
+                .toAttrs()
+        ) {
+            Text(
+                personalWebDescription
+            )
+        }
+        A(
+            href = "https://github.com/carlosgub/carlosgub.dev",
+            attrs = MovingText
+                .toAttrs()
+
+        ) {
+            SpanText(
+                "See project →"
+            )
+        }
+    }
+}
+
+@Composable
 private fun ProjectChip(text: String) {
     BSBadge(
         modifier = Modifier
@@ -226,5 +321,32 @@ private fun ProjectChip(text: String) {
         text = text,
         variant = BadgeVariant.Rounded,
         fontFamily = "PPMoriLight"
+    )
+}
+
+@Composable
+private fun ImageHorizontal(
+    src: String,
+    alt: String
+) {
+    Image(
+        src = src,
+        alt = alt,
+        modifier = Modifier
+            .fillMaxWidth(50.percent)
+
+    )
+}
+
+@Composable
+private fun ImageVertical(
+    src: String,
+    alt: String
+) {
+    Image(
+        src = src,
+        alt = alt,
+        modifier = Modifier
+            .fillMaxWidth()
     )
 }

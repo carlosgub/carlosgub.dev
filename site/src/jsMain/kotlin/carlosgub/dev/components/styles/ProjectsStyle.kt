@@ -39,10 +39,7 @@ val ProjectContentStyle = CssStyle {
             .padding(top = 30.px)
     }
     Breakpoint.LG {
-        Modifier
-            .padding(
-                topBottom = 50.px
-            )
+        Modifier.padding(top = 50.px)
     }
 }
 

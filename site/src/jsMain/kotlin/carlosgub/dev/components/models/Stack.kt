@@ -47,5 +47,8 @@ enum class Stack(
     ),
     Rx(
         id = "Rx Kotlin"
+    ),
+    Kobweb(
+        id = "Kobweb"
     )
 }

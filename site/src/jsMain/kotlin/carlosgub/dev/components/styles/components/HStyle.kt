@@ -44,7 +44,7 @@ val H3Style = CssStyle {
         Modifier
             .light()
             .textAlign(TextAlign.Start)
-            .fontSize(1.25.cssRem)
+            .fontSize(1.5.cssRem)
 
     }
 

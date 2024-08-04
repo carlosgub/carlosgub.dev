@@ -42,27 +42,6 @@ val ExperienceSectionStyle = CssStyle {
     }
 }
 
-val ReadMyResumeStyle = CssStyle {
-    base {
-        Modifier
-            .margin(top = 16.px)
-            .color(WebColors.Blue)
-            .fontSize(1.cssRem)
-            .bold()
-            .textDecorationLine(TextDecorationLine.None)
-    }
-    hover {
-        Modifier
-            .animation(
-                Shake.toAnimation(
-                    colorMode = colorMode,
-                    duration = 800.ms,
-                    timingFunction = AnimationTimingFunction.EaseInOut
-                )
-            )
-    }
-}
-
 val CompanyLink = CssStyle {
     base {
         Modifier

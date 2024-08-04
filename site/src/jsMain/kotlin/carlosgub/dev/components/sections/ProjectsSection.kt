@@ -113,6 +113,7 @@ private fun PiggyBankHorizontal() {
     ) {
         Image(
             src = "/piggybank_project.png",
+            alt = "Piggy Bank Banner Project",
             modifier = Modifier
                 .fillMaxWidth(50.percent)
         )
@@ -192,6 +193,7 @@ private fun PiggyBankText(
                 src = "https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png",
                 alt = "Get it on Google Play",
                 modifier = Modifier.height(80.px)
+                    .margin(left = (-13).px)
             )
         }
         A(

@@ -19,7 +19,7 @@ val MovingText = CssStyle {
         Modifier
             .margin(top = 16.px)
             .color(WebColors.Blue)
-            .fontSize(1.cssRem)
+            .fontSize(1.25.cssRem)
             .bold()
             .textDecorationLine(TextDecorationLine.None)
     }

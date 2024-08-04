@@ -4,11 +4,10 @@ import androidx.compose.runtime.*
 import carlosgub.dev.components.keyframe.FadeInKeyFrames
 import carlosgub.dev.components.models.Section
 import carlosgub.dev.components.styles.ProjectContentStyle
+import carlosgub.dev.components.styles.ProjectContentTextStyle
 import carlosgub.dev.components.styles.ProjectsSectionStyle
-import carlosgub.dev.components.styles.components.H1Style
+import carlosgub.dev.components.styles.components.*
 import carlosgub.dev.components.styles.components.H3Style
-import carlosgub.dev.components.styles.components.MovingText
-import carlosgub.dev.components.styles.components.PStyle
 import carlosgub.dev.components.styles.font.bold
 import carlosgub.dev.components.theme.WebColors
 import carlosgub.dev.util.ObserveViewportEntered
@@ -33,10 +32,7 @@ import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.toAttrs
 import com.varabyte.kobweb.silk.style.toModifier
 import org.jetbrains.compose.web.css.*
-import org.jetbrains.compose.web.dom.A
-import org.jetbrains.compose.web.dom.H1
-import org.jetbrains.compose.web.dom.P
-import org.jetbrains.compose.web.dom.Text
+import org.jetbrains.compose.web.dom.*
 
 @Composable
 fun ProjectsSection(breakpoint: Breakpoint) {
@@ -151,10 +147,7 @@ private fun PiggyBankText(
 ) {
     Column(
         modifier = modifier
-            .padding(
-                topBottom = 50.px,
-                leftRight = 80.px
-            ),
+            .then(ProjectContentTextStyle.toModifier()),
         verticalArrangement = Arrangement.Center
     ) {
         Row(
@@ -163,11 +156,11 @@ private fun PiggyBankText(
                 .fillMaxWidth(),
             horizontalArrangement = Arrangement.Center
         ) {
-            piggyBankStack.forEach {stack ->
+            piggyBankStack.forEach { stack ->
                 ProjectChip(stack.id)
             }
         }
-        H1(
+        H3(
             attrs = H3Style
                 .toModifier()
                 .fillMaxWidth()

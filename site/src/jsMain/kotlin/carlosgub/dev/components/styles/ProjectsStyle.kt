@@ -45,3 +45,18 @@ val ProjectContentStyle = CssStyle {
             )
     }
 }
+
+val ProjectContentTextStyle = CssStyle {
+    base {
+        Modifier.padding(
+            topBottom = 50.px,
+            leftRight = 24.px
+        )
+    }
+    Breakpoint.LG {
+        Modifier.padding(
+            topBottom = 50.px,
+            leftRight = 80.px
+        )
+    }
+}

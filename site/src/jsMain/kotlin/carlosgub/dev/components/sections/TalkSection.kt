@@ -24,7 +24,6 @@ import com.varabyte.kobweb.silk.style.animation.toAnimation
 import com.varabyte.kobweb.silk.style.toModifier
 import org.jetbrains.compose.web.css.AnimationTimingFunction
 import org.jetbrains.compose.web.css.ms
-import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.dom.*
 
 @Composable
@@ -85,7 +84,6 @@ private fun TalkContent() {
     Ul(
         attrs = UlStyle
             .toModifier()
-            .margin(left = 24.px)
             .toAttrs()
     ) {
         Li {

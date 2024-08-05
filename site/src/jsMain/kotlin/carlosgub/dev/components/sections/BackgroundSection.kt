@@ -84,7 +84,6 @@ private fun BackgroundContent() {
         attrs = PStyle
             .toModifier()
             .padding(top = 16.px)
-            .textAlign(TextAlign.Justify)
             .toAttrs()
     ) {
         Text(

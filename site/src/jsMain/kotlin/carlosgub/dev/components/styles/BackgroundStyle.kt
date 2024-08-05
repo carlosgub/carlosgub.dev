@@ -16,7 +16,7 @@ val BackgroundSectionStyle = CssStyle {
             .maxWidth(1280.px)
             .padding(
                 topBottom = 30.px,
-                leftRight = 70.px
+                leftRight = 24.px
             )
     }
     Breakpoint.LG {

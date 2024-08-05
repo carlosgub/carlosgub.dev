@@ -217,7 +217,6 @@ private fun PiggyBankText(
             attrs = PStyle
                 .toModifier()
                 .padding(top = 16.px)
-                .textAlign(TextAlign.Justify)
                 .toAttrs()
         ) {
             Text(
@@ -284,7 +283,6 @@ private fun PersonalWebsiteText(
             attrs = PStyle
                 .toModifier()
                 .padding(top = 16.px)
-                .textAlign(TextAlign.Justify)
                 .toAttrs()
         ) {
             Text(

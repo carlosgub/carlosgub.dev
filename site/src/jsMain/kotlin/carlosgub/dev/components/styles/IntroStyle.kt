@@ -29,7 +29,7 @@ val IntroSectionStyle = CssStyle {
             .maxWidth(1440.px)
             .padding(
                 topBottom = 50.px,
-                leftRight = 70.px
+                leftRight = 24.px
             )
             .animation(
                 IntroContainerKeyFrames.toAnimation(

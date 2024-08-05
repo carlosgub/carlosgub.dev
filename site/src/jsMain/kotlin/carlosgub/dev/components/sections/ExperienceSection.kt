@@ -213,7 +213,6 @@ private fun WorkContainer(
                 .toModifier()
                 .margin(bottom = 8.px)
                 .fillMaxWidth()
-                .textAlign(TextAlign.Justify)
                 .toAttrs()
         ) {
             Text(

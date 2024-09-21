@@ -7,8 +7,6 @@ import carlosgub.dev.components.styles.LinkFooterStyle
 import carlosgub.dev.components.styles.components.LinkStyle
 import carlosgub.dev.components.theme.WebColors
 import carlosgub.dev.components.theme.WebColors.colorOpposite
-import com.stevdza.san.kotlinbs.components.BSIcon
-import com.stevdza.san.kotlinbs.icons.BSIcons
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.Row
@@ -16,6 +14,7 @@ import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.toAttrs
+import com.varabyte.kobweb.silk.components.icons.fa.*
 import com.varabyte.kobweb.silk.components.navigation.Link
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.toModifier
@@ -145,10 +144,9 @@ private fun GithubIcon() {
             .ariaLabel("Go to my github")
             .toAttrs(),
     ) {
-        BSIcon(
-            icon = BSIcons.GITHUB,
-            size = 20.px,
-            color = WebColors.Blue
+        FaGithub(
+            size = IconSize.LG,
+            modifier = Modifier.color(WebColors.Blue)
         )
     }
 }
@@ -161,10 +159,9 @@ private fun YoutubeIcon() {
             .ariaLabel("Go to my youtube channel")
             .toAttrs(),
     ) {
-        BSIcon(
-            icon = BSIcons.YOUTUBE,
-            size = 20.px,
-            color = WebColors.Blue
+        FaYoutube(
+            size = IconSize.LG,
+            modifier = Modifier.color(WebColors.Blue)
         )
     }
 }
@@ -177,10 +174,9 @@ private fun TwitterIcon() {
             .ariaLabel("Go to my twitter profile")
             .toAttrs(),
     ) {
-        BSIcon(
-            icon = BSIcons.TWITTER,
-            size = 20.px,
-            color = WebColors.Blue
+        FaTwitter(
+            size = IconSize.LG,
+            modifier = Modifier.color(WebColors.Blue)
         )
     }
 }
@@ -193,10 +189,9 @@ private fun LinkedinIcon() {
             .ariaLabel("Go to my linkedin profile")
             .toAttrs(),
     ) {
-        BSIcon(
-            icon = BSIcons.LINKEDIN,
-            size = 20.px,
-            color = WebColors.Blue
+        FaLinkedin(
+            size = IconSize.LG,
+            modifier = Modifier.color(WebColors.Blue)
         )
     }
 }
@@ -209,10 +204,9 @@ private fun MediumIcon() {
             .ariaLabel("Go to my medium profile")
             .toAttrs(),
     ) {
-        BSIcon(
-            icon = BSIcons.MEDIUM,
-            size = 20.px,
-            color = WebColors.Blue
+        FaMedium(
+            size = IconSize.LG,
+            modifier = Modifier.color(WebColors.Blue)
         )
     }
 }

@@ -11,8 +11,6 @@ import carlosgub.dev.components.styles.components.H6Style
 import carlosgub.dev.components.styles.components.LinkStyle
 import carlosgub.dev.components.styles.font.bold
 import carlosgub.dev.components.theme.WebColors.colorOppositeValue
-import com.stevdza.san.kotlinbs.components.BSIcon
-import com.stevdza.san.kotlinbs.icons.BSIcons
 import com.varabyte.kobweb.compose.css.WordBreak
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Box
@@ -25,12 +23,14 @@ import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.core.isExporting
 import com.varabyte.kobweb.core.rememberPageContext
 import com.varabyte.kobweb.silk.components.forms.Switch
+import com.varabyte.kobweb.silk.components.icons.fa.FaMoon
+import com.varabyte.kobweb.silk.components.icons.fa.FaSun
+import com.varabyte.kobweb.silk.components.icons.fa.IconSize
 import com.varabyte.kobweb.silk.components.navigation.Link
 import com.varabyte.kobweb.silk.components.text.SpanText
 import com.varabyte.kobweb.silk.style.toAttrs
 import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.theme.colors.ColorMode
-import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.dom.H1
@@ -98,10 +98,9 @@ fun IntroSection() {
             horizontalArrangement = Arrangement.End,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            BSIcon(
-                icon = BSIcons.SUN,
-                size = 1.cssRem,
-                color = colorOppositeValue,
+            FaSun(
+                size = IconSize.SM,
+                modifier = Modifier.color(colorOppositeValue)
             )
             Switch(
                 modifier = Modifier
@@ -116,10 +115,9 @@ fun IntroSection() {
                     }
                 },
             )
-            BSIcon(
-                icon = BSIcons.MOON,
-                size = 1.cssRem,
-                color = colorOppositeValue,
+            FaMoon(
+                size = IconSize.SM,
+                modifier = Modifier.color(colorOppositeValue)
             )
         }
     }

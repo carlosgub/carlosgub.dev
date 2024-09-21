@@ -79,7 +79,9 @@ val PExperienceStyle = CssStyle {
     base {
         Modifier
             .light()
+            .margin(bottom = 8.px)
             .fontSize(0.9.cssRem)
+            .lineHeight(1.5)
     }
     Breakpoint.MD {
         Modifier

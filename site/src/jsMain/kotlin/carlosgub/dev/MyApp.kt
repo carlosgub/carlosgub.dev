@@ -18,14 +18,6 @@ import org.jetbrains.compose.web.css.percent
 
 private const val COLOR_MODE_KEY = "dev:colorMode"
 
-@InitSilk
-fun initSilk(ctx: InitSilkContext) {
-    ctx.stylesheet.apply {
-        // Layers specified in build.gradle.kts
-        cssLayers.add("bootstrapjs", after = SilkLayer.BASE)
-    }
-}
-
 @App
 @Composable
 fun MyApp(content: @Composable () -> Unit) {

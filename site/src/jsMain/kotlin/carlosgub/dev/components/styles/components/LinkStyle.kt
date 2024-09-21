@@ -6,6 +6,7 @@ import carlosgub.dev.components.theme.WebColors
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.color
 import com.varabyte.kobweb.compose.ui.modifiers.fontSize
+import com.varabyte.kobweb.compose.ui.modifiers.margin
 import com.varabyte.kobweb.compose.ui.styleModifier
 import com.varabyte.kobweb.silk.style.CssLayer
 import com.varabyte.kobweb.silk.style.CssStyle
@@ -16,10 +17,10 @@ import com.varabyte.kobweb.silk.style.selectors.link
 import com.varabyte.kobweb.silk.style.selectors.visited
 import org.jetbrains.compose.web.css.cssRem
 
-@CssLayer("")
 val LinkStyle = CssStyle {
     base {
         Modifier
+            .margin(all = 0.cssRem)
             .fontSize(1.25.cssRem)
             .regular()
             .color(WebColors.Blue)
@@ -46,7 +47,6 @@ val LinkStyle = CssStyle {
     }
 }
 
-@CssLayer("")
 val LinkTalkStyle = CssStyle {
     base {
         Modifier

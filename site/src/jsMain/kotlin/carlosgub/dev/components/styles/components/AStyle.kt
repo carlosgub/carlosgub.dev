@@ -17,6 +17,7 @@ import org.jetbrains.compose.web.css.px
 val MovingText = CssStyle {
     base {
         Modifier
+            .margin(all = 0.cssRem)
             .margin(top = 16.px)
             .color(WebColors.Blue)
             .fontSize(1.25.cssRem)

@@ -15,7 +15,7 @@ import carlosgub.dev.components.styles.components.*
 import carlosgub.dev.components.styles.font.bold
 import carlosgub.dev.components.styles.font.light
 import carlosgub.dev.components.theme.WebColors
-import carlosgub.dev.components.theme.WebColors.colorOpposite
+import carlosgub.dev.components.theme.WebColors.Black
 import carlosgub.dev.util.ObserveViewportEntered
 import carlosgub.dev.util.text.*
 import com.varabyte.kobweb.compose.css.TextDecorationLine
@@ -101,8 +101,7 @@ private fun SlidingContainersItem(
         modifier = modifier
             .id("SlidingContainersItem$position")
             .fillMaxWidth()
-            .background(WebColors.colorOppositeValue)
-            .setVariable(colorOpposite, WebColors.colorOppositeValue)
+            .background(Black)
             .then(
                 if (visible.value) {
                     Modifier.animation(

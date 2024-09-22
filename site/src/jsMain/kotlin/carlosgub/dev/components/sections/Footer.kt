@@ -6,7 +6,6 @@ import carlosgub.dev.components.styles.FooterStyle
 import carlosgub.dev.components.styles.LinkFooterStyle
 import carlosgub.dev.components.styles.components.LinkStyle
 import carlosgub.dev.components.theme.WebColors
-import carlosgub.dev.components.theme.WebColors.colorOpposite
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.Row
@@ -132,7 +131,6 @@ private fun DevelopedByFooter() {
         path = "https://github.com/carlosgub/carlosgub.dev",
         text = "Developed by Carlos Ugaz 2024",
         modifier = DevelopedByLink.toModifier()
-            .setVariable(colorOpposite, WebColors.colorOppositeValue)
     )
 }
 

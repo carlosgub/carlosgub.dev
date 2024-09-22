@@ -1,6 +1,6 @@
 package carlosgub.dev.components.keyframe
 
-import carlosgub.dev.components.theme.WebColors.colorOpposite
+import carlosgub.dev.components.theme.WebColors.Black
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.silk.style.animation.Keyframes
@@ -42,12 +42,12 @@ val Shake = Keyframes {
 val WidthKeyFrames = Keyframes {
     0.percent {
         Modifier
-            .backgroundColor(colorOpposite.value())
+            .backgroundColor(Black)
             .fillMaxWidth()
     }
     100.percent {
         Modifier
-            .backgroundColor(colorOpposite.value())
+            .backgroundColor(Black)
             .width(0.px)
     }
 }

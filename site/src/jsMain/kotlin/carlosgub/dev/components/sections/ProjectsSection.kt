@@ -1,13 +1,16 @@
 package carlosgub.dev.components.sections
 
 import androidx.compose.runtime.*
+import carlosgub.dev.components.chip.Chip
 import carlosgub.dev.components.keyframe.FadeInKeyFrames
 import carlosgub.dev.components.models.Section
 import carlosgub.dev.components.styles.ProjectContentStyle
 import carlosgub.dev.components.styles.ProjectContentTextStyle
 import carlosgub.dev.components.styles.ProjectsSectionStyle
-import carlosgub.dev.components.styles.components.*
+import carlosgub.dev.components.styles.components.H1Style
 import carlosgub.dev.components.styles.components.H3Style
+import carlosgub.dev.components.styles.components.MovingText
+import carlosgub.dev.components.styles.components.PStyle
 import carlosgub.dev.components.styles.font.bold
 import carlosgub.dev.components.theme.WebColors
 import carlosgub.dev.util.ObserveViewportEntered
@@ -15,8 +18,6 @@ import carlosgub.dev.util.text.personalWebDescription
 import carlosgub.dev.util.text.personalWebsiteStack
 import carlosgub.dev.util.text.piggyBankDescription
 import carlosgub.dev.util.text.piggyBankStack
-import com.stevdza.san.kotlinbs.components.BSBadge
-import com.stevdza.san.kotlinbs.models.BadgeVariant
 import com.varabyte.kobweb.compose.css.TextAlign
 import com.varabyte.kobweb.compose.css.Visibility
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
@@ -304,7 +305,7 @@ private fun PersonalWebsiteText(
 
 @Composable
 private fun ProjectChip(text: String) {
-    BSBadge(
+    Chip(
         modifier = Modifier
             .margin(
                 top = 10.px,
@@ -317,7 +318,6 @@ private fun ProjectChip(text: String) {
             ),
         fontSize = 1.25.cssRem,
         text = text,
-        variant = BadgeVariant.Rounded,
         fontFamily = "PPMoriLight"
     )
 }

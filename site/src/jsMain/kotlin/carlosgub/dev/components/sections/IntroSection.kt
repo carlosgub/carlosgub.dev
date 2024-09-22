@@ -1,8 +1,6 @@
 package carlosgub.dev.components.sections
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
 import carlosgub.dev.components.styles.IntroSectionStyle
 import carlosgub.dev.components.styles.SectionModifier
 import carlosgub.dev.components.styles.components.H1Style
@@ -10,9 +8,6 @@ import carlosgub.dev.components.styles.components.H2Style
 import carlosgub.dev.components.styles.components.H6Style
 import carlosgub.dev.components.styles.components.LinkStyle
 import carlosgub.dev.components.styles.font.bold
-import carlosgub.dev.components.theme.WebColors.colorOppositeValue
-import com.stevdza.san.kotlinbs.components.BSIcon
-import com.stevdza.san.kotlinbs.icons.BSIcons
 import com.varabyte.kobweb.compose.css.WordBreak
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Box
@@ -20,25 +15,20 @@ import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.graphics.Colors
-import com.varabyte.kobweb.compose.ui.modifiers.*
+import com.varabyte.kobweb.compose.ui.modifiers.width
+import com.varabyte.kobweb.compose.ui.modifiers.wordBreak
 import com.varabyte.kobweb.core.isExporting
 import com.varabyte.kobweb.core.rememberPageContext
-import com.varabyte.kobweb.silk.components.forms.Switch
 import com.varabyte.kobweb.silk.components.navigation.Link
 import com.varabyte.kobweb.silk.components.text.SpanText
 import com.varabyte.kobweb.silk.style.toAttrs
 import com.varabyte.kobweb.silk.style.toModifier
-import com.varabyte.kobweb.silk.theme.colors.ColorMode
-import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.percent
-import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.dom.H1
 import org.jetbrains.compose.web.dom.H2
 
 @Composable
 fun IntroSection() {
-    var colorMode by ColorMode.currentState
     Box(
         modifier = SectionModifier
             .toModifier()
@@ -89,38 +79,6 @@ fun IntroSection() {
                 }
             }
         }
-        Row(
-            modifier = Modifier
-                .padding(
-                    top = 20.px,
-                    right = 30.px
-                ).fillMaxWidth(),
-            horizontalArrangement = Arrangement.End,
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            BSIcon(
-                icon = BSIcons.SUN,
-                size = 1.cssRem,
-                color = colorOppositeValue,
-            )
-            Switch(
-                modifier = Modifier
-                    .margin(leftRight = 12.px),
-                checked = colorMode.isDark,
-                onCheckedChange = { isDark ->
-                    colorMode = colorMode.opposite
-                    colorOppositeValue = if (isDark) {
-                        Colors.White
-                    } else {
-                        Colors.Black
-                    }
-                },
-            )
-            BSIcon(
-                icon = BSIcons.MOON,
-                size = 1.cssRem,
-                color = colorOppositeValue,
-            )
-        }
+        // TODO ADD TOOLBAR
     }
 }

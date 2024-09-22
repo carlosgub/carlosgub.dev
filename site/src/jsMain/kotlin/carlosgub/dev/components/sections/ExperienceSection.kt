@@ -4,25 +4,20 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import carlosgub.dev.components.chip.Chip
 import carlosgub.dev.components.keyframe.WidthKeyFrames
 import carlosgub.dev.components.models.Section
 import carlosgub.dev.components.models.Stack
 import carlosgub.dev.components.styles.CompanyLink
 import carlosgub.dev.components.styles.ExperienceSectionStyle
 import carlosgub.dev.components.styles.PExperienceStyle
-import carlosgub.dev.components.styles.components.H3Style
-import carlosgub.dev.components.styles.components.H6Style
-import carlosgub.dev.components.styles.components.MovingText
-import carlosgub.dev.components.styles.components.PStyle
+import carlosgub.dev.components.styles.components.*
 import carlosgub.dev.components.styles.font.bold
 import carlosgub.dev.components.styles.font.light
 import carlosgub.dev.components.theme.WebColors
-import carlosgub.dev.components.theme.WebColors.colorOpposite
+import carlosgub.dev.components.theme.WebColors.Black
 import carlosgub.dev.util.ObserveViewportEntered
 import carlosgub.dev.util.text.*
-import com.stevdza.san.kotlinbs.components.BSBadge
-import com.stevdza.san.kotlinbs.models.BadgeVariant
-import com.varabyte.kobweb.compose.css.TextAlign
 import com.varabyte.kobweb.compose.css.TextDecorationLine
 import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Column
@@ -106,8 +101,7 @@ private fun SlidingContainersItem(
         modifier = modifier
             .id("SlidingContainersItem$position")
             .fillMaxWidth()
-            .background(WebColors.colorOppositeValue)
-            .setVariable(colorOpposite, WebColors.colorOppositeValue)
+            .background(Black)
             .then(
                 if (visible.value) {
                     Modifier.animation(
@@ -149,7 +143,7 @@ private fun ExperienceContent() {
         description = globantDescription,
         stackList = globantStack
     )
-    HorizontalDivider(Modifier.fillMaxWidth())
+    HorizontalDivider(HRStyle.toModifier())
     WorkContainer(
         workName = rappi,
         workUrl = rappiUrl,
@@ -222,18 +216,20 @@ private fun WorkContainer(
         Row(
             Modifier
                 .display(DisplayStyle.Block)
+                .fillMaxWidth()
+                .margin(
+                    topBottom = 6.px,
+                )
         ) {
             stackList.forEach { stack ->
-                BSBadge(
+                Chip(
+                    text = stack.id,
+                    fontFamily = "PPMoriLight",
+                    fontSize = 0.75.cssRem,
                     modifier = Modifier
                         .margin(
-                            top = 6.px,
-                            bottom = 6.px,
                             right = 12.px
                         ),
-                    text = stack.id,
-                    variant = BadgeVariant.Rounded,
-                    fontFamily = "PPMoriLight"
                 )
             }
         }

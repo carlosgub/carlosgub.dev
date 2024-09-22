@@ -2,7 +2,7 @@ package carlosgub.dev.components.styles
 
 import carlosgub.dev.components.styles.font.bold
 import carlosgub.dev.components.theme.WebColors
-import carlosgub.dev.components.theme.WebColors.colorOpposite
+import carlosgub.dev.components.theme.WebColors.Black
 import com.varabyte.kobweb.compose.css.AlignSelf
 import com.varabyte.kobweb.compose.css.TextDecorationLine
 import com.varabyte.kobweb.compose.ui.Modifier
@@ -45,7 +45,7 @@ val LinkFooterStyle = CssStyle {
 val DevelopedByLink = CssStyle {
     base {
         Modifier
-            .color(colorOpposite.value())
+            .color(Black)
             .bold()
             .textDecorationLine(TextDecorationLine.None)
             .fontSize(1.cssRem)
@@ -53,17 +53,17 @@ val DevelopedByLink = CssStyle {
 
     link {
         Modifier
-            .color(colorOpposite.value())
+            .color(Black)
             .textDecorationLine(TextDecorationLine.None)
     }
     active {
         Modifier
-            .color(colorOpposite.value())
+            .color(Black)
             .textDecorationLine(TextDecorationLine.None)
     }
     visited {
         Modifier
-            .color(colorOpposite.value())
+            .color(Black)
             .textDecorationLine(TextDecorationLine.None)
     }
 }

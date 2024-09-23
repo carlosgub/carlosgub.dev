@@ -3,8 +3,6 @@ package carlosgub.dev.components.sections
 import androidx.compose.runtime.Composable
 import carlosgub.dev.components.styles.DevelopedByLink
 import carlosgub.dev.components.styles.FooterStyle
-import carlosgub.dev.components.styles.LinkFooterStyle
-import carlosgub.dev.components.styles.components.LinkStyle
 import carlosgub.dev.components.theme.WebColors
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Column
@@ -23,14 +21,15 @@ import org.jetbrains.compose.web.dom.A
 @Composable
 fun Footer(breakpoint: Breakpoint) {
     if (breakpoint >= Breakpoint.MD) {
-        FooterHorizontal(breakpoint)
+        FooterHorizontal()
     } else {
         FooterVertical()
     }
 }
 
 @Composable
-private fun FooterHorizontal(breakpoint: Breakpoint) {
+private fun FooterHorizontal() {
+    val iconSize = IconSize.XXL
     Row(
         FooterStyle.toModifier()
             .padding(
@@ -46,54 +45,11 @@ private fun FooterHorizontal(breakpoint: Breakpoint) {
             modifier = Modifier.weight(1),
             horizontalArrangement = Arrangement.SpaceEvenly
         ) {
-            if (breakpoint >= Breakpoint.LG) {
-                Link(
-                    path = "https://github.com/carlosgub",
-                    text = "GITHUB",
-                    modifier = listOf(
-                        LinkStyle,
-                        LinkFooterStyle
-                    ).toModifier()
-                )
-                Link(
-                    path = "https://www.youtube.com/@carlosgub",
-                    text = "YOUTUBE",
-                    modifier = listOf(
-                        LinkStyle,
-                        LinkFooterStyle
-                    ).toModifier()
-                )
-                Link(
-                    path = "https://twitter.com/carlosgub",
-                    text = "TWITTER",
-                    modifier = listOf(
-                        LinkStyle,
-                        LinkFooterStyle
-                    ).toModifier()
-                )
-                Link(
-                    path = "https://linkedin.com/in/carlosgub",
-                    text = "LINKEDIN",
-                    modifier = listOf(
-                        LinkStyle,
-                        LinkFooterStyle
-                    ).toModifier()
-                )
-                Link(
-                    path = "https://medium.com/@carlosgub",
-                    text = "MEDIUM",
-                    modifier = listOf(
-                        LinkStyle,
-                        LinkFooterStyle
-                    ).toModifier()
-                )
-            } else {
-                GithubIcon()
-                YoutubeIcon()
-                TwitterIcon()
-                LinkedinIcon()
-                MediumIcon()
-            }
+            GithubIcon(iconSize = iconSize)
+            YoutubeIcon(iconSize = iconSize)
+            TwitterIcon(iconSize = iconSize)
+            LinkedinIcon(iconSize = iconSize)
+            MediumIcon(iconSize = iconSize)
         }
     }
 }
@@ -101,6 +57,7 @@ private fun FooterHorizontal(breakpoint: Breakpoint) {
 
 @Composable
 private fun FooterVertical() {
+    val iconSize = IconSize.LG
     Column(
         FooterStyle
             .toModifier()
@@ -116,11 +73,11 @@ private fun FooterVertical() {
                 .margin(top = 25.px, bottom = 30.px),
             horizontalArrangement = Arrangement.SpaceEvenly
         ) {
-            GithubIcon()
-            YoutubeIcon()
-            TwitterIcon()
-            LinkedinIcon()
-            MediumIcon()
+            GithubIcon(iconSize = iconSize)
+            YoutubeIcon(iconSize = iconSize)
+            TwitterIcon(iconSize = iconSize)
+            LinkedinIcon(iconSize = iconSize)
+            MediumIcon(iconSize = iconSize)
         }
     }
 }
@@ -135,7 +92,7 @@ private fun DevelopedByFooter() {
 }
 
 @Composable
-private fun GithubIcon() {
+private fun GithubIcon(iconSize: IconSize) {
     A(
         href = "https://github.com/carlosgub",
         attrs = Modifier
@@ -143,14 +100,14 @@ private fun GithubIcon() {
             .toAttrs(),
     ) {
         FaGithub(
-            size = IconSize.LG,
+            size = iconSize,
             modifier = Modifier.color(WebColors.Blue)
         )
     }
 }
 
 @Composable
-private fun YoutubeIcon() {
+private fun YoutubeIcon(iconSize: IconSize) {
     A(
         href = "https://www.youtube.com/@carlosgub",
         attrs = Modifier
@@ -158,14 +115,14 @@ private fun YoutubeIcon() {
             .toAttrs(),
     ) {
         FaYoutube(
-            size = IconSize.LG,
+            size = iconSize,
             modifier = Modifier.color(WebColors.Blue)
         )
     }
 }
 
 @Composable
-private fun TwitterIcon() {
+private fun TwitterIcon(iconSize: IconSize) {
     A(
         href = "https://twitter.com/carlosgub",
         attrs = Modifier
@@ -173,14 +130,14 @@ private fun TwitterIcon() {
             .toAttrs(),
     ) {
         FaTwitter(
-            size = IconSize.LG,
+            size = iconSize,
             modifier = Modifier.color(WebColors.Blue)
         )
     }
 }
 
 @Composable
-private fun LinkedinIcon() {
+private fun LinkedinIcon(iconSize: IconSize) {
     A(
         href = "https://linkedin.com/in/carlosgub",
         attrs = Modifier
@@ -188,14 +145,14 @@ private fun LinkedinIcon() {
             .toAttrs(),
     ) {
         FaLinkedin(
-            size = IconSize.LG,
+            size = iconSize,
             modifier = Modifier.color(WebColors.Blue)
         )
     }
 }
 
 @Composable
-private fun MediumIcon() {
+private fun MediumIcon(iconSize: IconSize) {
     A(
         href = "https://medium.com/@carlosgub",
         attrs = Modifier
@@ -203,7 +160,7 @@ private fun MediumIcon() {
             .toAttrs(),
     ) {
         FaMedium(
-            size = IconSize.LG,
+            size = iconSize,
             modifier = Modifier.color(WebColors.Blue)
         )
     }

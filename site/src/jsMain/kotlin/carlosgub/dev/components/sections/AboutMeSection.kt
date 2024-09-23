@@ -76,7 +76,7 @@ private fun BackgroundContent() {
         Br()
         Text(
             "If you're seeking a Senior Software Engineer with a deep passion for Mobile development, " +
-                    "a track record of leadership, and a commitment to staying ahead of the curve, I'd love " +
+                    "a track record of leadership, and commitment to staying ahead of the curve, I'd love " +
                     "to connect and discuss how I can bring my skills and enthusiasm to your next project."
         )
     }

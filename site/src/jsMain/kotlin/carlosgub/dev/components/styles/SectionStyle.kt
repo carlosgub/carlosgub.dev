@@ -11,5 +11,5 @@ import org.jetbrains.compose.web.css.vh
 val SectionModifier = CssStyle.base {
     Modifier
         .width(100.percent)
-        .height(100.vh)
+        .height(95.vh)
 }

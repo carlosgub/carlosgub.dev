@@ -3,7 +3,7 @@ package carlosgub.dev.components.sections
 import androidx.compose.runtime.*
 import carlosgub.dev.components.keyframe.FadeInKeyFrames
 import carlosgub.dev.components.models.Section
-import carlosgub.dev.components.styles.BackgroundSectionStyle
+import carlosgub.dev.components.styles.AboutMeSectionStyle
 import carlosgub.dev.components.styles.components.H3Style
 import carlosgub.dev.components.styles.components.LinkStyle
 import carlosgub.dev.components.styles.components.LinkTalkStyle
@@ -57,7 +57,7 @@ fun TalkSection() {
     ) {
         Column(
             modifier = listOf(
-                BackgroundSectionStyle
+                AboutMeSectionStyle
             ).toModifier()
         ) {
             TalkContent()

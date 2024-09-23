@@ -30,8 +30,8 @@ fun HomePage() {
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier.width(100.percent)
         ) {
-            IntroSection()
-            BackgroundSection()
+            IntroSection(breakpoint)
+            AboutMeSection()
             ExperienceSection()
             ProjectsSection(breakpoint)
             TalkSection()

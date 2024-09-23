@@ -205,7 +205,6 @@ private fun WorkContainer(
         P(
             attrs = PExperienceStyle
                 .toModifier()
-                .margin(bottom = 8.px)
                 .fillMaxWidth()
                 .toAttrs()
         ) {
@@ -224,11 +223,11 @@ private fun WorkContainer(
             stackList.forEach { stack ->
                 Chip(
                     text = stack.id,
-                    fontFamily = "PPMoriLight",
-                    fontSize = 0.75.cssRem,
+                    fontSize = 0.9.cssRem,
                     modifier = Modifier
                         .margin(
-                            right = 12.px
+                            right = 12.px,
+                            top = 8.px
                         ),
                 )
             }

@@ -1,5 +1,6 @@
 package carlosgub.dev.components.styles.components
 
+import carlosgub.dev.components.styles.font.bold
 import carlosgub.dev.components.styles.font.light
 import com.varabyte.kobweb.compose.css.TextAlign
 import com.varabyte.kobweb.compose.ui.Modifier
@@ -16,15 +17,15 @@ val H1Style = CssStyle {
     base {
         Modifier
             .margin(bottom = 8.px)
-            .light()
-            .textAlign(TextAlign.Start)
-            .fontSize(1.75.cssRem)
+            .lineHeight(1.2)
+            .bold()
+            .fontSize(4.cssRem)
 
     }
 
     Breakpoint.LG {
         Modifier
-            .fontSize(2.5.cssRem)
+            .fontSize(6.cssRem)
     }
 }
 

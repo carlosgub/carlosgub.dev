@@ -7,7 +7,6 @@ import carlosgub.dev.components.models.Section
 import carlosgub.dev.components.styles.ProjectContentStyle
 import carlosgub.dev.components.styles.ProjectContentTextStyle
 import carlosgub.dev.components.styles.ProjectsSectionStyle
-import carlosgub.dev.components.styles.components.H1Style
 import carlosgub.dev.components.styles.components.H3Style
 import carlosgub.dev.components.styles.components.MovingText
 import carlosgub.dev.components.styles.components.PStyle
@@ -79,7 +78,7 @@ fun ProjectsSection(breakpoint: Breakpoint) {
 @Composable
 private fun ProjectsContent(breakpoint: Breakpoint) {
     H1(
-        attrs = H1Style
+        attrs = H3Style
             .toModifier()
             .fillMaxWidth()
             .textAlign(TextAlign.Center)
@@ -318,7 +317,6 @@ private fun ProjectChip(text: String) {
             ),
         fontSize = 1.25.cssRem,
         text = text,
-        fontFamily = "PPMoriLight"
     )
 }
 

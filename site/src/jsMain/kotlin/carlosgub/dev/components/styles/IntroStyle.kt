@@ -25,8 +25,8 @@ val IntroContainerKeyFrames = Keyframes {
 val IntroSectionStyle = CssStyle {
     base {
         Modifier
+            .background(Color.floralwhite)
             .width(100.percent)
-            .maxWidth(1440.px)
             .padding(
                 topBottom = 50.px,
                 leftRight = 24.px

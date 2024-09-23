@@ -1,6 +1,5 @@
 package carlosgub.dev.components.styles
 
-import carlosgub.dev.components.keyframe.Shake
 import carlosgub.dev.components.styles.font.bold
 import carlosgub.dev.components.styles.font.light
 import carlosgub.dev.components.theme.WebColors
@@ -8,13 +7,14 @@ import com.varabyte.kobweb.compose.css.TextDecorationLine
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.silk.style.CssStyle
-import com.varabyte.kobweb.silk.style.animation.toAnimation
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.selectors.active
-import com.varabyte.kobweb.silk.style.selectors.hover
 import com.varabyte.kobweb.silk.style.selectors.link
 import com.varabyte.kobweb.silk.style.selectors.visited
-import org.jetbrains.compose.web.css.*
+import org.jetbrains.compose.web.css.Color
+import org.jetbrains.compose.web.css.cssRem
+import org.jetbrains.compose.web.css.percent
+import org.jetbrains.compose.web.css.px
 
 val ExperienceSectionStyle = CssStyle {
     base {
@@ -31,13 +31,6 @@ val ExperienceSectionStyle = CssStyle {
             .padding(
                 topBottom = 70.px,
                 leftRight = 120.px
-            )
-    }
-    Breakpoint.XL {
-        Modifier
-            .padding(
-                topBottom = 100.px,
-                leftRight = 150.px
             )
     }
 }

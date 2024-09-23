@@ -1,64 +1,41 @@
 package carlosgub.dev.components.sections
 
-import androidx.compose.runtime.*
-import carlosgub.dev.components.keyframe.FadeInKeyFrames
+import androidx.compose.runtime.Composable
 import carlosgub.dev.components.models.Section
-import carlosgub.dev.components.styles.AboutMeSectionStyle
+import carlosgub.dev.components.styles.TalkSectionStyle
 import carlosgub.dev.components.styles.components.H3Style
 import carlosgub.dev.components.styles.components.LinkStyle
 import carlosgub.dev.components.styles.components.LinkTalkStyle
 import carlosgub.dev.components.styles.components.UlStyle
 import carlosgub.dev.components.styles.font.bold
 import carlosgub.dev.components.theme.WebColors
-import carlosgub.dev.util.ObserveViewportEntered
 import com.varabyte.kobweb.compose.css.TextAlign
-import com.varabyte.kobweb.compose.css.Visibility
 import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Column
+import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.navigation.Link
 import com.varabyte.kobweb.silk.components.text.SpanText
-import com.varabyte.kobweb.silk.style.animation.toAnimation
 import com.varabyte.kobweb.silk.style.toModifier
-import org.jetbrains.compose.web.css.AnimationTimingFunction
-import org.jetbrains.compose.web.css.ms
+import org.jetbrains.compose.web.css.Color
 import org.jetbrains.compose.web.dom.*
 
 @Composable
 fun TalkSection() {
-    var visible by remember { mutableStateOf(false) }
-    ObserveViewportEntered(
-        sectionId = Section.Speaker.id,
-        distanceFromTop = 800.0,
-        onViewportEntered = {
-            visible = true
-        }
-    )
-
     Box(
         modifier = Modifier
-            .id(Section.Speaker.id)
-            .visibility(if (visible) Visibility.Visible else Visibility.Hidden)
-            .then(
-                if (visible) {
-                    Modifier.animation(
-                        FadeInKeyFrames.toAnimation(
-                            null,
-                            duration = 800.ms,
-                            timingFunction = AnimationTimingFunction.EaseInOut
-                        )
-                    )
-                } else {
-                    Modifier
-                }
-            )
+            .background(Color.floralwhite)
+            .fillMaxWidth()
+            .id(Section.Speaker.id),
+        contentAlignment = Alignment.Center,
     ) {
         Column(
             modifier = listOf(
-                AboutMeSectionStyle
-            ).toModifier()
+                TalkSectionStyle
+            ).toModifier(),
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
             TalkContent()
         }
@@ -70,7 +47,6 @@ private fun TalkContent() {
     H3(
         attrs = H3Style
             .toModifier()
-            .fillMaxWidth()
             .textAlign(TextAlign.Start)
             .bold()
             .color(WebColors.Blue)

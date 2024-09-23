@@ -53,6 +53,7 @@ private fun IntroSectionDesktop() {
         ) {
             Column(
                 verticalArrangement = Arrangement.Center,
+                modifier = Modifier.margin(right = 12.px)
             ) {
                 FirstParagraph()
                 TagLine(

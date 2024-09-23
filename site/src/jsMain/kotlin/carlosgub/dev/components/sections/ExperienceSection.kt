@@ -12,6 +12,7 @@ import carlosgub.dev.components.styles.font.bold
 import carlosgub.dev.components.styles.font.light
 import carlosgub.dev.components.theme.WebColors
 import carlosgub.dev.util.text.*
+import com.varabyte.kobweb.compose.css.TextAlign
 import com.varabyte.kobweb.compose.css.TextDecorationLine
 import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Column
@@ -60,6 +61,7 @@ private fun ExperienceContent() {
             .fillMaxWidth()
             .bold()
             .color(WebColors.Blue)
+            .textAlign(TextAlign.Center)
             .toAttrs()
     ) {
         SpanText(

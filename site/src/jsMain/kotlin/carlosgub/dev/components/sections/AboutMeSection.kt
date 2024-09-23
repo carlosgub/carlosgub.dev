@@ -46,6 +46,7 @@ private fun BackgroundContent() {
             .textAlign(TextAlign.Start)
             .bold()
             .color(WebColors.Blue)
+            .textAlign(TextAlign.Center)
             .toAttrs()
     ) {
         SpanText(

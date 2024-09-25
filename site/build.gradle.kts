@@ -21,11 +21,6 @@ kobweb {
                     type = "text/css"
                 }
                 link {
-                    rel = "stylesheet"
-                    href = "/fonts/faces.css"
-                    type = "text/css"
-                }
-                link {
                     rel = "preconnect"
                     href = "https://fonts.googleapis.com"
                 }

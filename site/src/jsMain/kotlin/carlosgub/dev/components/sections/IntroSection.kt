@@ -24,9 +24,7 @@ import com.varabyte.kobweb.silk.components.text.SpanText
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.toAttrs
 import com.varabyte.kobweb.silk.style.toModifier
-import org.jetbrains.compose.web.css.JustifyContent
-import org.jetbrains.compose.web.css.percent
-import org.jetbrains.compose.web.css.px
+import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.H1
 import org.jetbrains.compose.web.dom.H3
 
@@ -44,7 +42,10 @@ private fun IntroSectionDesktop() {
     Column(
         modifier = SectionModifier
             .toModifier()
-            .width(100.percent),
+            .background(Color.floralwhite)
+            .width(100.percent)
+            .height(85.vh),
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Row(
             modifier = IntroSectionStyle.toModifier(),
@@ -68,7 +69,9 @@ private fun IntroSectionDesktop() {
 @Composable
 private fun IntroSectionMobile() {
     Column(
-        modifier = IntroSectionStyle.toModifier(),
+        modifier = IntroSectionStyle
+            .toModifier()
+            .background(Color.floralwhite),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         FirstParagraph()

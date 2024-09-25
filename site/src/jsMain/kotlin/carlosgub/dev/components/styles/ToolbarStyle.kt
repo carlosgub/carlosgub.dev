@@ -3,12 +3,15 @@ package carlosgub.dev.components.styles
 import carlosgub.dev.components.styles.font.semiBold
 import com.varabyte.kobweb.compose.css.TextDecorationLine
 import com.varabyte.kobweb.compose.css.Width
+import com.varabyte.kobweb.compose.css.boxShadow
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
+import com.varabyte.kobweb.compose.ui.styleModifier
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import org.jetbrains.compose.web.css.*
-import org.jetbrains.compose.web.css.keywords.CSSAutoKeyword
+
+val toolbarHeight = 92.px
 
 val ToolbarContainerStyle = CssStyle {
     base {
@@ -16,7 +19,7 @@ val ToolbarContainerStyle = CssStyle {
             .backgroundColor(Color.floralwhite)
             .fillMaxWidth(100.percent)
             .position(Position.Fixed)
-            .height(92.px)
+            .height(toolbarHeight)
             .padding(16.px)
             .top(0.px)
             .justifyContent(JustifyContent.Center)
@@ -53,25 +56,33 @@ val ToolbarItemStyle = CssStyle {
         Modifier
             .color(Color.black)
             .semiBold()
-            .fontSize(0.9.cssRem)
+            .fontSize(1.1.cssRem)
             .lineHeight(1.5)
-            .padding(8.px)
+            .padding(16.px)
             .textDecorationLine(TextDecorationLine.None)
             .fillMaxWidth()
     }
     Breakpoint.MD {
         Modifier
+            .padding(8.px)
             .width(Width.FitContent)
-            .fontSize(0.95.cssRem)
     }
-    Breakpoint.LG {
+}
+
+val ToolbarMenuMobileStyle = CssStyle {
+    base {
         Modifier
-            .width(Width.FitContent)
-            .fontSize(1.cssRem)
-    }
-    Breakpoint.XL {
-        Modifier
-            .width(Width.FitContent)
-            .fontSize(1.cssRem)
+            .border(
+                2.px,
+                style = LineStyle.Solid,
+                color = Color.black
+            )
+            .styleModifier {
+                boxShadow("6px 6px 0 0 black")
+            }
+            .fillMaxWidth()
+            .backgroundColor(Color.floralwhite)
+            .borderRadius(12.px)
+            .margin(top = 8.px)
     }
 }

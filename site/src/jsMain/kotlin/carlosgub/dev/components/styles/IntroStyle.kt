@@ -26,24 +26,21 @@ val IntroContainerKeyFrames = Keyframes {
 val IntroSectionStyle = CssStyle {
     base {
         Modifier
-            .background(Color.floralwhite)
             .width(100.percent)
-            .margin(topBottom = 92.px) // 92 px of the toolbar
+            .margin(top = toolbarHeight) // 92 px of the toolbar
             .padding(
                 topBottom = 30.px,
                 leftRight = 24.px
             )
     }
     Breakpoint.MD {
-        Modifier.height(90.percent)
-    }
-    Breakpoint.LG {
         Modifier
             .height(90.percent)
+            .maxWidth(1280.px)
             .margin(top = 0.px) // Remove margin from toolbar
             .padding(
                 topBottom = 50.px,
-                leftRight = 120.px
+                leftRight = 50.px
             )
     }
 }
@@ -62,8 +59,10 @@ val TagLineStyle = CssStyle {
 val ProfilePhotoStyle = CssStyle {
     base {
         Modifier
+            .fillMaxHeight(80.percent)
             .maxWidth(300.px)
             .borderRadius(4.em)
+            .aspectRatio(3, 4)
     }
     Breakpoint.LG {
         Modifier

@@ -3,9 +3,9 @@ package carlosgub.dev.components.toolbar
 
 import androidx.compose.runtime.*
 import carlosgub.dev.components.models.Section
-import carlosgub.dev.components.styles.ToolbarContainerStyle
-import carlosgub.dev.components.styles.ToolbarItemStyle
-import carlosgub.dev.components.styles.ToolbarStyle
+import carlosgub.dev.components.styles.*
+import carlosgub.dev.components.styles.components.H6Style
+import carlosgub.dev.components.styles.font.semiBold
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
@@ -16,13 +16,30 @@ import com.varabyte.kobweb.silk.components.icons.fa.FaBars
 import com.varabyte.kobweb.silk.components.icons.fa.FaIcon
 import com.varabyte.kobweb.silk.components.icons.fa.IconCategory
 import com.varabyte.kobweb.silk.components.icons.fa.IconSize
+import com.varabyte.kobweb.silk.init.InitSilk
+import com.varabyte.kobweb.silk.init.InitSilkContext
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.toModifier
-import org.jetbrains.compose.web.css.Color
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.dom.A
+import org.jetbrains.compose.web.dom.H6
 import org.jetbrains.compose.web.dom.Img
 import org.jetbrains.compose.web.dom.Text
+
+@InitSilk
+fun initNavHeaderStyles(ctx: InitSilkContext) {
+    // Trick to avoid text scrolling under our floating nav header when you click on in-page fragments links like
+    // `href="#some-section`.
+    // See also: https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-margin-top
+    Section.entries.forEach { section ->
+        ctx.stylesheet.registerStyle("#${section.id}") {
+            base {
+                Modifier.scrollMargin(top = toolbarHeight) // Size of the toolbar
+            }
+            Breakpoint.MD { Modifier.scrollMargin(0.px) }
+        }
+    }
+}
 
 @Composable
 fun Toolbar(breakpoint: Breakpoint) {
@@ -35,8 +52,21 @@ fun Toolbar(breakpoint: Breakpoint) {
             modifier = ToolbarStyle.toModifier(),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            // Logo
-            Img(src = "logo.webp", attrs = Modifier.size(64.px).toAttrs())
+            Row(
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                // Logo
+                Img(src = "logo.webp", attrs = Modifier.size(64.px).toAttrs())
+                H6(
+                    attrs = H6Style
+                        .toModifier()
+                        .semiBold()
+                        .margin(left = 8.px)
+                        .toAttrs()
+                ) {
+                    Text("carlosgub.dev")
+                }
+            }
 
             if (breakpoint < Breakpoint.MD) {
                 ToolbarIconMenu(
@@ -48,9 +78,7 @@ fun Toolbar(breakpoint: Breakpoint) {
                     }
                 )
             } else {
-                Row(Modifier.gap(24.px)) {
-                    NavItems()
-                }
+                Row(Modifier.gap(24.px)) { NavItems() }
             }
         }
         if (menuOpen && breakpoint < Breakpoint.MD) {
@@ -103,7 +131,9 @@ fun NavItem(
 
 @Composable
 fun MobileMenu(onCloseMenu: () -> Unit) {
-    Column(Modifier.fillMaxWidth().backgroundColor(Color.white)) {
+    Column(
+        modifier = ToolbarMenuMobileStyle.toModifier()
+    ) {
         NavItems(onItemPressed = onCloseMenu)
     }
 }
@@ -111,7 +141,7 @@ fun MobileMenu(onCloseMenu: () -> Unit) {
 @Composable
 private fun NavItems(onItemPressed: () -> Unit = {}) {
     NavItem("About", Section.About.id, onItemPressed)
-    NavItem("Experience", Section.Experience.id, onItemPressed)
+    NavItem("My Experience", Section.Experience.id, onItemPressed)
     NavItem("Projects", Section.Projects.id, onItemPressed)
     NavItem("Talks", Section.Speaker.id, onItemPressed)
 }

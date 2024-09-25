@@ -200,16 +200,6 @@ private fun PiggyBankText(
             )
         }
         A(
-            href = "https://play.google.com/store/apps/details?id=com.carlosgub.myfinance.app"
-        ) {
-            Image(
-                src = "https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png",
-                alt = "Get it on Google Play",
-                modifier = Modifier.height(80.px)
-                    .margin(left = (-13).px)
-            )
-        }
-        A(
             href = "https://github.com/carlosgub/PiggyBank",
             attrs = MovingText
                 .toAttrs()

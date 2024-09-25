@@ -1,25 +1,21 @@
 package carlosgub.dev.components.sections
 
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
 import carlosgub.dev.components.chip.Chip
-import carlosgub.dev.components.keyframe.FadeInKeyFrames
 import carlosgub.dev.components.models.Section
 import carlosgub.dev.components.styles.ProjectContentStyle
 import carlosgub.dev.components.styles.ProjectContentTextStyle
 import carlosgub.dev.components.styles.ProjectsSectionStyle
-import carlosgub.dev.components.styles.components.H1Style
 import carlosgub.dev.components.styles.components.H3Style
 import carlosgub.dev.components.styles.components.MovingText
 import carlosgub.dev.components.styles.components.PStyle
 import carlosgub.dev.components.styles.font.bold
 import carlosgub.dev.components.theme.WebColors
-import carlosgub.dev.util.ObserveViewportEntered
 import carlosgub.dev.util.text.personalWebDescription
 import carlosgub.dev.util.text.personalWebsiteStack
 import carlosgub.dev.util.text.piggyBankDescription
 import carlosgub.dev.util.text.piggyBankStack
 import com.varabyte.kobweb.compose.css.TextAlign
-import com.varabyte.kobweb.compose.css.Visibility
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Column
@@ -30,41 +26,20 @@ import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.graphics.Image
 import com.varabyte.kobweb.silk.components.text.SpanText
-import com.varabyte.kobweb.silk.style.animation.toAnimation
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.toAttrs
 import com.varabyte.kobweb.silk.style.toModifier
-import org.jetbrains.compose.web.css.*
+import org.jetbrains.compose.web.css.DisplayStyle
+import org.jetbrains.compose.web.css.cssRem
+import org.jetbrains.compose.web.css.percent
+import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.dom.*
 
 @Composable
 fun ProjectsSection(breakpoint: Breakpoint) {
-    var visible by remember { mutableStateOf(false) }
-    ObserveViewportEntered(
-        sectionId = Section.Projects.id,
-        distanceFromTop = 800.0,
-        onViewportEntered = {
-            visible = true
-        }
-    )
-
     Box(
         modifier = Modifier
             .id(Section.Projects.id)
-            .visibility(if (visible) Visibility.Visible else Visibility.Hidden)
-            .then(
-                if (visible) {
-                    Modifier.animation(
-                        FadeInKeyFrames.toAnimation(
-                            null,
-                            duration = 800.ms,
-                            timingFunction = AnimationTimingFunction.EaseInOut
-                        )
-                    )
-                } else {
-                    Modifier
-                }
-            )
     ) {
         Column(
             modifier = listOf(
@@ -79,7 +54,7 @@ fun ProjectsSection(breakpoint: Breakpoint) {
 @Composable
 private fun ProjectsContent(breakpoint: Breakpoint) {
     H1(
-        attrs = H1Style
+        attrs = H3Style
             .toModifier()
             .fillMaxWidth()
             .textAlign(TextAlign.Center)
@@ -88,7 +63,7 @@ private fun ProjectsContent(breakpoint: Breakpoint) {
             .toAttrs()
     ) {
         SpanText(
-            "Featured projects"
+            "Personal projects"
         )
     }
     if (breakpoint >= Breakpoint.MD) {
@@ -318,7 +293,6 @@ private fun ProjectChip(text: String) {
             ),
         fontSize = 1.25.cssRem,
         text = text,
-        fontFamily = "PPMoriLight"
     )
 }
 

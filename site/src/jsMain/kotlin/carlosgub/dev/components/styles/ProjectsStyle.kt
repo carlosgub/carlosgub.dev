@@ -2,7 +2,6 @@ package carlosgub.dev.components.styles
 
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
-import com.varabyte.kobweb.compose.ui.modifiers.maxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.padding
 import com.varabyte.kobweb.compose.ui.modifiers.width
 import com.varabyte.kobweb.silk.style.CssStyle
@@ -21,13 +20,7 @@ val ProjectsSectionStyle = CssStyle {
     Breakpoint.LG {
         Modifier
             .padding(
-                topBottom = 70.px
-            )
-    }
-    Breakpoint.XL {
-        Modifier
-            .padding(
-                topBottom = 100.px
+                topBottom = 50.px
             )
     }
 }

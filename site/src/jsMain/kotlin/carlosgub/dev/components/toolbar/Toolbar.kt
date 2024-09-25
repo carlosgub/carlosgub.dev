@@ -1,0 +1,147 @@
+package carlosgub.dev.components.toolbar
+
+
+import androidx.compose.runtime.*
+import carlosgub.dev.components.models.Section
+import carlosgub.dev.components.styles.*
+import carlosgub.dev.components.styles.components.H6Style
+import carlosgub.dev.components.styles.font.semiBold
+import com.varabyte.kobweb.compose.foundation.layout.Column
+import com.varabyte.kobweb.compose.foundation.layout.Row
+import com.varabyte.kobweb.compose.ui.Alignment
+import com.varabyte.kobweb.compose.ui.Modifier
+import com.varabyte.kobweb.compose.ui.modifiers.*
+import com.varabyte.kobweb.compose.ui.toAttrs
+import com.varabyte.kobweb.silk.components.icons.fa.FaBars
+import com.varabyte.kobweb.silk.components.icons.fa.FaIcon
+import com.varabyte.kobweb.silk.components.icons.fa.IconCategory
+import com.varabyte.kobweb.silk.components.icons.fa.IconSize
+import com.varabyte.kobweb.silk.init.InitSilk
+import com.varabyte.kobweb.silk.init.InitSilkContext
+import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
+import com.varabyte.kobweb.silk.style.toModifier
+import org.jetbrains.compose.web.css.px
+import org.jetbrains.compose.web.dom.A
+import org.jetbrains.compose.web.dom.H6
+import org.jetbrains.compose.web.dom.Img
+import org.jetbrains.compose.web.dom.Text
+
+@InitSilk
+fun initNavHeaderStyles(ctx: InitSilkContext) {
+    // Trick to avoid text scrolling under our floating nav header when you click on in-page fragments links like
+    // `href="#some-section`.
+    // See also: https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-margin-top
+    Section.entries.forEach { section ->
+        ctx.stylesheet.registerStyle("#${section.id}") {
+            base {
+                Modifier.scrollMargin(top = toolbarHeight) // Size of the toolbar
+            }
+            Breakpoint.MD { Modifier.scrollMargin(0.px) }
+        }
+    }
+}
+
+@Composable
+fun Toolbar(breakpoint: Breakpoint) {
+    var menuOpen by remember { mutableStateOf(false) }
+    Column(
+        modifier = ToolbarContainerStyle.toModifier(),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Row(
+            modifier = ToolbarStyle.toModifier(),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Row(
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                // Logo
+                Img(src = "logo.webp", attrs = Modifier.size(64.px).toAttrs())
+                H6(
+                    attrs = H6Style
+                        .toModifier()
+                        .semiBold()
+                        .margin(left = 8.px)
+                        .toAttrs()
+                ) {
+                    Text("carlosgub.dev")
+                }
+            }
+
+            if (breakpoint < Breakpoint.MD) {
+                ToolbarIconMenu(
+                    menuOpen = menuOpen,
+                    onOpenMenu = {
+                        menuOpen = true
+                    }, onCloseMenu = {
+                        menuOpen = false
+                    }
+                )
+            } else {
+                Row(Modifier.gap(24.px)) { NavItems() }
+            }
+        }
+        if (menuOpen && breakpoint < Breakpoint.MD) {
+            MobileMenu(onCloseMenu = { menuOpen = false })
+        }
+    }
+}
+
+@Composable
+private fun ToolbarIconMenu(
+    menuOpen: Boolean,
+    onOpenMenu: () -> Unit,
+    onCloseMenu: () -> Unit,
+) {
+    if (menuOpen) {
+        FaIcon(
+            name = "times",
+            modifier = Modifier.onClick {
+                onCloseMenu()
+            },
+            style = IconCategory.SOLID, size = IconSize.XXL
+        )
+    } else {
+        FaBars(
+            size = IconSize.XXL,
+            modifier = Modifier.onClick {
+                onOpenMenu()
+            }
+        )
+    }
+}
+
+@Composable
+fun NavItem(
+    text: String,
+    href: String,
+    onItemPressed: () -> Unit,
+) {
+    A(
+        href = "#$href",
+        attrs = ToolbarItemStyle
+            .toModifier()
+            .onClick {
+                onItemPressed()
+            }.toAttrs()
+    ) {
+        Text(text)
+    }
+}
+
+@Composable
+fun MobileMenu(onCloseMenu: () -> Unit) {
+    Column(
+        modifier = ToolbarMenuMobileStyle.toModifier()
+    ) {
+        NavItems(onItemPressed = onCloseMenu)
+    }
+}
+
+@Composable
+private fun NavItems(onItemPressed: () -> Unit = {}) {
+    NavItem("About", Section.About.id, onItemPressed)
+    NavItem("My Experience", Section.Experience.id, onItemPressed)
+    NavItem("Projects", Section.Projects.id, onItemPressed)
+    NavItem("Talks", Section.Speaker.id, onItemPressed)
+}

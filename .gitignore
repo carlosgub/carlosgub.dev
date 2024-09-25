@@ -24,6 +24,9 @@ kotlin-js-store
 /.idea/modules
 /.idea/libraries-with-intellij-classes.xml
 
+# Ignore kotlin
+.kotlin/*
+
 # Gradle ignores
 .gradle
 

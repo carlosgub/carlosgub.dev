@@ -22,4 +22,4 @@ Press `Q` in the terminal to gracefully stop the server.
 
 # Credits
 * This project use [Kobweb](https://github.com/varabyte/kobweb) 
-* Inspired by  [Brittany Chiang](https://v3.brittanychiang.com) 
+* Inspired by  [Brittany Chiang](https://v3.brittanychiang.com) and [Kristina Volchek](https://kristi.digital)

@@ -1,6 +1,7 @@
 package carlosgub.dev.components.chip
 
 import androidx.compose.runtime.Composable
+import carlosgub.dev.components.styles.font.light
 import carlosgub.dev.components.theme.WebColors
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
@@ -12,7 +13,6 @@ import org.jetbrains.compose.web.css.*
 @Composable
 internal fun Chip(
     text: String,
-    fontFamily: String,
     fontSize: CSSSizeValue<CSSUnit.rem>,
     modifier: Modifier = Modifier,
 ) {
@@ -25,7 +25,7 @@ internal fun Chip(
                     "-webkit-inline-box"
                 )
             }
-            .fontFamily(fontFamily)
+            .light()
             .fontSize(fontSize)
             .background(WebColors.Blue)
             .color(Color.white)

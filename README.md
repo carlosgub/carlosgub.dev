@@ -1,6 +1,6 @@
 ## This is the repo used to create my personal website: https://carlosgub.dev
 
-![image](https://github.com/carlosgub/carlosgub.dev/assets/30916886/42778c72-e9a4-4723-b123-940dd49e71be)
+![Image Preview](https://github.com/carlosgub/carlosgub.dev/blob/develop/design/readme_preview.webp)
 
 ## Getting Started
 

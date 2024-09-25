@@ -3,7 +3,6 @@ package carlosgub.dev.components.widgets
 import androidx.compose.runtime.*
 import carlosgub.dev.components.keyframe.FadeInKeyFrames
 import carlosgub.dev.components.styles.BackToTopButtonStyle
-import carlosgub.dev.components.theme.WebColors
 import com.varabyte.kobweb.compose.css.PointerEvents
 import com.varabyte.kobweb.compose.css.Visibility
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
@@ -17,7 +16,9 @@ import com.varabyte.kobweb.silk.style.animation.toAnimation
 import com.varabyte.kobweb.silk.style.toModifier
 import kotlinx.browser.document
 import kotlinx.browser.window
-import org.jetbrains.compose.web.css.*
+import org.jetbrains.compose.web.css.AnimationTimingFunction
+import org.jetbrains.compose.web.css.Position
+import org.jetbrains.compose.web.css.s
 
 @Composable
 fun BackToTopButton() {
@@ -43,10 +44,6 @@ fun BackToTopButton() {
             size = IconSize.LG,
             modifier = BackToTopButtonStyle
                 .toModifier()
-                .color(Color.white)
-                .padding(topBottom = 1.5.cssRem, leftRight = 1.25.cssRem)
-                .borderRadius(0.8.em)
-                .background(WebColors.Blue)
                 .visibility(if (show) Visibility.Visible else Visibility.Hidden)
                 .then(
                     if (show) {

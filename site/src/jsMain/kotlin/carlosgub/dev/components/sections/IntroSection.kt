@@ -1,7 +1,10 @@
 package carlosgub.dev.components.sections
 
 import androidx.compose.runtime.Composable
-import carlosgub.dev.components.styles.*
+import carlosgub.dev.components.styles.IntroSectionStyle
+import carlosgub.dev.components.styles.ProfilePhotoStyle
+import carlosgub.dev.components.styles.SectionModifier
+import carlosgub.dev.components.styles.TagLineStyle
 import carlosgub.dev.components.styles.components.H1Style
 import carlosgub.dev.components.styles.components.H3Style
 import carlosgub.dev.components.styles.components.H6Style
@@ -11,7 +14,6 @@ import com.varabyte.kobweb.compose.css.WordBreak
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.Row
-import com.varabyte.kobweb.compose.foundation.layout.Spacer
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
@@ -22,14 +24,11 @@ import com.varabyte.kobweb.silk.components.text.SpanText
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.toAttrs
 import com.varabyte.kobweb.silk.style.toModifier
-import org.jetbrains.compose.web.css.Color
 import org.jetbrains.compose.web.css.JustifyContent
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.dom.H1
 import org.jetbrains.compose.web.dom.H3
-import org.jetbrains.compose.web.dom.P
-import org.jetbrains.compose.web.dom.Text
 
 @Composable
 fun IntroSection(breakpoint: Breakpoint) {
@@ -84,42 +83,6 @@ private fun IntroSectionMobile() {
             modifier = Modifier.maxSize(300.px)
                 .margin(top = 24.px)
         )
-    }
-}
-
-@Composable
-private fun Toolbar() {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .background(Color.black)
-            .padding(
-                leftRight = 132.px,
-                topBottom = 20.px
-            ),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Image(
-            src = "/logo.webp",
-            alt = "Logo",
-            modifier = Modifier
-                .height(55.px)
-        )
-        Spacer()
-
-        Row(
-            modifier = Modifier
-                .fillMaxHeight(),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            P(
-                attrs = ToolbarOptionStyle
-                    .toModifier()
-                    .toAttrs()
-            ) {
-                Text("About me")
-            }
-        }
     }
 }
 

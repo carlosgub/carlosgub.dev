@@ -1,13 +1,14 @@
 package carlosgub.dev.components.styles
 
-import carlosgub.dev.components.styles.font.regular
-import com.varabyte.kobweb.compose.css.TextAlign
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.animation.Keyframes
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
-import org.jetbrains.compose.web.css.*
+import org.jetbrains.compose.web.css.Color
+import org.jetbrains.compose.web.css.em
+import org.jetbrains.compose.web.css.percent
+import org.jetbrains.compose.web.css.px
 
 val IntroContainerKeyFrames = Keyframes {
     0.percent {
@@ -27,20 +28,21 @@ val IntroSectionStyle = CssStyle {
         Modifier
             .background(Color.floralwhite)
             .width(100.percent)
+            .margin(topBottom = 92.px) // 92 px of the toolbar
             .padding(
-                topBottom = 50.px,
+                topBottom = 30.px,
                 leftRight = 24.px
             )
     }
     Breakpoint.MD {
-        Modifier
-            .fillMaxHeight()
+        Modifier.height(90.percent)
     }
     Breakpoint.LG {
         Modifier
-            .fillMaxHeight()
+            .height(90.percent)
+            .margin(top = 0.px) // Remove margin from toolbar
             .padding(
-                topBottom = 100.px,
+                topBottom = 50.px,
                 leftRight = 120.px
             )
     }
@@ -54,29 +56,6 @@ val TagLineStyle = CssStyle {
     Breakpoint.LG {
         Modifier
             .width(70.percent)
-    }
-}
-
-val ToolbarOptionStyle = CssStyle {
-    base {
-        Modifier
-            .color(Color.white)
-            .textAlign(TextAlign.Center)
-            .regular()
-            .fontSize(0.9.cssRem)
-            .lineHeight(1.5)
-    }
-    Breakpoint.MD {
-        Modifier
-            .fontSize(0.95.cssRem)
-    }
-    Breakpoint.LG {
-        Modifier
-            .fontSize(1.cssRem)
-    }
-    Breakpoint.XL {
-        Modifier
-            .fontSize(1.cssRem)
     }
 }
 

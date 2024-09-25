@@ -11,7 +11,6 @@ import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.selectors.active
 import com.varabyte.kobweb.silk.style.selectors.link
 import com.varabyte.kobweb.silk.style.selectors.visited
-import org.jetbrains.compose.web.css.Color
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
@@ -29,7 +28,7 @@ val ExperienceSectionStyle = CssStyle {
     Breakpoint.LG {
         Modifier
             .padding(
-                topBottom = 70.px,
+                topBottom = 50.px,
                 leftRight = 120.px
             )
     }

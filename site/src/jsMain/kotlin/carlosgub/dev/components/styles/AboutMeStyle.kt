@@ -24,7 +24,7 @@ val AboutMeSectionStyle = CssStyle {
     Breakpoint.LG {
         Modifier
             .padding(
-                topBottom = 70.px,
+                topBottom = 50.px,
                 leftRight = 120.px
             )
     }

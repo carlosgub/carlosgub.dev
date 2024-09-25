@@ -13,6 +13,10 @@ fun Modifier.light(): Modifier = this
     .fontFamily("Source Sans 3")
     .fontWeight(FontWeight.Light)
 
+fun Modifier.semiBold(): Modifier = this
+    .fontFamily("Source Sans 3")
+    .fontWeight(FontWeight.SemiBold)
+
 fun Modifier.bold(): Modifier = this
     .fontFamily("Source Sans 3")
     .fontWeight(FontWeight.Bold)

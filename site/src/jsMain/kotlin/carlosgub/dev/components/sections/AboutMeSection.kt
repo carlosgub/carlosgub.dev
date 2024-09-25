@@ -25,7 +25,7 @@ import org.jetbrains.compose.web.dom.Text
 fun AboutMeSection() {
     Box(
         modifier = Modifier
-            .id(Section.Experience.id)
+            .id(Section.About.id)
     ) {
         Column(
             modifier = listOf(

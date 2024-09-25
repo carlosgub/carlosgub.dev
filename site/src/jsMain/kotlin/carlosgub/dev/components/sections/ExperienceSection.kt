@@ -46,7 +46,7 @@ fun ExperienceSection() {
             modifier =
             ExperienceSectionStyle
                 .toModifier()
-                .id(Section.About.id)
+                .id(Section.Experience.id)
         ) {
             ExperienceContent()
         }

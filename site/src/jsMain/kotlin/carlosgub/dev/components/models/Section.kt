@@ -1,18 +1,27 @@
 package carlosgub.dev.components.models
 
 enum class Section(
-    val id: String
+    val id: String,
+    val text:String,
 ) {
+    Home(
+        id = "home",
+        text=  "Home"
+    ),
     About(
-        id = "about"
+        id = "about",
+        text = "About me"
     ),
     Projects(
-        id = "projects"
+        id = "projects",
+        text = "Personal Projects"
     ),
     Experience(
-        id = "experience"
+        id = "experience",
+        text = "My Experience"
     ),
     Speaker(
-        id = "speaker"
+        id = "speaker",
+        text = "Talks"
     ),
 }

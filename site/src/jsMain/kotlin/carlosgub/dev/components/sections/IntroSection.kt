@@ -1,10 +1,8 @@
 package carlosgub.dev.components.sections
 
 import androidx.compose.runtime.Composable
-import carlosgub.dev.components.styles.IntroSectionStyle
-import carlosgub.dev.components.styles.ProfilePhotoStyle
-import carlosgub.dev.components.styles.SectionModifier
-import carlosgub.dev.components.styles.TagLineStyle
+import carlosgub.dev.components.models.Section
+import carlosgub.dev.components.styles.*
 import carlosgub.dev.components.styles.components.H1Style
 import carlosgub.dev.components.styles.components.H3Style
 import carlosgub.dev.components.styles.components.H6Style
@@ -12,6 +10,7 @@ import carlosgub.dev.components.styles.components.LinkStyle
 import com.varabyte.kobweb.compose.css.TextAlign
 import com.varabyte.kobweb.compose.css.WordBreak
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
+import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
@@ -24,31 +23,36 @@ import com.varabyte.kobweb.silk.components.text.SpanText
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.toAttrs
 import com.varabyte.kobweb.silk.style.toModifier
-import org.jetbrains.compose.web.css.*
+import org.jetbrains.compose.web.css.JustifyContent
+import org.jetbrains.compose.web.css.percent
+import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.dom.H1
 import org.jetbrains.compose.web.dom.H3
 
 @Composable
 fun IntroSection(breakpoint: Breakpoint) {
-    if (breakpoint >= Breakpoint.MD) {
-        IntroSectionDesktop()
-    } else {
-        IntroSectionMobile()
+    Box(
+        IntroContainerStyle
+            .toModifier()
+            .id(Section.Home.id),
+        contentAlignment = Alignment.Center
+    ) {
+        if (breakpoint >= Breakpoint.MD) {
+            IntroSectionDesktop()
+        } else {
+            IntroSectionMobile()
+        }
     }
 }
 
 @Composable
 private fun IntroSectionDesktop() {
     Column(
-        modifier = SectionModifier
-            .toModifier()
-            .background(Color.floralwhite)
-            .width(100.percent)
-            .height(85.vh),
+        modifier = IntroDesktopStyle
+            .toModifier(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Row(
-            modifier = IntroSectionStyle.toModifier(),
             verticalAlignment = Alignment.CenterVertically
         ) {
             Column(
@@ -69,9 +73,8 @@ private fun IntroSectionDesktop() {
 @Composable
 private fun IntroSectionMobile() {
     Column(
-        modifier = IntroSectionStyle
-            .toModifier()
-            .background(Color.floralwhite),
+        modifier = IntroMobileStyle
+            .toModifier(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         FirstParagraph()

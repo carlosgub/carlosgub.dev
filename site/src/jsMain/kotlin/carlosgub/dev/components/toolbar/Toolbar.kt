@@ -78,7 +78,7 @@ fun Toolbar(breakpoint: Breakpoint) {
                     }
                 )
             } else {
-                Row(Modifier.gap(24.px)) { NavItems() }
+                Row(Modifier.gap(24.px)) { NavItemsDesktop() }
             }
         }
         if (menuOpen && breakpoint < Breakpoint.MD) {
@@ -134,14 +134,23 @@ fun MobileMenu(onCloseMenu: () -> Unit) {
     Column(
         modifier = ToolbarMenuMobileStyle.toModifier()
     ) {
-        NavItems(onItemPressed = onCloseMenu)
+        NavItemsMobile(onItemPressed = onCloseMenu)
     }
 }
 
 @Composable
-private fun NavItems(onItemPressed: () -> Unit = {}) {
-    NavItem("About", Section.About.id, onItemPressed)
-    NavItem("My Experience", Section.Experience.id, onItemPressed)
-    NavItem("Projects", Section.Projects.id, onItemPressed)
-    NavItem("Talks", Section.Speaker.id, onItemPressed)
+private fun NavItemsMobile(onItemPressed: () -> Unit = {}) {
+    NavItem(Section.Home.text, Section.Home.id, onItemPressed)
+    NavItem(Section.About.text, Section.About.id, onItemPressed)
+    NavItem(Section.Experience.text, Section.Experience.id, onItemPressed)
+    NavItem(Section.Projects.text, Section.Projects.id, onItemPressed)
+    NavItem(Section.Speaker.text, Section.Speaker.id, onItemPressed)
+}
+
+@Composable
+private fun NavItemsDesktop(onItemPressed: () -> Unit = {}) {
+    NavItem(Section.About.text, Section.About.id, onItemPressed)
+    NavItem(Section.Experience.text, Section.Experience.id, onItemPressed)
+    NavItem(Section.Projects.text, Section.Projects.id, onItemPressed)
+    NavItem(Section.Speaker.text, Section.Speaker.id, onItemPressed)
 }

@@ -25,6 +25,8 @@ import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.graphics.Image
+import com.varabyte.kobweb.silk.components.icons.fa.FaArrowRight
+import com.varabyte.kobweb.silk.components.icons.fa.IconSize
 import com.varabyte.kobweb.silk.components.text.SpanText
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.toAttrs
@@ -205,9 +207,16 @@ private fun PiggyBankText(
                 .toAttrs()
 
         ) {
-            SpanText(
-                "See project →"
-            )
+            Row(
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                SpanText(
+                    "See project "
+                )
+                FaArrowRight(
+                    size = IconSize.SM
+                )
+            }
         }
     }
 }
@@ -261,9 +270,16 @@ private fun PersonalWebsiteText(
                 .toAttrs()
 
         ) {
-            SpanText(
-                "See project →"
-            )
+            Row(
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                SpanText(
+                    "See project "
+                )
+                FaArrowRight(
+                    size = IconSize.SM
+                )
+            }
         }
     }
 }

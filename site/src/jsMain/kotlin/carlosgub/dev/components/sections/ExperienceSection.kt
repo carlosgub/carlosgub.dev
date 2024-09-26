@@ -21,6 +21,8 @@ import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.toAttrs
+import com.varabyte.kobweb.silk.components.icons.fa.FaArrowRight
+import com.varabyte.kobweb.silk.components.icons.fa.IconSize
 import com.varabyte.kobweb.silk.components.layout.HorizontalDivider
 import com.varabyte.kobweb.silk.components.text.SpanText
 import com.varabyte.kobweb.silk.style.toAttrs
@@ -89,9 +91,16 @@ private fun ExperienceContent() {
             .toAttrs()
 
     ) {
-        SpanText(
-            "View Full Resume →"
-        )
+        Row(
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            SpanText(
+                "View Full Resume "
+            )
+            FaArrowRight(
+                size = IconSize.SM
+            )
+        }
     }
 }
 

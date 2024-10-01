@@ -67,7 +67,7 @@ private fun ExperienceContent() {
             .toAttrs()
     ) {
         SpanText(
-            "My Experience"
+            Section.Experience.text
         )
     }
     WorkContainer(

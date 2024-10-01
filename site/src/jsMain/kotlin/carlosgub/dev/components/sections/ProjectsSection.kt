@@ -65,7 +65,7 @@ private fun ProjectsContent(breakpoint: Breakpoint) {
             .toAttrs()
     ) {
         SpanText(
-            "Personal projects"
+            Section.Projects.text
         )
     }
     if (breakpoint >= Breakpoint.MD) {

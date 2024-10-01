@@ -20,8 +20,8 @@ enum class Section(
         id = "experience",
         text = "My Experience"
     ),
-    Speaker(
-        id = "speaker",
+    Talks(
+        id = "talks",
         text = "Talks"
     ),
 }

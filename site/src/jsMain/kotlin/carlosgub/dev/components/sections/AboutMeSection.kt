@@ -50,7 +50,7 @@ private fun BackgroundContent() {
             .toAttrs()
     ) {
         SpanText(
-            "About Me"
+            Section.About.text
         )
     }
     P(

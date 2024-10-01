@@ -144,7 +144,7 @@ private fun NavItemsMobile(onItemPressed: () -> Unit = {}) {
     NavItem(Section.About.text, Section.About.id, onItemPressed)
     NavItem(Section.Experience.text, Section.Experience.id, onItemPressed)
     NavItem(Section.Projects.text, Section.Projects.id, onItemPressed)
-    NavItem(Section.Speaker.text, Section.Speaker.id, onItemPressed)
+    NavItem(Section.Talks.text, Section.Talks.id, onItemPressed)
 }
 
 @Composable
@@ -152,5 +152,5 @@ private fun NavItemsDesktop(onItemPressed: () -> Unit = {}) {
     NavItem(Section.About.text, Section.About.id, onItemPressed)
     NavItem(Section.Experience.text, Section.Experience.id, onItemPressed)
     NavItem(Section.Projects.text, Section.Projects.id, onItemPressed)
-    NavItem(Section.Speaker.text, Section.Speaker.id, onItemPressed)
+    NavItem(Section.Talks.text, Section.Talks.id, onItemPressed)
 }

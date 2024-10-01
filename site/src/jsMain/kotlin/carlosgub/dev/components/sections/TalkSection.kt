@@ -28,7 +28,7 @@ fun TalkSection() {
         modifier = Modifier
             .background(Color.floralwhite)
             .fillMaxWidth()
-            .id(Section.Speaker.id),
+            .id(Section.Talks.id),
         contentAlignment = Alignment.Center,
     ) {
         Column(
@@ -53,7 +53,7 @@ private fun TalkContent() {
             .toAttrs()
     ) {
         SpanText(
-            "Talks"
+            Section.Talks.text
         )
     }
 

@@ -29,6 +29,8 @@ import com.varabyte.kobweb.silk.components.icons.fa.FaArrowRight
 import com.varabyte.kobweb.silk.components.icons.fa.IconSize
 import com.varabyte.kobweb.silk.components.text.SpanText
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
+import com.varabyte.kobweb.silk.style.breakpoint.displayIfAtLeast
+import com.varabyte.kobweb.silk.style.breakpoint.displayUntil
 import com.varabyte.kobweb.silk.style.toAttrs
 import com.varabyte.kobweb.silk.style.toModifier
 import org.jetbrains.compose.web.css.DisplayStyle
@@ -38,7 +40,7 @@ import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.dom.*
 
 @Composable
-fun ProjectsSection(breakpoint: Breakpoint) {
+fun ProjectsSection() {
     Box(
         modifier = Modifier
             .id(Section.Projects.id)
@@ -48,13 +50,13 @@ fun ProjectsSection(breakpoint: Breakpoint) {
                 ProjectsSectionStyle
             ).toModifier()
         ) {
-            ProjectsContent(breakpoint)
+            ProjectsContent()
         }
     }
 }
 
 @Composable
-private fun ProjectsContent(breakpoint: Breakpoint) {
+private fun ProjectsContent() {
     H1(
         attrs = H3Style
             .toModifier()
@@ -68,23 +70,28 @@ private fun ProjectsContent(breakpoint: Breakpoint) {
             Section.Projects.text
         )
     }
-    if (breakpoint >= Breakpoint.MD) {
-        ProjectsHorizontal()
-    } else {
-        ProjectsVertical()
-    }
+    ProjectsHorizontal()
+    ProjectsVertical()
 }
 
 @Composable
 private fun ProjectsHorizontal() {
-    PiggyBankHorizontal()
-    PersonalWebsiteHorizontal()
+    Column(
+        modifier = Modifier.displayIfAtLeast(Breakpoint.MD)
+    ) {
+        PiggyBankHorizontal()
+        PersonalWebsiteHorizontal()
+    }
 }
 
 @Composable
 private fun ProjectsVertical() {
-    PiggyBankVertical()
-    PersonalWebsiteVertical()
+    Column(
+        modifier = Modifier.displayUntil(Breakpoint.MD)
+    ) {
+        PiggyBankVertical()
+        PersonalWebsiteVertical()
+    }
 }
 
 @Composable

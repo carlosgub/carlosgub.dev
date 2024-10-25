@@ -18,9 +18,11 @@ import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.graphics.Image
+import com.varabyte.kobweb.silk.style.breakpoint.displayIfAtLeast
 import com.varabyte.kobweb.silk.components.navigation.Link
 import com.varabyte.kobweb.silk.components.text.SpanText
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
+import com.varabyte.kobweb.silk.style.breakpoint.displayUntil
 import com.varabyte.kobweb.silk.style.toAttrs
 import com.varabyte.kobweb.silk.style.toModifier
 import org.jetbrains.compose.web.css.JustifyContent
@@ -30,18 +32,15 @@ import org.jetbrains.compose.web.dom.H1
 import org.jetbrains.compose.web.dom.H3
 
 @Composable
-fun IntroSection(breakpoint: Breakpoint) {
+fun IntroSection() {
     Box(
         IntroContainerStyle
             .toModifier()
             .id(Section.Home.id),
         contentAlignment = Alignment.Center
     ) {
-        if (breakpoint >= Breakpoint.MD) {
-            IntroSectionDesktop()
-        } else {
-            IntroSectionMobile()
-        }
+        IntroSectionDesktop()
+        IntroSectionMobile()
     }
 }
 
@@ -49,7 +48,8 @@ fun IntroSection(breakpoint: Breakpoint) {
 private fun IntroSectionDesktop() {
     Column(
         modifier = IntroDesktopStyle
-            .toModifier(),
+            .toModifier()
+            .displayIfAtLeast(Breakpoint.MD),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Row(
@@ -74,7 +74,8 @@ private fun IntroSectionDesktop() {
 private fun IntroSectionMobile() {
     Column(
         modifier = IntroMobileStyle
-            .toModifier(),
+            .toModifier()
+            .displayUntil(Breakpoint.MD),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         FirstParagraph()

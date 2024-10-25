@@ -13,6 +13,8 @@ import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.silk.components.icons.fa.FaArrowUpLong
 import com.varabyte.kobweb.silk.components.icons.fa.IconSize
 import com.varabyte.kobweb.silk.style.animation.toAnimation
+import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
+import com.varabyte.kobweb.silk.style.breakpoint.displayIfAtLeast
 import com.varabyte.kobweb.silk.style.toModifier
 import kotlinx.browser.document
 import kotlinx.browser.window
@@ -33,6 +35,7 @@ fun BackToTopButton() {
     Column(
         modifier = Modifier
             .fillMaxSize()
+            .displayIfAtLeast(Breakpoint.MD)
             .position(Position.Fixed)
             .zIndex(1)
             .pointerEvents(PointerEvents.None),

@@ -19,6 +19,8 @@ import com.varabyte.kobweb.silk.components.icons.fa.IconSize
 import com.varabyte.kobweb.silk.init.InitSilk
 import com.varabyte.kobweb.silk.init.InitSilkContext
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
+import com.varabyte.kobweb.silk.style.breakpoint.displayIfAtLeast
+import com.varabyte.kobweb.silk.style.breakpoint.displayUntil
 import com.varabyte.kobweb.silk.style.toModifier
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.dom.A
@@ -42,7 +44,7 @@ fun initNavHeaderStyles(ctx: InitSilkContext) {
 }
 
 @Composable
-fun Toolbar(breakpoint: Breakpoint) {
+fun Toolbar() {
     var menuOpen by remember { mutableStateOf(false) }
     Column(
         modifier = ToolbarContainerStyle.toModifier(),
@@ -67,21 +69,24 @@ fun Toolbar(breakpoint: Breakpoint) {
                     Text("carlosgub.dev")
                 }
             }
+            ToolbarIconMenu(
+                menuOpen = menuOpen,
+                onOpenMenu = {
+                    menuOpen = true
+                }, onCloseMenu = {
+                    menuOpen = false
+                },
+                modifier = Modifier
+                    .displayUntil(Breakpoint.MD)
+            )
 
-            if (breakpoint < Breakpoint.MD) {
-                ToolbarIconMenu(
-                    menuOpen = menuOpen,
-                    onOpenMenu = {
-                        menuOpen = true
-                    }, onCloseMenu = {
-                        menuOpen = false
-                    }
-                )
-            } else {
-                Row(Modifier.gap(24.px)) { NavItemsDesktop() }
-            }
+            Row(
+                Modifier
+                    .gap(24.px)
+                    .displayIfAtLeast(Breakpoint.MD)
+            ) { NavItemsDesktop() }
         }
-        if (menuOpen && breakpoint < Breakpoint.MD) {
+        if (menuOpen) {
             MobileMenu(onCloseMenu = { menuOpen = false })
         }
     }
@@ -92,11 +97,12 @@ private fun ToolbarIconMenu(
     menuOpen: Boolean,
     onOpenMenu: () -> Unit,
     onCloseMenu: () -> Unit,
+    modifier: Modifier = Modifier
 ) {
     if (menuOpen) {
         FaIcon(
             name = "times",
-            modifier = Modifier.onClick {
+            modifier = modifier.onClick {
                 onCloseMenu()
             },
             style = IconCategory.SOLID, size = IconSize.XXL
@@ -104,7 +110,7 @@ private fun ToolbarIconMenu(
     } else {
         FaBars(
             size = IconSize.XXL,
-            modifier = Modifier.onClick {
+            modifier = modifier.onClick {
                 onOpenMenu()
             }
         )
@@ -133,6 +139,7 @@ fun NavItem(
 fun MobileMenu(onCloseMenu: () -> Unit) {
     Column(
         modifier = ToolbarMenuMobileStyle.toModifier()
+            .displayUntil(Breakpoint.MD)
     ) {
         NavItemsMobile(onItemPressed = onCloseMenu)
     }

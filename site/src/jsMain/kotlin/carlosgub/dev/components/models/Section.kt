@@ -24,4 +24,8 @@ enum class Section(
         id = "talks",
         text = "Talks"
     ),
+    ContactMe(
+        id = "contact",
+        text = "Contact Me"
+    ),
 }

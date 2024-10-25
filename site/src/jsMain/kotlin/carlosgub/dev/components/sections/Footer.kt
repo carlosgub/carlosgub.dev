@@ -18,6 +18,8 @@ import com.varabyte.kobweb.silk.components.graphics.Image
 import com.varabyte.kobweb.silk.components.icons.fa.*
 import com.varabyte.kobweb.silk.components.layout.HorizontalDivider
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
+import com.varabyte.kobweb.silk.style.breakpoint.displayIfAtLeast
+import com.varabyte.kobweb.silk.style.breakpoint.displayUntil
 import com.varabyte.kobweb.silk.style.toModifier
 import org.jetbrains.compose.web.css.AlignItems
 import org.jetbrains.compose.web.css.Color
@@ -28,18 +30,15 @@ import org.jetbrains.compose.web.dom.H6
 import org.jetbrains.compose.web.dom.Text
 
 @Composable
-fun Footer(breakpoint: Breakpoint) {
+fun Footer() {
     Box(
         modifier = Modifier
             .background(Color.floralwhite)
             .fillMaxWidth()
     ) {
         HorizontalDivider(HRStyle.toModifier())
-        if (breakpoint >= Breakpoint.MD) {
-            FooterHorizontal()
-        } else {
-            FooterVertical()
-        }
+        FooterHorizontal()
+        FooterVertical()
     }
 }
 
@@ -49,6 +48,7 @@ private fun FooterHorizontal() {
     Row(
         modifier = FooterStyle
             .toModifier()
+            .displayIfAtLeast(Breakpoint.MD)
             .padding(
                 leftRight = 80.px,
                 topBottom = 50.px
@@ -81,6 +81,7 @@ private fun FooterVertical() {
     Column(
         FooterStyle
             .toModifier()
+            .displayUntil(Breakpoint.MD)
             .padding(
                 leftRight = 50.px,
                 topBottom = 30.px

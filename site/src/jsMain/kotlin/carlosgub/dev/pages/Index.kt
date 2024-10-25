@@ -32,17 +32,16 @@ fun HomePage() {
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier.width(100.percent)
         ) {
-            Toolbar(breakpoint)
-            IntroSection(breakpoint)
+            Toolbar()
+            IntroSection()
             AboutMeSection()
             ExperienceSection()
-            ProjectsSection(breakpoint)
+            ProjectsSection()
             TalkSection()
-            Footer(breakpoint)
+            // ContactMeSection()
+            Footer()
         }
-        if(breakpoint>=Breakpoint.MD){
-            BackToTopButton()
-        }
+        BackToTopButton()
 
     }
 

@@ -7,6 +7,7 @@ import carlosgub.dev.components.styles.ProjectContentStyle
 import carlosgub.dev.components.styles.ProjectContentTextStyle
 import carlosgub.dev.components.styles.ProjectsSectionStyle
 import carlosgub.dev.components.styles.components.H3Style
+import carlosgub.dev.components.styles.components.H4Style
 import carlosgub.dev.components.styles.components.MovingText
 import carlosgub.dev.components.styles.components.PStyle
 import carlosgub.dev.components.styles.font.bold
@@ -57,8 +58,8 @@ fun ProjectsSection() {
 
 @Composable
 private fun ProjectsContent() {
-    H1(
-        attrs = H3Style
+    H4(
+        attrs = H4Style
             .toModifier()
             .fillMaxWidth()
             .textAlign(TextAlign.Center)

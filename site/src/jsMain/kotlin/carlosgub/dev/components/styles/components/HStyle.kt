@@ -62,6 +62,22 @@ val H3Style = CssStyle {
     }
 }
 
+val H4Style = CssStyle {
+    base {
+        Modifier
+            .margin(bottom = 8.px)
+            .light()
+            .textAlign(TextAlign.Start)
+            .fontSize(1.5.cssRem)
+
+    }
+
+    Breakpoint.LG {
+        Modifier
+            .fontSize(1.75.cssRem)
+    }
+}
+
 val H6Style = CssStyle {
     base {
         Modifier

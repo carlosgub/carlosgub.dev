@@ -3,7 +3,7 @@ package carlosgub.dev.components.sections
 import androidx.compose.runtime.Composable
 import carlosgub.dev.components.models.Section
 import carlosgub.dev.components.styles.AboutMeSectionStyle
-import carlosgub.dev.components.styles.components.H3Style
+import carlosgub.dev.components.styles.components.H4Style
 import carlosgub.dev.components.styles.components.PStyle
 import carlosgub.dev.components.styles.font.bold
 import carlosgub.dev.components.theme.WebColors
@@ -17,7 +17,7 @@ import com.varabyte.kobweb.silk.components.text.SpanText
 import com.varabyte.kobweb.silk.style.toModifier
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.dom.Br
-import org.jetbrains.compose.web.dom.H3
+import org.jetbrains.compose.web.dom.H4
 import org.jetbrains.compose.web.dom.P
 import org.jetbrains.compose.web.dom.Text
 
@@ -39,8 +39,8 @@ fun AboutMeSection() {
 
 @Composable
 private fun BackgroundContent() {
-    H3(
-        attrs = H3Style
+    H4(
+        attrs = H4Style
             .toModifier()
             .fillMaxWidth()
             .textAlign(TextAlign.Start)

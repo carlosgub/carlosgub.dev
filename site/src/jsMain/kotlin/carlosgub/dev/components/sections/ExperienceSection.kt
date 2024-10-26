@@ -31,10 +31,7 @@ import org.jetbrains.compose.web.css.Color
 import org.jetbrains.compose.web.css.DisplayStyle
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.px
-import org.jetbrains.compose.web.dom.A
-import org.jetbrains.compose.web.dom.H3
-import org.jetbrains.compose.web.dom.P
-import org.jetbrains.compose.web.dom.Text
+import org.jetbrains.compose.web.dom.*
 
 @Composable
 fun ExperienceSection() {
@@ -57,8 +54,8 @@ fun ExperienceSection() {
 
 @Composable
 private fun ExperienceContent() {
-    H3(
-        attrs = H3Style
+    H4(
+        attrs = H4Style
             .toModifier()
             .fillMaxWidth()
             .bold()

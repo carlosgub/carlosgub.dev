@@ -2,10 +2,10 @@ package carlosgub.dev.components.sections
 
 import androidx.compose.runtime.Composable
 import carlosgub.dev.components.models.Section
-import carlosgub.dev.components.styles.ContactMeSectionStyle
 import carlosgub.dev.components.styles.ContactMeButton
+import carlosgub.dev.components.styles.ContactMeSectionStyle
 import carlosgub.dev.components.styles.MessageContactMeStyle
-import carlosgub.dev.components.styles.components.H3Style
+import carlosgub.dev.components.styles.components.H4Style
 import carlosgub.dev.components.styles.font.regular
 import carlosgub.dev.components.theme.WebColors
 import carlosgub.dev.components.widgets.Button
@@ -23,7 +23,7 @@ import com.varabyte.kobweb.silk.components.text.SpanText
 import com.varabyte.kobweb.silk.style.toAttrs
 import com.varabyte.kobweb.silk.style.toModifier
 import org.jetbrains.compose.web.dom.A
-import org.jetbrains.compose.web.dom.H3
+import org.jetbrains.compose.web.dom.H4
 import org.jetbrains.compose.web.dom.P
 
 @Composable
@@ -45,8 +45,8 @@ fun ContactMeSection() {
 
 @Composable
 private fun BackgroundContent() {
-    H3(
-        attrs = H3Style
+    H4(
+        attrs = H4Style
             .toModifier()
             .fillMaxWidth()
             .textAlign(TextAlign.Start)
@@ -56,7 +56,7 @@ private fun BackgroundContent() {
             .toAttrs()
     ) {
         SpanText(
-            "Have a project?"
+            "Do you have an idea in mind?"
         )
     }
     P(
@@ -64,7 +64,7 @@ private fun BackgroundContent() {
             .toAttrs()
     ) {
         SpanText(
-            "Let's have a talk"
+            "Chat with me"
         )
     }
 

@@ -3,10 +3,7 @@ package carlosgub.dev.components.sections
 import androidx.compose.runtime.Composable
 import carlosgub.dev.components.models.Section
 import carlosgub.dev.components.styles.TalkSectionStyle
-import carlosgub.dev.components.styles.components.H3Style
-import carlosgub.dev.components.styles.components.LinkStyle
-import carlosgub.dev.components.styles.components.LinkTalkStyle
-import carlosgub.dev.components.styles.components.UlStyle
+import carlosgub.dev.components.styles.components.*
 import carlosgub.dev.components.styles.font.bold
 import carlosgub.dev.components.theme.WebColors
 import com.varabyte.kobweb.compose.css.TextAlign
@@ -44,8 +41,8 @@ fun TalkSection() {
 
 @Composable
 private fun TalkContent() {
-    H3(
-        attrs = H3Style
+    H4(
+        attrs = H4Style
             .toModifier()
             .textAlign(TextAlign.Start)
             .bold()
@@ -66,7 +63,7 @@ private fun TalkContent() {
             I(
                 attrs = Modifier
                     .classNames("em", "em-flag-pe")
-                    .ariaLabel("Peru Flag").toAttrs()
+                    .toAttrs()
             )
             Text(
                 " Android Dev Peru #61 - How create your first website w/ kobweb - "
@@ -95,7 +92,7 @@ private fun TalkContent() {
             I(
                 attrs = Modifier
                     .classNames("em", "em-flag-pe")
-                    .ariaLabel("Peru Flag").toAttrs()
+                    .toAttrs()
             )
             Text(
                 " GDG DevFest 2023 - How Implement Firestore in Kotlin Multiplatform Mobile - "
@@ -124,7 +121,7 @@ private fun TalkContent() {
             I(
                 attrs = Modifier
                     .classNames("em", "em-flag-in")
-                    .ariaLabel("India Flag").toAttrs()
+                    .toAttrs()
             )
             Text(" 2021 5th ICOEI - Blockchain and smart contract for donation traceability - ")
             Link(
@@ -142,7 +139,7 @@ private fun TalkContent() {
             I(
                 attrs = Modifier
                     .classNames("em", "em-flag-pe")
-                    .ariaLabel("Peru Flag").toAttrs()
+                    .toAttrs()
             )
             Text(" Firebase Peru #6 2020 - Firebase ML Kit Barcode w/ Camera X")
         }
@@ -150,7 +147,7 @@ private fun TalkContent() {
             I(
                 attrs = Modifier
                     .classNames("em", "em-flag-pe")
-                    .ariaLabel("Peru Flag").toAttrs()
+                    .toAttrs()
             )
             Text(" GDG DevFest 2019 - AutoML Vision Edge")
         }
@@ -158,7 +155,7 @@ private fun TalkContent() {
             I(
                 attrs = Modifier
                     .classNames("em", "em-flag-pe")
-                    .ariaLabel("Peru Flag").toAttrs()
+                    .toAttrs()
             )
             Text(" Firebase Peru #5 2019 - Realtime chat w/ Firestore")
         }
@@ -166,7 +163,7 @@ private fun TalkContent() {
             I(
                 attrs = Modifier
                     .classNames("em", "em-flag-pe")
-                    .ariaLabel("Peru Flag").toAttrs()
+                    .toAttrs()
             )
             Text(" Kotlin Everywhere Lima 2019 - Kotlin DSL")
         }
@@ -174,7 +171,7 @@ private fun TalkContent() {
             I(
                 attrs = Modifier
                     .classNames("em", "em-flag-pe")
-                    .ariaLabel("Peru Flag").toAttrs()
+                    .toAttrs()
             )
             Text(" Firebase Day 2019 - Realtime chat w/ Firestore.")
         }
@@ -182,7 +179,7 @@ private fun TalkContent() {
             I(
                 attrs = Modifier
                     .classNames("em", "em-flag-pe")
-                    .ariaLabel("Peru Flag").toAttrs()
+                    .toAttrs()
             )
             Text(" GDG Open MeetupMobile #2 2019 - AutoML Vision Edge")
         }
@@ -190,7 +187,7 @@ private fun TalkContent() {
             I(
                 attrs = Modifier
                     .classNames("em", "em-flag-pe")
-                    .ariaLabel("Peru Flag").toAttrs()
+                    .toAttrs()
             )
             Text(" IO Extended Lima 2019 - Reconocimiento de Objetos en tiempo real con MLKit")
         }
@@ -198,7 +195,7 @@ private fun TalkContent() {
             I(
                 attrs = Modifier
                     .classNames("em", "em-flag-pe")
-                    .ariaLabel("Peru Flag").toAttrs()
+                    .toAttrs()
             )
             Text(" Firebase Perú #4 2019 - Firebase AutoML Vision Edge")
         }
@@ -206,7 +203,7 @@ private fun TalkContent() {
             I(
                 attrs = Modifier
                     .classNames("em", "em-flag-pe")
-                    .ariaLabel("Peru Flag").toAttrs()
+                    .toAttrs()
             )
             Text(" Firebase Perú #2 2019 - Firebase Analytics, migrando de GA a FA.")
         }
@@ -214,7 +211,7 @@ private fun TalkContent() {
             I(
                 attrs = Modifier
                     .classNames("em", "em-flag-pe")
-                    .ariaLabel("Peru Flag").toAttrs()
+                    .toAttrs()
             )
             Text(" Firebase Perú #1 2019 - Reconocimiento Facial con ML KIT")
         }
@@ -222,7 +219,7 @@ private fun TalkContent() {
             I(
                 attrs = Modifier
                     .classNames("em", "em-flag-pe")
-                    .ariaLabel("Peru Flag").toAttrs()
+                    .toAttrs()
             )
             Text(" GDG Lima 2018 - Android App Bundle Dynamic Delivery")
         }
@@ -230,7 +227,7 @@ private fun TalkContent() {
             I(
                 attrs = Modifier
                     .classNames("em", "em-flag-pe")
-                    .ariaLabel("Peru Flag").toAttrs()
+                    .toAttrs()
             )
             Text(" Android Dev Perú MeetUp #19 2018 - Reconocimiento Facial con ML KIT")
         }
@@ -238,7 +235,7 @@ private fun TalkContent() {
             I(
                 attrs = Modifier
                     .classNames("em", "em-flag-pe")
-                    .ariaLabel("Peru Flag").toAttrs()
+                    .toAttrs()
             )
             Text(" Google I/O Extended 18 - Creando un cuarto inteligente con Android Things")
         }
@@ -246,7 +243,7 @@ private fun TalkContent() {
             I(
                 attrs = Modifier
                     .classNames("em", "em-flag-pe")
-                    .ariaLabel("Peru Flag").toAttrs()
+                    .toAttrs()
             )
             Text(" Android Dev Perú MeetUp #18 2018 - Android Things Example")
         }

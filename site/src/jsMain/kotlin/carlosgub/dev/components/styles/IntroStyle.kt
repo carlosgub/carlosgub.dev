@@ -1,11 +1,32 @@
 package carlosgub.dev.components.styles
 
+import carlosgub.dev.components.styles.font.regular
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
+import com.varabyte.kobweb.compose.ui.styleModifier
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.base
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import org.jetbrains.compose.web.css.*
+import org.jetbrains.compose.web.css.keywords.auto
+
+val GoToContactMeButton = CssStyle {
+    base {
+        Modifier
+            .regular()
+            .fontSize(1.cssRem)
+            .width(auto)
+            .padding(leftRight = 18.px, topBottom = 12.px)
+            .styleModifier {
+                property("--silk-button-height", "auto")
+            }
+    }
+
+    Breakpoint.MD {
+        Modifier
+            .fontSize(1.2.cssRem)
+    }
+}
 
 val IntroContainerStyle = CssStyle.base {
     Modifier

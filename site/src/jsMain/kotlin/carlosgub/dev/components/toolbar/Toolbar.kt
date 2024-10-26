@@ -69,7 +69,7 @@ fun Toolbar() {
                     Text("carlosgub.dev")
                 }
             }
-            ToolbarIconMenu(
+            ToolbarIconMenuForMobile(
                 menuOpen = menuOpen,
                 onOpenMenu = {
                     menuOpen = true
@@ -79,12 +79,8 @@ fun Toolbar() {
                 modifier = Modifier
                     .displayUntil(Breakpoint.MD)
             )
+            ToobarOptionsForDesktop()
 
-            Row(
-                Modifier
-                    .gap(24.px)
-                    .displayIfAtLeast(Breakpoint.MD)
-            ) { NavItemsDesktop() }
         }
         if (menuOpen) {
             MobileMenu(onCloseMenu = { menuOpen = false })
@@ -93,7 +89,16 @@ fun Toolbar() {
 }
 
 @Composable
-private fun ToolbarIconMenu(
+private fun ToobarOptionsForDesktop() {
+    Row(
+        Modifier
+            .gap(24.px)
+            .displayIfAtLeast(Breakpoint.MD)
+    ) { NavItemsDesktop() }
+}
+
+@Composable
+private fun ToolbarIconMenuForMobile(
     menuOpen: Boolean,
     onOpenMenu: () -> Unit,
     onCloseMenu: () -> Unit,
@@ -152,6 +157,7 @@ private fun NavItemsMobile(onItemPressed: () -> Unit = {}) {
     NavItem(Section.Experience.text, Section.Experience.id, onItemPressed)
     NavItem(Section.Projects.text, Section.Projects.id, onItemPressed)
     NavItem(Section.Talks.text, Section.Talks.id, onItemPressed)
+    NavItem(Section.ContactMe.text, Section.ContactMe.id, onItemPressed)
 }
 
 @Composable
@@ -160,4 +166,5 @@ private fun NavItemsDesktop(onItemPressed: () -> Unit = {}) {
     NavItem(Section.Experience.text, Section.Experience.id, onItemPressed)
     NavItem(Section.Projects.text, Section.Projects.id, onItemPressed)
     NavItem(Section.Talks.text, Section.Talks.id, onItemPressed)
+    NavItem(Section.ContactMe.text, Section.ContactMe.id, onItemPressed)
 }

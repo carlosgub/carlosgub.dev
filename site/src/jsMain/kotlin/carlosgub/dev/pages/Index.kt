@@ -12,8 +12,6 @@ import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
 import com.varabyte.kobweb.compose.ui.modifiers.width
 import com.varabyte.kobweb.core.Page
-import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
-import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
 import kotlinx.browser.document
 import org.jetbrains.compose.web.css.percent
 
@@ -22,7 +20,6 @@ import org.jetbrains.compose.web.css.percent
 @Composable
 fun HomePage() {
     val title = "Carlos Ugaz | Mobile Software Engineer"
-    val breakpoint = rememberBreakpoint()
     LaunchedEffect(title) {
         document.title = title
     }
@@ -38,7 +35,7 @@ fun HomePage() {
             ExperienceSection()
             ProjectsSection()
             TalkSection()
-            // ContactMeSection()
+            ContactMeSection()
             Footer()
         }
         BackToTopButton()

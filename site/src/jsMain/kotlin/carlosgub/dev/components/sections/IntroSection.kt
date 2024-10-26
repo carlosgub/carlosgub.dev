@@ -6,9 +6,8 @@ import carlosgub.dev.components.styles.*
 import carlosgub.dev.components.styles.components.H1Style
 import carlosgub.dev.components.styles.components.H3Style
 import carlosgub.dev.components.styles.components.H6Style
-import carlosgub.dev.components.styles.components.LinkStyle
+import carlosgub.dev.components.widgets.LinkButton
 import com.varabyte.kobweb.compose.css.TextAlign
-import com.varabyte.kobweb.compose.css.WordBreak
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Column
@@ -18,16 +17,16 @@ import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.graphics.Image
-import com.varabyte.kobweb.silk.style.breakpoint.displayIfAtLeast
-import com.varabyte.kobweb.silk.components.navigation.Link
 import com.varabyte.kobweb.silk.components.text.SpanText
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
+import com.varabyte.kobweb.silk.style.breakpoint.displayIfAtLeast
 import com.varabyte.kobweb.silk.style.breakpoint.displayUntil
 import com.varabyte.kobweb.silk.style.toAttrs
 import com.varabyte.kobweb.silk.style.toModifier
 import org.jetbrains.compose.web.css.JustifyContent
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
+import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.dom.H1
 import org.jetbrains.compose.web.dom.H3
 
@@ -128,15 +127,13 @@ private fun ThirdParagraph(modifier: Modifier = Modifier) {
     ) {
         SpanText(
             "I'm a software engineer, Senior Android developer at Globant",
-            modifier = modifier
+            modifier = modifier.padding(bottom = 12.px)
         )
-        Row(modifier = modifier) {
-            SpanText("Get in touch ")
-            Link(
-                path = "mailto:carlosgub.dev@gmail.com",
-                text = "carlosgub.dev@gmail.com",
-                modifier = LinkStyle.toModifier()
-                    .wordBreak(WordBreak.BreakAll)
+        Div(attrs = modifier.toAttrs()){
+            LinkButton(
+                path = "#${Section.ContactMe.id}",
+                text = "Let's talk",
+                modifier = GoToContactMeButton.toModifier()
             )
         }
     }

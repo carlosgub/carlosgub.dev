@@ -64,7 +64,7 @@ private fun BackgroundContent() {
             .toAttrs()
     ) {
         SpanText(
-            "Chat with me"
+            "Let's brainstorm together"
         )
     }
 

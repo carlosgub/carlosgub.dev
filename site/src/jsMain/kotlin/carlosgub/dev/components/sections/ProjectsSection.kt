@@ -102,7 +102,7 @@ private fun PiggyBankHorizontal() {
         verticalAlignment = Alignment.CenterVertically
     ) {
         ImageHorizontal(
-            src = "/piggybank_project.jpg",
+            src = "/piggybank_project.webp",
             alt = "Piggy Bank Banner Project"
         )
         PiggyBankText(
@@ -125,7 +125,7 @@ private fun PersonalWebsiteHorizontal() {
                 .fillMaxWidth(50.percent)
         )
         ImageHorizontal(
-            src = "/carlosgub_project.jpg",
+            src = "/carlosgub_project.webp",
             alt = "Personal Website Banner Project"
         )
     }
@@ -138,7 +138,7 @@ private fun PiggyBankVertical() {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         ImageVertical(
-            src = "/piggybank_project.jpg",
+            src = "/piggybank_project.webp",
             alt = "Piggy Bank Banner Image"
         )
         PiggyBankText(
@@ -156,7 +156,7 @@ private fun PersonalWebsiteVertical() {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         ImageVertical(
-            "/carlosgub_project.jpg",
+            "/carlosgub_project.webp",
             "Personal Website Banner Project"
         )
         PersonalWebsiteText(

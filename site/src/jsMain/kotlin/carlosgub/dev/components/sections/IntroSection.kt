@@ -142,7 +142,7 @@ private fun ThirdParagraph(modifier: Modifier = Modifier) {
 @Composable
 private fun ProfileImage(modifier: Modifier = Modifier) {
     Image(
-        "/photo_personal.png",
+        "/photo_personal.webp",
         modifier = modifier.then(ProfilePhotoStyle.toModifier())
     )
 }

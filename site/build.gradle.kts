@@ -1,5 +1,6 @@
 import com.varabyte.kobweb.gradle.application.util.configAsKobwebApplication
 import kotlinx.html.link
+import kotlinx.html.style
 
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
@@ -15,6 +16,9 @@ kobweb {
         index {
             description.set("Carlos Ugaz Website, Powered by Kobweb")
             head.add {
+                style {
+                    type
+                }
                 link {
                     rel = "stylesheet"
                     href = "https://emoji-css.afeld.me/emoji.css"

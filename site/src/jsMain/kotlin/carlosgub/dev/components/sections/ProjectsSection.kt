@@ -2,7 +2,6 @@ package carlosgub.dev.components.sections
 
 import androidx.compose.runtime.Composable
 import carlosgub.dev.components.chip.Chip
-import carlosgub.dev.components.models.Section
 import carlosgub.dev.components.styles.ProjectContentStyle
 import carlosgub.dev.components.styles.ProjectContentTextStyle
 import carlosgub.dev.components.styles.ProjectsSectionStyle
@@ -12,10 +11,12 @@ import carlosgub.dev.components.styles.components.MovingText
 import carlosgub.dev.components.styles.components.PStyle
 import carlosgub.dev.components.styles.font.bold
 import carlosgub.dev.components.theme.WebColors
-import carlosgub.dev.util.text.personalWebDescription
-import carlosgub.dev.util.text.personalWebsiteStack
-import carlosgub.dev.util.text.piggyBankDescription
-import carlosgub.dev.util.text.piggyBankStack
+import carlosgub.dev.model.Language
+import carlosgub.dev.model.Section
+import carlosgub.dev.model.project.Project
+import carlosgub.dev.model.project.ProjectEnglish
+import carlosgub.dev.model.project.ProjectSection
+import carlosgub.dev.model.project.ProjectSpanish
 import com.varabyte.kobweb.compose.css.TextAlign
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Box
@@ -41,7 +42,8 @@ import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.dom.*
 
 @Composable
-fun ProjectsSection() {
+fun ProjectsSection(language: Language) {
+    val project = if (language == Language.English) ProjectEnglish else ProjectSpanish
     Box(
         modifier = Modifier
             .id(Section.Projects.id)
@@ -51,13 +53,13 @@ fun ProjectsSection() {
                 ProjectsSectionStyle
             ).toModifier()
         ) {
-            ProjectsContent()
+            ProjectsContent(project)
         }
     }
 }
 
 @Composable
-private fun ProjectsContent() {
+private fun ProjectsContent(projectSection: ProjectSection) {
     H4(
         attrs = H4Style
             .toModifier()
@@ -67,36 +69,36 @@ private fun ProjectsContent() {
             .color(WebColors.Blue)
             .toAttrs()
     ) {
-        SpanText(
+        /*SpanText(
             Section.Projects.text
-        )
+        )*/
     }
-    ProjectsHorizontal()
-    ProjectsVertical()
+    ProjectsHorizontal(projectSection)
+    ProjectsVertical(projectSection)
 }
 
 @Composable
-private fun ProjectsHorizontal() {
+private fun ProjectsHorizontal(projectSection: ProjectSection) {
     Column(
         modifier = Modifier.displayIfAtLeast(Breakpoint.MD)
     ) {
-        PiggyBankHorizontal()
-        PersonalWebsiteHorizontal()
+        PiggyBankHorizontal(projectSection.firstProject)
+        PersonalWebsiteHorizontal(projectSection.secondProject)
     }
 }
 
 @Composable
-private fun ProjectsVertical() {
+private fun ProjectsVertical(projectSection: ProjectSection) {
     Column(
         modifier = Modifier.displayUntil(Breakpoint.MD)
     ) {
-        PiggyBankVertical()
-        PersonalWebsiteVertical()
+        PiggyBankVertical(projectSection.firstProject)
+        PersonalWebsiteVertical(projectSection.secondProject)
     }
 }
 
 @Composable
-private fun PiggyBankHorizontal() {
+private fun PiggyBankHorizontal(project: Project) {
     Row(
         modifier = ProjectContentStyle.toModifier(),
         verticalAlignment = Alignment.CenterVertically
@@ -106,6 +108,7 @@ private fun PiggyBankHorizontal() {
             alt = "Piggy Bank Banner Project"
         )
         PiggyBankText(
+            project = project,
             modifier = Modifier
                 .fillMaxWidth(50.percent)
         )
@@ -114,13 +117,14 @@ private fun PiggyBankHorizontal() {
 
 
 @Composable
-private fun PersonalWebsiteHorizontal() {
+private fun PersonalWebsiteHorizontal(project: Project) {
     Row(
         modifier = Modifier
             .fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically
     ) {
         PersonalWebsiteText(
+            project = project,
             modifier = Modifier
                 .fillMaxWidth(50.percent)
         )
@@ -132,7 +136,7 @@ private fun PersonalWebsiteHorizontal() {
 }
 
 @Composable
-private fun PiggyBankVertical() {
+private fun PiggyBankVertical(project: Project) {
     Column(
         modifier = ProjectContentStyle.toModifier(),
         horizontalAlignment = Alignment.CenterHorizontally
@@ -142,6 +146,7 @@ private fun PiggyBankVertical() {
             alt = "Piggy Bank Banner Image"
         )
         PiggyBankText(
+            project = project,
             modifier = Modifier
                 .fillMaxWidth()
         )
@@ -149,7 +154,7 @@ private fun PiggyBankVertical() {
 }
 
 @Composable
-private fun PersonalWebsiteVertical() {
+private fun PersonalWebsiteVertical(project: Project) {
     Column(
         modifier = Modifier
             .fillMaxWidth(),
@@ -160,6 +165,7 @@ private fun PersonalWebsiteVertical() {
             "Personal Website Banner Project"
         )
         PersonalWebsiteText(
+            project = project,
             modifier = Modifier
                 .fillMaxWidth()
         )
@@ -168,6 +174,7 @@ private fun PersonalWebsiteVertical() {
 
 @Composable
 private fun PiggyBankText(
+    project: Project,
     modifier: Modifier
 ) {
     Column(
@@ -181,7 +188,7 @@ private fun PiggyBankText(
                 .fillMaxWidth(),
             horizontalArrangement = Arrangement.Center
         ) {
-            piggyBankStack.forEach { stack ->
+            project.stackList.forEach { stack ->
                 ProjectChip(stack.id)
             }
         }
@@ -196,7 +203,7 @@ private fun PiggyBankText(
                 .toAttrs()
         ) {
             SpanText(
-                "Piggy Bank"
+                project.name
             )
         }
         P(
@@ -206,20 +213,19 @@ private fun PiggyBankText(
                 .toAttrs()
         ) {
             Text(
-                piggyBankDescription
+                project.description
             )
         }
         A(
             href = "https://github.com/carlosgub/PiggyBank",
-            attrs = MovingText
-                .toAttrs()
+            attrs = MovingText.toAttrs()
 
         ) {
             Row(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 SpanText(
-                    "See project "
+                    project.actionButtonText
                 )
                 FaArrowRight(
                     size = IconSize.SM
@@ -231,6 +237,7 @@ private fun PiggyBankText(
 
 @Composable
 private fun PersonalWebsiteText(
+    project: Project,
     modifier: Modifier
 ) {
     Column(
@@ -244,7 +251,7 @@ private fun PersonalWebsiteText(
                 .fillMaxWidth(),
             horizontalArrangement = Arrangement.Center
         ) {
-            personalWebsiteStack.forEach { stack ->
+            project.stackList.forEach { stack ->
                 ProjectChip(stack.id)
             }
         }
@@ -258,9 +265,7 @@ private fun PersonalWebsiteText(
                 .padding(top = 16.px)
                 .toAttrs()
         ) {
-            SpanText(
-                "Personal website"
-            )
+            SpanText(project.name)
         }
         P(
             attrs = PStyle
@@ -268,9 +273,7 @@ private fun PersonalWebsiteText(
                 .padding(top = 16.px)
                 .toAttrs()
         ) {
-            Text(
-                personalWebDescription
-            )
+            Text(project.description)
         }
         A(
             href = "https://github.com/carlosgub/carlosgub.dev",
@@ -281,9 +284,7 @@ private fun PersonalWebsiteText(
             Row(
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                SpanText(
-                    "See project "
-                )
+                SpanText(project.actionButtonText)
                 FaArrowRight(
                     size = IconSize.SM
                 )

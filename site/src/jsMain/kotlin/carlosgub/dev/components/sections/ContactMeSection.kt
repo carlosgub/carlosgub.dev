@@ -1,7 +1,7 @@
 package carlosgub.dev.components.sections
 
 import androidx.compose.runtime.Composable
-import carlosgub.dev.components.models.Section
+import carlosgub.dev.model.Section
 import carlosgub.dev.components.styles.ContactMeButton
 import carlosgub.dev.components.styles.ContactMeSectionStyle
 import carlosgub.dev.components.styles.MessageContactMeStyle

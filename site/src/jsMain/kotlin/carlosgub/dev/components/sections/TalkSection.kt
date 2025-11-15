@@ -1,7 +1,7 @@
 package carlosgub.dev.components.sections
 
 import androidx.compose.runtime.Composable
-import carlosgub.dev.components.models.Section
+import carlosgub.dev.model.Section
 import carlosgub.dev.components.styles.TalkSectionStyle
 import carlosgub.dev.components.styles.components.*
 import carlosgub.dev.components.styles.font.bold
@@ -49,9 +49,9 @@ private fun TalkContent() {
             .color(WebColors.Blue)
             .toAttrs()
     ) {
-        SpanText(
+        /*SpanText(
             Section.Talks.text
-        )
+        )*/
     }
 
     Ul(

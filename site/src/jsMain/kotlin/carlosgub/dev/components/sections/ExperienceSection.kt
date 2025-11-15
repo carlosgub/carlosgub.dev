@@ -2,8 +2,6 @@ package carlosgub.dev.components.sections
 
 import androidx.compose.runtime.Composable
 import carlosgub.dev.components.chip.Chip
-import carlosgub.dev.components.models.Section
-import carlosgub.dev.components.models.Stack
 import carlosgub.dev.components.styles.CompanyLink
 import carlosgub.dev.components.styles.ExperienceSectionStyle
 import carlosgub.dev.components.styles.PExperienceStyle
@@ -11,7 +9,12 @@ import carlosgub.dev.components.styles.components.*
 import carlosgub.dev.components.styles.font.bold
 import carlosgub.dev.components.styles.font.light
 import carlosgub.dev.components.theme.WebColors
-import carlosgub.dev.util.text.*
+import carlosgub.dev.model.Language
+import carlosgub.dev.model.Section
+import carlosgub.dev.model.experience.ExperienceSection
+import carlosgub.dev.model.experience.ExperienceEnglish
+import carlosgub.dev.model.experience.ExperienceSpanish
+import carlosgub.dev.model.experience.Company
 import com.varabyte.kobweb.compose.css.TextAlign
 import com.varabyte.kobweb.compose.css.TextDecorationLine
 import com.varabyte.kobweb.compose.foundation.layout.Box
@@ -31,10 +34,14 @@ import org.jetbrains.compose.web.css.Color
 import org.jetbrains.compose.web.css.DisplayStyle
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.px
-import org.jetbrains.compose.web.dom.*
+import org.jetbrains.compose.web.dom.A
+import org.jetbrains.compose.web.dom.H4
+import org.jetbrains.compose.web.dom.P
+import org.jetbrains.compose.web.dom.Text
 
 @Composable
-fun ExperienceSection() {
+fun ExperienceSection(language: Language) {
+    val experience = if (language == Language.English) ExperienceEnglish else ExperienceSpanish
     Box(
         modifier = Modifier
             .background(Color.floralwhite)
@@ -43,17 +50,17 @@ fun ExperienceSection() {
     ) {
         Column(
             modifier =
-            ExperienceSectionStyle
-                .toModifier()
-                .id(Section.Experience.id)
+                ExperienceSectionStyle
+                    .toModifier()
+                    .id(Section.Experience.id)
         ) {
-            ExperienceContent()
+            ExperienceContent(experience)
         }
     }
 }
 
 @Composable
-private fun ExperienceContent() {
+private fun ExperienceContent(experience: ExperienceSection) {
     H4(
         attrs = H4Style
             .toModifier()
@@ -64,50 +71,29 @@ private fun ExperienceContent() {
             .toAttrs()
     ) {
         SpanText(
-            Section.Experience.text
+            experience.title
         )
     }
-    WorkContainer(
-        workName = globant,
-        workUrl = globantUrl,
-        time = globantTime,
-        description = globantDescription,
-        stackList = globantStack
-    )
+    WorkContainer(experience.firstWork)
     HorizontalDivider(HRStyle.toModifier())
-    WorkContainer(
-        workName = rappi,
-        workUrl = rappiUrl,
-        time = rappiTime,
-        description = rappiDescription,
-        stackList = rappiStack
-    )
+    WorkContainer(experience.secondWork)
     A(
-        href = "/resume.pdf",
+        href = experience.resumeHref,
         attrs = MovingText
             .toAttrs()
-
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically
         ) {
-            SpanText(
-                "View Full Resume "
-            )
-            FaArrowRight(
-                size = IconSize.SM
-            )
+            SpanText(experience.seeResume)
+            FaArrowRight(size = IconSize.SM)
         }
     }
 }
 
 @Composable
 private fun WorkContainer(
-    workName: String,
-    workUrl: String,
-    time: String,
-    description: String,
-    stackList: List<Stack>
+    work: Company
 ) {
     Column(
         Modifier
@@ -123,10 +109,10 @@ private fun WorkContainer(
                 .color(WebColors.Blue)
                 .margin(0.px)
                 .toAttrs(),
-            href = workUrl
+            href = work.url
         ) {
             SpanText(
-                text = workName,
+                text = work.name,
                 modifier = CompanyLink
                     .toModifier()
             )
@@ -138,7 +124,7 @@ private fun WorkContainer(
                 .light()
                 .toAttrs()
         ) {
-            Text(time)
+            Text(work.time)
         }
         P(
             attrs = PExperienceStyle
@@ -147,7 +133,7 @@ private fun WorkContainer(
                 .toAttrs()
         ) {
             Text(
-                description
+                work.description
             )
         }
         Row(
@@ -158,7 +144,7 @@ private fun WorkContainer(
                     topBottom = 6.px,
                 )
         ) {
-            stackList.forEach { stack ->
+            work.stackList.forEach { stack ->
                 Chip(
                     text = stack.id,
                     fontSize = 0.9.cssRem,

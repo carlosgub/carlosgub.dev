@@ -1,4 +1,4 @@
-package carlosgub.dev.components.models
+package carlosgub.dev.model
 
 enum class Stack(
     val id: String

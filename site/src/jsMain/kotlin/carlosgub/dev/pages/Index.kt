@@ -2,9 +2,14 @@ package carlosgub.dev.pages
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import carlosgub.dev.components.sections.*
 import carlosgub.dev.components.toolbar.Toolbar
 import carlosgub.dev.components.widgets.BackToTopButton
+import carlosgub.dev.model.Language
 import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.ui.Alignment
@@ -23,17 +28,19 @@ fun HomePage() {
     LaunchedEffect(title) {
         document.title = title
     }
-
+    var language: Language by remember { mutableStateOf(Language.English) }
     Box(modifier = Modifier.fillMaxSize()) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier.width(100.percent)
         ) {
-            Toolbar()
-            IntroSection()
-            AboutMeSection()
-            ExperienceSection()
-            ProjectsSection()
+            Toolbar(language, onLanguageSelected = { languageSelected ->
+                language = languageSelected
+            })
+            IntroSection(language)
+            AboutMeSection(language)
+            ExperienceSection(language)
+            ProjectsSection(language)
             TalkSection()
             ContactMeSection()
             Footer()

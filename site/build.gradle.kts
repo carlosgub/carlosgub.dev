@@ -16,9 +16,6 @@ kobweb {
         index {
             description.set("Carlos Ugaz Website, Powered by Kobweb")
             head.add {
-                style {
-                    type
-                }
                 link {
                     rel = "stylesheet"
                     href = "https://emoji-css.afeld.me/emoji.css"

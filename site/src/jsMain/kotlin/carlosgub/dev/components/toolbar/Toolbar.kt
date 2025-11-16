@@ -87,11 +87,11 @@ fun Toolbar(language: Language, onLanguageSelected: (Language) -> Unit) {
         document.addEventListener("click", listener)
 
         // iPhone / iPad (Safari)
-        document.addEventListener("touchstart", listener)
+        // document.addEventListener("touchstart", listener)
 
         onDispose {
             document.removeEventListener("click", listener)
-            document.removeEventListener("touchstart", listener)
+            //document.removeEventListener("touchstart", listener)
         }
     }
 
@@ -171,23 +171,22 @@ private fun ToolbarIconMenuForMobile(
     onCloseMenu: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    val toggle = {
+    val stopClick = Modifier.onClick { event ->
+        event.stopPropagation()
         if (menuOpen) onCloseMenu() else onOpenMenu()
     }
 
     if (menuOpen) {
         FaIcon(
             name = "times",
-            modifier = modifier
-                .onMouseDown { toggle() },   // ← funciona en iOS, Android, Desktop
+            modifier = modifier.then(stopClick),
             style = IconCategory.SOLID,
             size = IconSize.XXL
         )
     } else {
         FaBars(
             size = IconSize.XXL,
-            modifier = modifier
-                .onMouseDown { toggle() }    // ← evita doble ejecución
+            modifier = modifier.then(stopClick)
         )
     }
 }

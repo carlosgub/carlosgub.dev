@@ -171,20 +171,35 @@ private fun ToolbarIconMenuForMobile(
     onCloseMenu: () -> Unit,
     modifier: Modifier = Modifier
 ) {
+    var touchHandled by remember { mutableStateOf(false) }
+
+    val handleToggle: () -> Unit = {
+        if (!touchHandled) {
+            if (menuOpen) onCloseMenu() else onOpenMenu()
+        }
+        touchHandled = false
+    }
+
+    val handleTouch: () -> Unit = {
+        touchHandled = true
+        if (menuOpen) onCloseMenu() else onOpenMenu()
+    }
+
     if (menuOpen) {
         FaIcon(
             name = "times",
-            modifier = modifier.onClick {
-                onCloseMenu()
-            },
-            style = IconCategory.SOLID, size = IconSize.XXL
+            modifier = modifier
+                .onTouchStart { handleTouch() }
+                .onClick { handleToggle() },
+            style = IconCategory.SOLID,
+            size = IconSize.XXL
         )
     } else {
         FaBars(
             size = IconSize.XXL,
-            modifier = modifier.onClick {
-                onOpenMenu()
-            }
+            modifier = modifier
+                .onTouchStart { handleTouch() }
+                .onClick { handleToggle() }
         )
     }
 }

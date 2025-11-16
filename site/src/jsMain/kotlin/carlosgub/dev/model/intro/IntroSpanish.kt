@@ -4,5 +4,5 @@ data object IntroSpanish : IntroSection {
     override val firstParagraph: String = "Hola, mi nombre es Carlos Ugaz."
     override val tagLine: String = "DESARROLLO CON PASIÓN"
     override val thirdParagraph: String = "Soy ingeniero de software, Senior Android Developer en Globant."
-    override val button: String = "Hablemos"
+    override val buttonText: String = "Hablemos"
 }

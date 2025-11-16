@@ -37,13 +37,13 @@ fun AboutMeSection(language: Language) {
                 AboutMeSectionStyle
             ).toModifier()
         ) {
-            BackgroundContent(aboutMe)
+            ContactMeContent(aboutMe)
         }
     }
 }
 
 @Composable
-private fun BackgroundContent(aboutMe: AboutMeSection) {
+private fun ContactMeContent(aboutMe: AboutMeSection) {
     H4(
         attrs = H4Style
             .toModifier()

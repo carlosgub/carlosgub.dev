@@ -34,15 +34,17 @@ fun HomePage() {
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier.width(100.percent)
         ) {
-            Toolbar(language, onLanguageSelected = { languageSelected ->
-                language = languageSelected
-            })
+            Toolbar(
+                language = language,
+                onLanguageSelected = { languageSelected ->
+                    language = languageSelected
+                })
             IntroSection(language)
             AboutMeSection(language)
             ExperienceSection(language)
             ProjectsSection(language)
-            TalkSection()
-            ContactMeSection()
+            TalkSection(language)
+            ContactMeSection(language)
             Footer()
         }
         BackToTopButton()

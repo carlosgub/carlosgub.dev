@@ -69,6 +69,7 @@ private fun IntroSectionDesktop(intro: IntroSection) {
                     modifier = Modifier.fillMaxWidth()
                 )
                 ThirdParagraph(intro.thirdParagraph)
+                ContactButton(intro.buttonText)
             }
             ProfileImage()
         }
@@ -95,6 +96,7 @@ private fun IntroSectionMobile(intro: IntroSection) {
                 .textAlign(TextAlign.Center)
                 .justifyContent(JustifyContent.Center)
         )
+        ContactButton(intro.buttonText)
         ProfileImage(
             modifier = Modifier.maxSize(300.px)
                 .margin(top = 24.px)
@@ -134,20 +136,24 @@ private fun ThirdParagraph(
     text: String,
     modifier: Modifier = Modifier
 ) {
-    Column(
-        modifier = modifier.then(H6Style.toModifier()),
-    ) {
-        SpanText(
-            text,
-            modifier = modifier.padding(bottom = 12.px)
+    SpanText(
+        text = text,
+        modifier = modifier.then(
+            H6Style
+                .toModifier()
+                .padding(bottom = 12.px)
         )
-        Div(attrs = modifier.toAttrs()) {
-            LinkButton(
-                path = "#${Section.ContactMe.id}",
-                text = "Let's talk",
-                modifier = GoToContactMeButton.toModifier()
-            )
-        }
+    )
+}
+
+@Composable
+private fun ContactButton(text: String) {
+    Div(attrs = Modifier.toAttrs()) {
+        LinkButton(
+            path = "#${Section.ContactMe.id}",
+            text = text,
+            modifier = GoToContactMeButton.toModifier()
+        )
     }
 }
 

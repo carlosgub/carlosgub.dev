@@ -4,5 +4,5 @@ interface IntroSection {
     val firstParagraph:String
     val tagLine:String
     val thirdParagraph:String
-    val button:String
+    val buttonText:String
 }

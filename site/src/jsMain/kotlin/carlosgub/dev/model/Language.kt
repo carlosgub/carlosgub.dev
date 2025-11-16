@@ -1,6 +1,6 @@
 package carlosgub.dev.model
 
-enum class Language(val label: String, val flagUrl: String) {
-    English("English", "https://cdn.jsdelivr.net/gh/hjnilsson/country-flags/svg/gb.svg"),
-    Spanish("Español", "https://cdn.jsdelivr.net/gh/hjnilsson/country-flags/svg/pe.svg")
+enum class Language(val label: String, val flag: String) {
+    English("English", "em-flag-gb"),
+    Spanish("Español", "em-flag-pe")
 }

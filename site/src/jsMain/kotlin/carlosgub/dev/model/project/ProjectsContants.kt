@@ -11,5 +11,5 @@ val personalWebsiteStack = listOf(
     Stack.KMP,
     Stack.Kobweb,
 )
-val actionButtonTextEnglish = "See project "
-val actionButtonTextSpanish = "Ver projecto "
+const val actionButtonTextEnglish = "See project "
+const val actionButtonTextSpanish = "Ver projecto "

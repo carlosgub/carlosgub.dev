@@ -9,6 +9,7 @@ import carlosgub.dev.components.styles.font.semiBold
 import carlosgub.dev.model.Language
 import com.varabyte.kobweb.compose.css.Cursor
 import com.varabyte.kobweb.compose.css.boxShadow
+import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
@@ -34,10 +35,10 @@ import org.jetbrains.compose.web.css.DisplayStyle
 import org.jetbrains.compose.web.css.LineStyle
 import org.jetbrains.compose.web.css.Position
 import org.jetbrains.compose.web.css.px
-import org.jetbrains.compose.web.css.unaryMinus
 import org.jetbrains.compose.web.dom.A
 import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.dom.H6
+import org.jetbrains.compose.web.dom.I
 import org.jetbrains.compose.web.dom.Img
 import org.jetbrains.compose.web.dom.Span
 import org.jetbrains.compose.web.dom.Text
@@ -91,7 +92,7 @@ fun Toolbar(language: Language,onLanguageSelected: (Language) -> Unit) {
                     menuOpen = false
                 },
                 modifier = Modifier
-                    .displayUntil(Breakpoint.MD)
+                    .displayUntil(Breakpoint.LG)
             )
             ToolbarOptionsForDesktop(
                 language = language,
@@ -113,7 +114,7 @@ private fun ToolbarOptionsForDesktop(
     Row(
         Modifier
             .gap(24.px)
-            .displayIfAtLeast(Breakpoint.MD),
+            .displayIfAtLeast(Breakpoint.LG),
         verticalAlignment = Alignment.CenterVertically
     ) {
         NavItemsDesktop(
@@ -170,7 +171,7 @@ fun NavItem(
 fun MobileMenu(onCloseMenu: () -> Unit, language: Language) {
     Column(
         modifier = ToolbarMenuMobileStyle.toModifier()
-            .displayUntil(Breakpoint.MD)
+            .displayUntil(Breakpoint.LG)
     ) {
         NavItemsMobile(
             onItemPressed = onCloseMenu,
@@ -202,14 +203,14 @@ private fun NavItemsDesktop(
     NavItem(Section.ContactMe.getText(language), Section.ContactMe.id, onItemPressed)
 
     LanguageDropdown(
-        selected = language,
+        language = language,
         onSelect = onLanguageSelected
     )
 }
 
 @Composable
 fun LanguageDropdown(
-    selected: Language,
+    language: Language,
     onSelect: (Language) -> Unit
 ) {
     var expanded by remember { mutableStateOf(false) }
@@ -225,17 +226,17 @@ fun LanguageDropdown(
                 .padding(8.px)
                 .border(2.px, LineStyle.Solid, Color.black)
                 .borderRadius(6.px)
-                .padding(leftRight = 10.px)
+                .padding(left = 8.px)
                 .display(DisplayStyle.Flex)
                 .alignItems(AlignItems.Center)
                 .cursor(Cursor.Pointer)
                 .onClick { expanded = !expanded }
         ) {
-            Img(
-                src = selected.flagUrl,
+            I(
                 attrs = Modifier
-                    .padding(left = 8.px)
-                    .size(36.px).toAttrs()
+                    .size(32.px)
+                    .classNames("em", language.flag)
+                    .toAttrs()
             )
             MdiKeyboardArrowDown(
                 style = IconStyle.ROUNDED
@@ -247,8 +248,8 @@ fun LanguageDropdown(
             Column(
                 modifier = Modifier
                     .position(Position.Absolute)       //<-- THIS FIXES THE MOVEMENT
-                    .top(50.px)
-                    .left((-48).px)
+                    .top(40.px)
+                    .left((-54).px)
                     .border(2.px, LineStyle.Solid, Color.black)
                     .styleModifier { boxShadow("2px 2px 0 0 black") }
                     .backgroundColor(Color.floralwhite)
@@ -273,14 +274,14 @@ fun LanguageDropdown(
                             // hover real: usar CSS selector
                             .classNames("dropdown-item")
                     ) {
-                        Img(
-                            src = lang.flagUrl,
-                            attrs = Modifier.size(32.px).toAttrs()
+                        I(
+                            attrs = Modifier
+                                .classNames("em", lang.flag)
+                                .toAttrs()
                         )
                         Span(
                             attrs = ToolbarItemStyle
                                 .toModifier()
-                                .margin(left = 8.px)
                                 .toAttrs()
                         ) {
                             Text(lang.label)

@@ -29,19 +29,24 @@ import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.breakpoint.displayIfAtLeast
 import com.varabyte.kobweb.silk.style.breakpoint.displayUntil
 import com.varabyte.kobweb.silk.style.toModifier
+import kotlinx.browser.document
 import org.jetbrains.compose.web.css.AlignItems
 import org.jetbrains.compose.web.css.Color
 import org.jetbrains.compose.web.css.DisplayStyle
 import org.jetbrains.compose.web.css.LineStyle
 import org.jetbrains.compose.web.css.Position
+import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.dom.A
+import org.jetbrains.compose.web.dom.Br
 import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.dom.H6
 import org.jetbrains.compose.web.dom.I
 import org.jetbrains.compose.web.dom.Img
 import org.jetbrains.compose.web.dom.Span
 import org.jetbrains.compose.web.dom.Text
+import org.w3c.dom.HTMLElement
+import org.w3c.dom.events.Event
 
 @InitSilk
 fun initNavHeaderStyles(ctx: InitSilkContext) {
@@ -59,8 +64,38 @@ fun initNavHeaderStyles(ctx: InitSilkContext) {
 }
 
 @Composable
-fun Toolbar(language: Language,onLanguageSelected: (Language) -> Unit) {
+fun Toolbar(language: Language, onLanguageSelected: (Language) -> Unit) {
     var menuOpen by remember { mutableStateOf(false) }
+    val menuId = "mobile-menu"
+
+    // -------- CLOSE MENU ON CLICK OUTSIDE --------
+    DisposableEffect(menuOpen) {
+        if (!menuOpen) {
+            return@DisposableEffect onDispose {}
+        }
+
+        val element = document.getElementById(menuId)
+
+        val listener: (Event) -> Unit = listener@{ event ->
+            val target = event.target as? HTMLElement ?: return@listener
+            if (element != null && !element.contains(target)) {
+                menuOpen = false
+            }
+        }
+
+        // Desktop + Android
+        document.addEventListener("click", listener)
+
+        // iPhone / iPad (Safari)
+        document.addEventListener("touchstart", listener)
+
+        onDispose {
+            document.removeEventListener("click", listener)
+            document.removeEventListener("touchstart", listener)
+        }
+    }
+
+    // -------- UI --------
     Column(
         modifier = ToolbarContainerStyle.toModifier(),
         horizontalAlignment = Alignment.CenterHorizontally
@@ -69,14 +104,11 @@ fun Toolbar(language: Language,onLanguageSelected: (Language) -> Unit) {
             modifier = ToolbarStyle.toModifier(),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Row(
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                // Logo
+            Row(verticalAlignment = Alignment.CenterVertically) {
                 Img(src = "logo.webp", attrs = Modifier.size(64.px).toAttrs())
+
                 H6(
-                    attrs = H6Style
-                        .toModifier()
+                    attrs = H6Style.toModifier()
                         .semiBold()
                         .margin(left = 8.px)
                         .toAttrs()
@@ -84,24 +116,33 @@ fun Toolbar(language: Language,onLanguageSelected: (Language) -> Unit) {
                     Text("carlosgub.dev")
                 }
             }
+
             ToolbarIconMenuForMobile(
                 menuOpen = menuOpen,
-                onOpenMenu = {
-                    menuOpen = true
-                }, onCloseMenu = {
-                    menuOpen = false
-                },
-                modifier = Modifier
-                    .displayUntil(Breakpoint.LG)
+                onOpenMenu = { menuOpen = true },
+                onCloseMenu = { menuOpen = false },
+                modifier = Modifier.displayUntil(Breakpoint.LG)
             )
+
             ToolbarOptionsForDesktop(
                 language = language,
                 onLanguageSelected = onLanguageSelected
             )
-
         }
+
         if (menuOpen) {
-            MobileMenu(onCloseMenu = { menuOpen = false }, language)
+            // WRAP THE MOBILE MENU WITH AN ID
+            Div(
+                attrs = Modifier
+                    .id(menuId)
+                    .toAttrs()
+            ) {
+                MobileMenu(
+                    onCloseMenu = { menuOpen = false },
+                    language = language,
+                    onLanguageSelected = onLanguageSelected
+                )
+            }
         }
     }
 }
@@ -150,44 +191,42 @@ private fun ToolbarIconMenuForMobile(
 }
 
 @Composable
-fun NavItem(
-    text: String,
-    href: String,
-    onItemPressed: () -> Unit,
+fun MobileMenu(
+    onCloseMenu: () -> Unit,
+    language: Language,
+    onLanguageSelected: (Language) -> Unit
 ) {
-    A(
-        href = "#$href",
-        attrs = ToolbarItemStyle
-            .toModifier()
-            .onClick {
-                onItemPressed()
-            }.toAttrs()
-    ) {
-        Text(text)
-    }
-}
-
-@Composable
-fun MobileMenu(onCloseMenu: () -> Unit, language: Language) {
     Column(
         modifier = ToolbarMenuMobileStyle.toModifier()
-            .displayUntil(Breakpoint.LG)
+            .displayUntil(Breakpoint.LG),
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
         NavItemsMobile(
             onItemPressed = onCloseMenu,
-            language = language
+            language = language,
+            onLanguageSelected = onLanguageSelected
         )
     }
 }
 
 @Composable
-private fun NavItemsMobile(onItemPressed: () -> Unit = {}, language: Language) {
-    NavItem(Section.Home.getText(language), Section.Home.id, onItemPressed)
-    NavItem(Section.About.getText(language), Section.About.id, onItemPressed)
-    NavItem(Section.Experience.getText(language), Section.Experience.id, onItemPressed)
-    NavItem(Section.Projects.getText(language), Section.Projects.id, onItemPressed)
-    NavItem(Section.Talks.getText(language), Section.Talks.id, onItemPressed)
-    NavItem(Section.ContactMe.getText(language), Section.ContactMe.id, onItemPressed)
+private fun NavItemsMobile(
+    onItemPressed: () -> Unit = {},
+    language: Language,
+    onLanguageSelected: (Language) -> Unit
+) {
+    NavItemMobile(Section.Home.getText(language), Section.Home.id, onItemPressed)
+    NavItemMobile(Section.About.getText(language), Section.About.id, onItemPressed)
+    NavItemMobile(Section.Experience.getText(language), Section.Experience.id, onItemPressed)
+    NavItemMobile(Section.Projects.getText(language), Section.Projects.id, onItemPressed)
+    NavItemMobile(Section.Talks.getText(language), Section.Talks.id, onItemPressed)
+    NavItemMobile(Section.ContactMe.getText(language), Section.ContactMe.id, onItemPressed)
+
+    LanguageDropdown(
+        language = language,
+        onSelect = onLanguageSelected,
+    )
+    Br()
 }
 
 @Composable
@@ -209,53 +248,129 @@ private fun NavItemsDesktop(
 }
 
 @Composable
+fun NavItem(
+    text: String,
+    href: String,
+    onItemPressed: () -> Unit,
+) {
+    A(
+        href = "#$href",
+        attrs = ToolbarItemStyle
+            .toModifier()
+            .onClick {
+                onItemPressed()
+            }.toAttrs()
+    ) {
+        Text(text)
+    }
+}
+
+@Composable
+fun NavItemMobile(
+    text: String,
+    href: String,
+    onItemPressed: () -> Unit,
+) {
+    A(
+        href = "#$href",
+        attrs = ToolbarItemStyle
+            .toModifier()
+            .width(100.percent)
+            .onClick {
+                onItemPressed()
+            }.toAttrs()
+    ) {
+        Text(text)
+    }
+}
+
+@Composable
 fun LanguageDropdown(
     language: Language,
     onSelect: (Language) -> Unit
 ) {
     var expanded by remember { mutableStateOf(false) }
+    val dropdownId = "language-dropdown"
 
+    // --- Close dropdown when clicking outside ---
+    DisposableEffect(expanded) {
+        if (!expanded) {
+            return@DisposableEffect onDispose {}
+        }
+
+        val element = document.getElementById(dropdownId)
+
+        val listener: (Event) -> Unit = listener@{ event ->
+            val target = event.target as? HTMLElement ?: return@listener
+            if (element != null && !element.contains(target)) {
+                expanded = false
+            }
+        }
+
+        // Desktop + Android browsers
+        document.addEventListener("click", listener)
+
+        // iPhone / iPad (Safari)
+        document.addEventListener("touchstart", listener)
+
+        onDispose {
+            document.removeEventListener("click", listener)
+            document.removeEventListener("touchstart", listener)
+        }
+    }
+
+    // --- Container ---
     Div(
-        Modifier
+        attrs = Modifier
+            .id(dropdownId)
             .position(Position.Relative)
             .display(DisplayStyle.InlineBlock)
             .toAttrs()
     ) {
-        Row(
-            modifier = Modifier
+
+        // ---------- BUTTON (works on mobile!) ----------
+        Div(
+            attrs = Modifier
                 .padding(8.px)
                 .border(2.px, LineStyle.Solid, Color.black)
                 .borderRadius(6.px)
-                .padding(left = 8.px)
-                .display(DisplayStyle.Flex)
-                .alignItems(AlignItems.Center)
+                .padding(leftRight = 10.px)
                 .cursor(Cursor.Pointer)
-                .onClick { expanded = !expanded }
+                .onClick { expanded = !expanded }   // ❤️ iOS compatible
+                .attr("role", "button")
+                .attr("tabindex", "0")
+                .toAttrs()
         ) {
-            I(
-                attrs = Modifier
-                    .size(32.px)
-                    .classNames("em", language.flag)
-                    .toAttrs()
-            )
-            MdiKeyboardArrowDown(
-                style = IconStyle.ROUNDED
-            )
+            Row(
+                modifier = Modifier
+                    .display(DisplayStyle.Flex)
+                    .alignItems(AlignItems.Center)
+                    .gap(8.px)
+            ) {
+                I(
+                    attrs = Modifier
+                        .size(32.px)
+                        .classNames("em", language.flag)
+                        .toAttrs()
+                )
+                MdiKeyboardArrowDown(style = IconStyle.ROUNDED)
+            }
         }
 
-        // --- Dropdown menu ---
+        // ---------- MENU ----------
         if (expanded) {
             Column(
                 modifier = Modifier
-                    .position(Position.Absolute)       //<-- THIS FIXES THE MOVEMENT
+                    .position(Position.Absolute)
                     .top(40.px)
-                    .left((-54).px)
+                    .left((-54).px)  // move left to look good
                     .border(2.px, LineStyle.Solid, Color.black)
                     .styleModifier { boxShadow("2px 2px 0 0 black") }
                     .backgroundColor(Color.floralwhite)
                     .borderRadius(12.px)
                     .zIndex(100)
             ) {
+
                 Language.entries.forEach { lang ->
                     Row(
                         modifier = Modifier
@@ -267,21 +382,21 @@ fun LanguageDropdown(
                                 onSelect(lang)
                                 expanded = false
                             }
-                            // hover: usar styleModifier
                             .styleModifier {
                                 property("transition", "background-color 0.15s ease")
                             }
-                            // hover real: usar CSS selector
                             .classNames("dropdown-item")
                     ) {
                         I(
                             attrs = Modifier
+                                .size(28.px)
                                 .classNames("em", lang.flag)
                                 .toAttrs()
                         )
                         Span(
                             attrs = ToolbarItemStyle
                                 .toModifier()
+                                .margin(left = 8.px)
                                 .toAttrs()
                         ) {
                             Text(lang.label)
@@ -292,3 +407,4 @@ fun LanguageDropdown(
         }
     }
 }
+

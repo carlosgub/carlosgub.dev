@@ -19,7 +19,7 @@ val H1Style = CssStyle {
             .margin(bottom = 8.px)
             .lineHeight(1.2)
             .bold()
-            .fontSize(4.cssRem)
+            .fontSize(3.5.cssRem)
 
     }
 

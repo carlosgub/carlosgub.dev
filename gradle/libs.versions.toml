@@ -1,7 +1,7 @@
 [versions]
-compose = "1.6.11"
-kobweb = "0.19.2"
-kotlin = "2.0.20"
+compose = "1.8.0"
+kobweb = "0.23.3"
+kotlin = "2.2.20"
 
 [libraries]
 kobweb-core = { module = "com.varabyte.kobweb:kobweb-core ", version.ref = "kobweb" }

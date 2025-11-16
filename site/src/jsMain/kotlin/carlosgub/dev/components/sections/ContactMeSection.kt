@@ -1,7 +1,7 @@
 package carlosgub.dev.components.sections
 
 import androidx.compose.runtime.Composable
-import carlosgub.dev.components.models.Section
+import carlosgub.dev.model.Section
 import carlosgub.dev.components.styles.ContactMeButton
 import carlosgub.dev.components.styles.ContactMeSectionStyle
 import carlosgub.dev.components.styles.MessageContactMeStyle
@@ -9,6 +9,10 @@ import carlosgub.dev.components.styles.components.H4Style
 import carlosgub.dev.components.styles.font.regular
 import carlosgub.dev.components.theme.WebColors
 import carlosgub.dev.components.widgets.Button
+import carlosgub.dev.model.Language
+import carlosgub.dev.model.contactme.ContactMeEnglish
+import carlosgub.dev.model.contactme.ContactMeSection
+import carlosgub.dev.model.contactme.ContactMeSpanish
 import com.varabyte.kobweb.compose.css.TextAlign
 import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Column
@@ -27,7 +31,8 @@ import org.jetbrains.compose.web.dom.H4
 import org.jetbrains.compose.web.dom.P
 
 @Composable
-fun ContactMeSection() {
+fun ContactMeSection(language: Language) {
+    val contactMeSection = if (language == Language.English) ContactMeEnglish else ContactMeSpanish
     Box(
         modifier = Modifier
             .id(Section.ContactMe.id)
@@ -38,13 +43,13 @@ fun ContactMeSection() {
             ).toModifier(),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            BackgroundContent()
+            ContactMeContent(contactMeSection)
         }
     }
 }
 
 @Composable
-private fun BackgroundContent() {
+private fun ContactMeContent(contactMeSection: ContactMeSection) {
     H4(
         attrs = H4Style
             .toModifier()
@@ -55,23 +60,19 @@ private fun BackgroundContent() {
             .textAlign(TextAlign.Center)
             .toAttrs()
     ) {
-        SpanText(
-            "Do you have an idea in mind?"
-        )
+        SpanText(contactMeSection.firstParagraph)
     }
     P(
         attrs = MessageContactMeStyle
             .toAttrs()
     ) {
-        SpanText(
-            "Let's brainstorm together"
-        )
+        SpanText(contactMeSection.secondParagraph)
     }
 
     A(href = "mailto:carlosgub.dev@gmail.com") {
         Button(
             modifier = ContactMeButton.toModifier(),
-            text = "Write me an email",
+            text = contactMeSection.buttonText,
             primary = true,
         )
     }

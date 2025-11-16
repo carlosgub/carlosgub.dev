@@ -1,12 +1,16 @@
 package carlosgub.dev.components.sections
 
 import androidx.compose.runtime.Composable
-import carlosgub.dev.components.models.Section
+import carlosgub.dev.model.Section
 import carlosgub.dev.components.styles.*
 import carlosgub.dev.components.styles.components.H1Style
 import carlosgub.dev.components.styles.components.H3Style
 import carlosgub.dev.components.styles.components.H6Style
 import carlosgub.dev.components.widgets.LinkButton
+import carlosgub.dev.model.Language
+import carlosgub.dev.model.intro.IntroSection
+import carlosgub.dev.model.intro.IntroEnglish
+import carlosgub.dev.model.intro.IntroSpanish
 import com.varabyte.kobweb.compose.css.TextAlign
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Box
@@ -31,20 +35,21 @@ import org.jetbrains.compose.web.dom.H1
 import org.jetbrains.compose.web.dom.H3
 
 @Composable
-fun IntroSection() {
+fun IntroSection(language: Language) {
+    val intro = if (language == Language.English) IntroEnglish else IntroSpanish
     Box(
         IntroContainerStyle
             .toModifier()
             .id(Section.Home.id),
         contentAlignment = Alignment.Center
     ) {
-        IntroSectionDesktop()
-        IntroSectionMobile()
+        IntroSectionDesktop(intro)
+        IntroSectionMobile(intro)
     }
 }
 
 @Composable
-private fun IntroSectionDesktop() {
+private fun IntroSectionDesktop(intro: IntroSection) {
     Column(
         modifier = IntroDesktopStyle
             .toModifier()
@@ -58,11 +63,13 @@ private fun IntroSectionDesktop() {
                 verticalArrangement = Arrangement.Center,
                 modifier = Modifier.margin(right = 12.px)
             ) {
-                FirstParagraph()
+                FirstParagraph(intro.firstParagraph)
                 TagLine(
+                    text = intro.tagLine,
                     modifier = Modifier.fillMaxWidth()
                 )
-                ThirdParagraph()
+                ThirdParagraph(intro.thirdParagraph)
+                ContactButton(intro.buttonText)
             }
             ProfileImage()
         }
@@ -70,21 +77,26 @@ private fun IntroSectionDesktop() {
 }
 
 @Composable
-private fun IntroSectionMobile() {
+private fun IntroSectionMobile(intro: IntroSection) {
     Column(
         modifier = IntroMobileStyle
             .toModifier()
             .displayUntil(Breakpoint.MD),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        FirstParagraph()
-        TagLine(modifier = Modifier.fillMaxWidth(100.percent).textAlign(TextAlign.Center))
+        FirstParagraph(intro.firstParagraph)
+        TagLine(
+            text = intro.tagLine,
+            modifier = Modifier.fillMaxWidth(100.percent).textAlign(TextAlign.Center)
+        )
         ThirdParagraph(
+            text = intro.thirdParagraph,
             modifier = Modifier
                 .fillMaxWidth(100.percent)
                 .textAlign(TextAlign.Center)
                 .justifyContent(JustifyContent.Center)
         )
+        ContactButton(intro.buttonText)
         ProfileImage(
             modifier = Modifier.maxSize(300.px)
                 .margin(top = 24.px)
@@ -93,49 +105,55 @@ private fun IntroSectionMobile() {
 }
 
 @Composable
-private fun FirstParagraph(modifier: Modifier = Modifier) {
+private fun FirstParagraph(text: String, modifier: Modifier = Modifier) {
     H3(
         attrs = modifier
             .then(H3Style.toModifier())
             .toAttrs()
     ) {
-        SpanText(
-            "Hi, my name is Carlos Ugaz."
-        )
+        SpanText(text)
     }
 }
 
 @Composable
-private fun TagLine(modifier: Modifier = Modifier) {
+private fun TagLine(
+    text: String,
+    modifier: Modifier = Modifier
+) {
     Column(
         modifier = modifier.then(TagLineStyle.toModifier())
     ) {
         H1(
             attrs = H1Style.toAttrs()
         ) {
-            SpanText(
-                "I DEVELOP IDEAS WITH PASSION"
-            )
+            SpanText(text)
         }
     }
 }
 
 @Composable
-private fun ThirdParagraph(modifier: Modifier = Modifier) {
-    Column(
-        modifier = modifier.then(H6Style.toModifier()),
-    ) {
-        SpanText(
-            "I'm a software engineer, Senior Android developer at Globant",
-            modifier = modifier.padding(bottom = 12.px)
+private fun ThirdParagraph(
+    text: String,
+    modifier: Modifier = Modifier
+) {
+    SpanText(
+        text = text,
+        modifier = modifier.then(
+            H6Style
+                .toModifier()
+                .padding(bottom = 12.px)
         )
-        Div(attrs = modifier.toAttrs()){
-            LinkButton(
-                path = "#${Section.ContactMe.id}",
-                text = "Let's talk",
-                modifier = GoToContactMeButton.toModifier()
-            )
-        }
+    )
+}
+
+@Composable
+private fun ContactButton(text: String) {
+    Div(attrs = Modifier.toAttrs()) {
+        LinkButton(
+            path = "#${Section.ContactMe.id}",
+            text = text,
+            modifier = GoToContactMeButton.toModifier()
+        )
     }
 }
 

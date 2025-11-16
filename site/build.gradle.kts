@@ -1,5 +1,6 @@
 import com.varabyte.kobweb.gradle.application.util.configAsKobwebApplication
 import kotlinx.html.link
+import kotlinx.html.meta
 import kotlinx.html.style
 
 plugins {
@@ -16,9 +17,6 @@ kobweb {
         index {
             description.set("Carlos Ugaz Website, Powered by Kobweb")
             head.add {
-                style {
-                    type
-                }
                 link {
                     rel = "stylesheet"
                     href = "https://emoji-css.afeld.me/emoji.css"
@@ -36,6 +34,10 @@ kobweb {
                 link {
                     rel = "stylesheet"
                     href = "https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap"
+                }
+                meta {
+                    name = "theme-color"
+                    content = "#FFFAF0"
                 }
             }
         }

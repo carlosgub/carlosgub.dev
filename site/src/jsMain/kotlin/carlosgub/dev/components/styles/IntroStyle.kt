@@ -58,7 +58,7 @@ val IntroMobileStyle = CssStyle {
 val TagLineStyle = CssStyle {
     base {
         Modifier
-            .width(100.percent)
+            .width(80.percent)
     }
     Breakpoint.LG {
         Modifier

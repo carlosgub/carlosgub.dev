@@ -1,12 +1,16 @@
 package carlosgub.dev.components.sections
 
 import androidx.compose.runtime.Composable
-import carlosgub.dev.components.models.Section
+import carlosgub.dev.model.Section
 import carlosgub.dev.components.styles.AboutMeSectionStyle
 import carlosgub.dev.components.styles.components.H4Style
 import carlosgub.dev.components.styles.components.PStyle
 import carlosgub.dev.components.styles.font.bold
 import carlosgub.dev.components.theme.WebColors
+import carlosgub.dev.model.Language
+import carlosgub.dev.model.aboutme.AboutMeSection
+import carlosgub.dev.model.aboutme.AboutMeEnglish
+import carlosgub.dev.model.aboutme.AboutMeSpanish
 import com.varabyte.kobweb.compose.css.TextAlign
 import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Column
@@ -22,7 +26,8 @@ import org.jetbrains.compose.web.dom.P
 import org.jetbrains.compose.web.dom.Text
 
 @Composable
-fun AboutMeSection() {
+fun AboutMeSection(language: Language) {
+    val aboutMe = if (language == Language.English) AboutMeEnglish else AboutMeSpanish
     Box(
         modifier = Modifier
             .id(Section.About.id)
@@ -32,13 +37,13 @@ fun AboutMeSection() {
                 AboutMeSectionStyle
             ).toModifier()
         ) {
-            BackgroundContent()
+            ContactMeContent(aboutMe)
         }
     }
 }
 
 @Composable
-private fun BackgroundContent() {
+private fun ContactMeContent(aboutMe: AboutMeSection) {
     H4(
         attrs = H4Style
             .toModifier()
@@ -50,7 +55,7 @@ private fun BackgroundContent() {
             .toAttrs()
     ) {
         SpanText(
-            Section.About.text
+            aboutMe.title
         )
     }
     P(
@@ -59,25 +64,12 @@ private fun BackgroundContent() {
             .padding(top = 16.px)
             .toAttrs()
     ) {
-        Text(
-            "Hello! I'm Carlos, a Senior Software Engineer, specializing in Mobile app " +
-                    "development and creating cross-platform solutions using Kotlin Multiplatform. " +
-                    "With seven years of experience, I've led teams in various industries including " +
-                    "banking, education, e-commerce, and media."
-        )
+        Text(aboutMe.firstParagraph)
         Br()
         Br()
-        Text(
-            "I'm an person enthusiast who thrives on exploring emerging technologies and staying " +
-                    "at the cutting edge of the field. Let's collaborate to bring innovative " +
-                    "mobile solutions to life!"
-        )
+        Text(aboutMe.secondParagraph)
         Br()
         Br()
-        Text(
-            "If you're seeking a Senior Software Engineer with a deep passion for Mobile development, " +
-                    "a track record of leadership, and commitment to staying ahead of the curve, I'd love " +
-                    "to connect and discuss how I can bring my skills and enthusiasm to your next project."
-        )
+        Text(aboutMe.thirdParagraph)
     }
 }

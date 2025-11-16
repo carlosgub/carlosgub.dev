@@ -351,7 +351,12 @@ fun LanguageDropdown(
                         .classNames("em", language.flag)
                         .toAttrs()
                 )
-                MdiKeyboardArrowDown(style = IconStyle.ROUNDED)
+                MdiKeyboardArrowDown(
+                    style = IconStyle.ROUNDED,
+                    modifier = Modifier.styleModifier {
+                        property("user-select", "none")
+                    }
+                )
             }
         }
 
@@ -361,14 +366,13 @@ fun LanguageDropdown(
                 modifier = Modifier
                     .position(Position.Absolute)
                     .top(40.px)
-                    .left((-54).px)  // move left to look good
+                    .left((-38).px)
                     .border(2.px, LineStyle.Solid, Color.black)
                     .styleModifier { boxShadow("2px 2px 0 0 black") }
                     .backgroundColor(Color.floralwhite)
                     .borderRadius(12.px)
                     .zIndex(100)
             ) {
-
                 Language.entries.forEach { lang ->
                     Row(
                         modifier = Modifier

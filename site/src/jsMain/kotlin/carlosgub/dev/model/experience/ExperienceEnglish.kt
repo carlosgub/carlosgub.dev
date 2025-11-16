@@ -10,13 +10,16 @@ data object ExperienceEnglish : ExperienceSection {
             name = globant,
             url = globantUrl,
             time = "2022 - PRESENT",
-            description = "In my current role at Globant, I have had the privilege of serving as an Senior Android Developer " +
-                    "for esteemed clients, including Yape and Ticketmaster. For Yape, I have been " +
-                    "involved in maintaining and enhancing their application, while also working on the development " +
-                    "of a new version. Additionally, for Ticketmaster, I played a pivotal role in maintaining their" +
-                    " application, particularly focusing on functionalities integrated into other companies' apps " +
-                    "such as NFL and NBA. This dual experience has allowed me to work on diverse and challenging " +
-                    "projects, ensuring the highest quality for our clients.",
+            description = "In my current role at Globant, I have had the privilege of serving as a Senior " +
+                    "Android Developer for esteemed clients, including Yape, Ticketmaster, RedLink, " +
+                    "and currently Prisma. For Yape, I have been involved in maintaining and enhancing their " +
+                    "application, while also contributing to the development of a new version. For Ticketmaster, " +
+                    "I played a pivotal role in maintaining their application, particularly focusing on " +
+                    "functionalities integrated into other companies' apps such as NFL and NBA. Additionally, " +
+                    "my work with RedLink and now Prisma has allowed me to collaborate on core financial and " +
+                    "payment solutions, supporting the modernization, security, and scalability of their " +
+                    "mobile platforms. This broad experience has enabled me to work on diverse and challenging " +
+                    "projects, always ensuring the highest quality for our clients.",
             stackList = globantStack
         )
 

@@ -27,6 +27,9 @@ enum class Stack(
     MVVM(
         id = "MVVM"
     ),
+    MVI(
+        id = "MVI"
+    ),
     Coroutines(
         id = "Coroutines"
     ),
@@ -42,6 +45,9 @@ enum class Stack(
     Retrofit(
         id = "Retrofit"
     ),
+    Room(
+        id = "Room"
+    ),
     GraphQL(
         id = "GraphQL"
     ),
@@ -50,5 +56,8 @@ enum class Stack(
     ),
     Kobweb(
         id = "Kobweb"
+    ),
+    Figma(
+        id = "Figma"
     )
 }

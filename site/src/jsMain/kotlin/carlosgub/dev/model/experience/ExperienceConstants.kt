@@ -13,8 +13,12 @@ val globantStack =
         Stack.Coroutines,
         Stack.KotlinFlow,
         Stack.MVVM,
+        Stack.MVI,
         Stack.Koin,
-        Stack.GraphQL
+        Stack.GraphQL,
+        Stack.Retrofit,
+        Stack.Room,
+        Stack.Figma,
     )
 
 val rappi = "Rappi"
@@ -27,5 +31,6 @@ val rappiStack =
         Stack.Rx,
         Stack.MVVM,
         Stack.Dagger,
-        Stack.Retrofit
+        Stack.Retrofit,
+        Stack.Figma,
     )

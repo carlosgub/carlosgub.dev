@@ -86,12 +86,8 @@ fun Toolbar(language: Language, onLanguageSelected: (Language) -> Unit) {
         // Desktop + Android
         document.addEventListener("click", listener)
 
-        // iPhone / iPad (Safari)
-        document.addEventListener("touchstart", listener)
-
         onDispose {
             document.removeEventListener("click", listener)
-            document.removeEventListener("touchstart", listener)
         }
     }
 
@@ -171,23 +167,26 @@ private fun ToolbarIconMenuForMobile(
     onCloseMenu: () -> Unit,
     modifier: Modifier = Modifier
 ) {
+    val stopClick = Modifier.onClick { event ->
+        event.stopPropagation()
+        if (menuOpen) onCloseMenu() else onOpenMenu()
+    }
+
     if (menuOpen) {
         FaIcon(
             name = "times",
-            modifier = modifier.onClick {
-                onCloseMenu()
-            },
-            style = IconCategory.SOLID, size = IconSize.XXL
+            modifier = modifier.then(stopClick),
+            style = IconCategory.SOLID,
+            size = IconSize.XXL
         )
     } else {
         FaBars(
             size = IconSize.XXL,
-            modifier = modifier.onClick {
-                onOpenMenu()
-            }
+            modifier = modifier.then(stopClick)
         )
     }
 }
+
 
 @Composable
 fun MobileMenu(

@@ -131,7 +131,6 @@ fun Toolbar(language: Language, onLanguageSelected: (Language) -> Unit) {
         }
 
         if (menuOpen) {
-            // WRAP THE MOBILE MENU WITH AN ID
             Div(
                 attrs = Modifier
                     .id(menuId)
@@ -325,10 +324,10 @@ fun LanguageDropdown(
             .id(dropdownId)
             .position(Position.Relative)
             .display(DisplayStyle.InlineBlock)
+            .onClick { it.stopPropagation() }
+            .onTouchStart { it.stopPropagation() }
             .toAttrs()
     ) {
-
-        // ---------- BUTTON (works on mobile!) ----------
         Div(
             attrs = Modifier
                 .padding(8.px)
@@ -336,9 +335,9 @@ fun LanguageDropdown(
                 .borderRadius(6.px)
                 .padding(leftRight = 10.px)
                 .cursor(Cursor.Pointer)
-                .onClick { expanded = !expanded }   // ❤️ iOS compatible
-                .attr("role", "button")
-                .attr("tabindex", "0")
+                .onClick { expanded = !expanded }
+                .role("button")
+                .tabIndex(0)
                 .toAttrs()
         ) {
             Row(

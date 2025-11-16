@@ -86,12 +86,8 @@ fun Toolbar(language: Language, onLanguageSelected: (Language) -> Unit) {
         // Desktop + Android
         document.addEventListener("click", listener)
 
-        // iPhone / iPad (Safari)
-        // document.addEventListener("touchstart", listener)
-
         onDispose {
             document.removeEventListener("click", listener)
-            //document.removeEventListener("touchstart", listener)
         }
     }
 

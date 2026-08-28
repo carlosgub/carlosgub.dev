@@ -8,6 +8,11 @@ data object TalkEnglish : TalkSection {
     override val talks: List<Talk> = listOf(
         Talk(
             flag = "em-flag-pe",
+            title = "klibs.io + AI - How to choose multiplatform libraries (PiggyBank case study)",
+            slidePath = "/presentation/klibs-io-piggybank",
+        ),
+        Talk(
+            flag = "em-flag-pe",
             title = "Android Dev Peru #61 - How to create your first website w/ Kobweb",
             slidePath = "/presentation/create-kobweb",
             videoPath = "https://youtu.be/avs8Zros4HI?t=65",

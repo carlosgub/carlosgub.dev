@@ -44,6 +44,7 @@ fun HomePage() {
             ExperienceSection(language)
             ProjectsSection(language)
             TalkSection(language)
+            PostSection(language)
             ContactMeSection(language)
             Footer()
         }

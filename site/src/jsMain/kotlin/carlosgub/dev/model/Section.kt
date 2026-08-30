@@ -30,6 +30,11 @@ enum class Section(
         englishText = "Talks",
         spanishText = "Charlas"
     ),
+    Posts(
+        id = "posts",
+        englishText = "Blog",
+        spanishText = "Blog"
+    ),
     ContactMe(
         id = "contact",
         englishText = "Contact Me",

@@ -218,6 +218,7 @@ private fun NavItemsMobile(
     NavItemMobile(Section.Experience.getText(language), Section.Experience.id, onItemPressed)
     NavItemMobile(Section.Projects.getText(language), Section.Projects.id, onItemPressed)
     NavItemMobile(Section.Talks.getText(language), Section.Talks.id, onItemPressed)
+    NavItemMobile(Section.Posts.getText(language), Section.Posts.id, onItemPressed)
     NavItemMobile(Section.ContactMe.getText(language), Section.ContactMe.id, onItemPressed)
 
     LanguageDropdown(
@@ -237,6 +238,7 @@ private fun NavItemsDesktop(
     NavItem(Section.Experience.getText(language), Section.Experience.id, onItemPressed)
     NavItem(Section.Projects.getText(language), Section.Projects.id, onItemPressed)
     NavItem(Section.Talks.getText(language), Section.Talks.id, onItemPressed)
+    NavItem(Section.Posts.getText(language), Section.Posts.id, onItemPressed)
     NavItem(Section.ContactMe.getText(language), Section.ContactMe.id, onItemPressed)
 
     LanguageDropdown(

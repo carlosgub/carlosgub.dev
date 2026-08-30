@@ -38,16 +38,6 @@ fun PostSection(language: Language) {
                     PostCard(post, postSection.readLabel)
                 }
             }
-            A(
-                href = "https://medium.com/@carlosgub",
-                attrs = {
-                    classes("blog-footer-link")
-                    attr("target", "_blank")
-                    attr("rel", "noopener")
-                }
-            ) {
-                Text(postSection.seeAllLabel)
-            }
         }
     }
 }
@@ -64,7 +54,6 @@ private fun PostCard(post: Post, readLabel: String) {
     ) {
         Div(attrs = { classes("blog-top-bar") }) {}
         Div(attrs = { classes("blog-thumb-wrap") }) {
-            Span(attrs = { classes("blog-medium-tag") }) { Text("Medium") }
             Img(src = post.imageUrl, alt = "", attrs = { attr("loading", "lazy") })
         }
         Div(attrs = { classes("blog-body") }) {

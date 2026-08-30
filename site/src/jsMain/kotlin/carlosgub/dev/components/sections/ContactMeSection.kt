@@ -18,6 +18,7 @@ import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
+import com.varabyte.kobweb.compose.ui.modifiers.background
 import com.varabyte.kobweb.compose.ui.modifiers.color
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.id
@@ -26,6 +27,7 @@ import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.text.SpanText
 import com.varabyte.kobweb.silk.style.toAttrs
 import com.varabyte.kobweb.silk.style.toModifier
+import org.jetbrains.compose.web.css.Color
 import org.jetbrains.compose.web.dom.A
 import org.jetbrains.compose.web.dom.H4
 import org.jetbrains.compose.web.dom.P
@@ -35,6 +37,8 @@ fun ContactMeSection(language: Language) {
     val contactMeSection = if (language == Language.English) ContactMeEnglish else ContactMeSpanish
     Box(
         modifier = Modifier
+            .background(Color.floralwhite)
+            .fillMaxWidth()
             .id(Section.ContactMe.id)
     ) {
         Column(

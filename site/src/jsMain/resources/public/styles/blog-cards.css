@@ -1,0 +1,214 @@
+.blog-wrap {
+  --blog-card: #FFFFFF;
+  --blog-card-border: #F0E7D4;
+  --blog-ink: #2B2A26;
+  --blog-muted: #8B8474;
+  --blog-kotlin-1: #7F52FF;
+  --blog-kotlin-2: #C711E1;
+  --blog-kotlin-3: #E44857;
+  --blog-amber: #E8A33D;
+
+  width: 100%;
+  max-width: 1280px;
+  padding: 30px 24px;
+  color: var(--blog-ink);
+}
+
+@media (min-width: 992px) {
+  .blog-wrap {
+    padding: 70px 120px;
+  }
+}
+
+.blog-eyebrow {
+  font-size: 12.5px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--blog-muted);
+  font-weight: 600;
+  margin: 0 0 6px 0;
+}
+
+.blog-h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  margin: 0 0 36px 0;
+  letter-spacing: -0.01em;
+  color: var(--blog-ink);
+}
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.blog-card {
+  position: relative;
+  background: var(--blog-card);
+  border: 1px solid var(--blog-card-border);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(43, 42, 38, 0.05), 0 12px 28px rgba(43, 42, 38, 0.07);
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  transition: transform .2s cubic-bezier(.2, .8, .2, 1), box-shadow .2s ease, border-color .2s ease;
+}
+
+.blog-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 4px 8px rgba(43, 42, 38, 0.06), 0 24px 48px rgba(127, 82, 255, 0.16);
+  border-color: #E4D8F5;
+}
+
+.blog-card:focus-visible {
+  outline: 2px solid var(--blog-kotlin-1);
+  outline-offset: 3px;
+}
+
+.blog-thumb-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #F4EEDD;
+}
+
+.blog-thumb-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .35s ease;
+}
+
+.blog-card:hover .blog-thumb-wrap img {
+  transform: scale(1.05);
+}
+
+.blog-thumb-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.28) 100%);
+}
+
+.blog-medium-tag {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 2;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: .03em;
+  text-transform: uppercase;
+  color: #fff;
+  background: rgba(20, 18, 16, 0.55);
+  backdrop-filter: blur(4px);
+  padding: 4px 9px;
+  border-radius: 999px;
+}
+
+.blog-top-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--blog-kotlin-1), var(--blog-kotlin-2), var(--blog-kotlin-3));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .28s ease;
+  z-index: 3;
+}
+
+.blog-card:hover .blog-top-bar {
+  transform: scaleX(1);
+}
+
+.blog-body {
+  padding: 20px 22px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex-grow: 1;
+}
+
+.blog-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: 16.5px;
+  line-height: 1.4;
+  margin: 0;
+  flex-grow: 1;
+}
+
+.blog-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  padding-top: 14px;
+  border-top: 1px solid var(--blog-card-border);
+}
+
+.blog-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11.5px;
+  font-weight: 500;
+  padding: 4px 9px;
+  border-radius: 999px;
+  background: #FBF6EA;
+  border: 1px solid var(--blog-card-border);
+  color: var(--blog-muted);
+}
+
+.blog-pill.blog-claps {
+  color: #9A6A0E;
+  background: #FDF3E2;
+  border-color: #F2E1BE;
+}
+
+.blog-pill.blog-claps b {
+  color: var(--blog-amber);
+}
+
+.blog-arrow {
+  margin-left: auto;
+  font-size: 12.5px;
+  color: var(--blog-kotlin-1);
+  font-weight: 600;
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity .18s ease, transform .18s ease;
+  white-space: nowrap;
+}
+
+.blog-card:hover .blog-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.blog-footer-link {
+  display: block;
+  text-align: center;
+  margin-top: 28px;
+  font-size: 13.5px;
+  color: var(--blog-kotlin-1);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+@media (max-width: 680px) {
+  .blog-grid {
+    grid-template-columns: 1fr;
+  }
+  .blog-h1 {
+    font-size: 26px;
+  }
+}

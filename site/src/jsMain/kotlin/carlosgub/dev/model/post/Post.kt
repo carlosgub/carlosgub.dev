@@ -5,4 +5,5 @@ data class Post(
     val link: String,
     val date: String,
     val claps: Int,
+    val imageUrl: String,
 )

@@ -35,6 +35,14 @@ kobweb {
                     rel = "stylesheet"
                     href = "https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap"
                 }
+                link {
+                    rel = "stylesheet"
+                    href = "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap"
+                }
+                link {
+                    rel = "stylesheet"
+                    href = "/styles/blog-cards.css"
+                }
                 meta {
                     name = "theme-color"
                     content = "#FFFAF0"
